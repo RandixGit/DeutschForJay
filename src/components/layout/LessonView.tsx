@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useGameStore } from '../../store/gameStore'
 import { getLessonTasks, getChapterForLesson, isChapterComplete } from '../../services/curriculum'
@@ -16,6 +16,8 @@ export default function LessonView() {
     setScreen,
     collectedCards,
   } = useGameStore()
+
+  const [vocabOpen, setVocabOpen] = useState(false)
 
   const tasks = activeLessonId ? getLessonTasks(activeLessonId) : []
   const totalTasks = tasks.length
@@ -55,7 +57,7 @@ export default function LessonView() {
   }
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full relative">
       {/* Header */}
       <div className="px-4 pt-4 pb-2 flex items-center gap-3">
         <button
@@ -76,6 +78,13 @@ export default function LessonView() {
         <span className="text-slate-400 text-sm whitespace-nowrap">
           {activeTaskIndex}/{totalTasks}
         </span>
+        <button
+          className="text-slate-400 hover:text-amber-300 text-lg transition-colors"
+          onClick={() => setVocabOpen(true)}
+          title="Look up vocabulary"
+        >
+          📖
+        </button>
       </div>
 
       {/* Task area */}
@@ -113,6 +122,62 @@ export default function LessonView() {
         }
         return null
       })()}
+
+      {/* Vocab lookup panel */}
+      <AnimatePresence>
+        {vocabOpen && (() => {
+          const vocabItems = tasks.filter(
+            t => t.type === 'flashcard' || t.type === 'listen-confirm'
+          ) as Array<{ type: 'flashcard'; german: string; english: string; emoji?: string } | { type: 'listen-confirm'; german: string; english: string }>
+
+          return (
+            <>
+              {/* Backdrop */}
+              <motion.div
+                key="vocab-backdrop"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 bg-black/60 z-10"
+                onClick={() => setVocabOpen(false)}
+              />
+              {/* Sheet */}
+              <motion.div
+                key="vocab-sheet"
+                initial={{ y: '100%' }}
+                animate={{ y: 0 }}
+                exit={{ y: '100%' }}
+                transition={{ type: 'spring', damping: 28, stiffness: 300 }}
+                className="absolute bottom-0 left-0 right-0 bg-slate-800 rounded-t-2xl z-20 max-h-[70%] flex flex-col"
+              >
+                <div className="flex items-center justify-between px-5 py-4 border-b border-slate-700">
+                  <h2 className="text-white font-bold text-lg">📖 Vocab Reference</h2>
+                  <button
+                    className="text-slate-400 hover:text-white text-2xl leading-none"
+                    onClick={() => setVocabOpen(false)}
+                  >
+                    ✕
+                  </button>
+                </div>
+                {vocabItems.length === 0 ? (
+                  <p className="text-slate-400 text-sm text-center py-8">No vocabulary in this lesson yet.</p>
+                ) : (
+                  <ul className="overflow-y-auto px-4 py-3 flex flex-col gap-2">
+                    {vocabItems.map((item, i) => (
+                      <li key={i} className="flex items-center justify-between bg-slate-700 rounded-xl px-4 py-3">
+                        <span className="text-white font-semibold">
+                          {'emoji' in item && item.emoji ? `${item.emoji} ` : ''}{item.german}
+                        </span>
+                        <span className="text-slate-300 text-sm">{item.english}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </motion.div>
+            </>
+          )
+        })()}
+      </AnimatePresence>
     </div>
   )
 }
