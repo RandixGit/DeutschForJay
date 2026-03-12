@@ -1,0 +1,555 @@
+{
+  "id": "module-02",
+  "title": "Zahlen! Numbers & Counting",
+  "theme": "Goal Counter",
+  "description": "Learn to count in German from 1 to 20 — perfect for counting goals!",
+  "xpRequired": 200,
+  "badge": { "name": "Number Ninja", "icon": "🔢" },
+  "chapters": [
+    {
+      "id": "ch-02-01",
+      "title": "One to Five",
+      "lessons": [
+        {
+          "id": "ls-02-01-01",
+          "title": "Meet 1, 2, 3, 4, 5",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "eins",
+              "english": "one (1)",
+              "hint": "Say 'ines' — like 'Ines' the name!",
+              "emoji": "1️⃣",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "zwei",
+              "english": "two (2)",
+              "hint": "Say 'tsvai' — think of a twisting 2!",
+              "emoji": "2️⃣",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "drei",
+              "english": "three (3)",
+              "hint": "Sounds like 'dry' — three dry crackers!",
+              "emoji": "3️⃣",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "vier",
+              "english": "four (4)",
+              "hint": "Sounds like 'fear' — four scary things!",
+              "emoji": "4️⃣",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "fünf",
+              "english": "five (5)",
+              "hint": "That ü is special! Say 'füünf'!",
+              "emoji": "5️⃣",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "How do you say '2' in German?",
+              "options": ["eins", "zwei", "drei", "vier"],
+              "correct": 1,
+              "explanation": "zwei = two!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Drei' means...",
+              "options": ["one", "two", "three", "four"],
+              "correct": 2
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Eins, zwei, drei!",
+              "english": "One, two, three!",
+              "confirmWord": "zwei"
+            }
+          ]
+        },
+        {
+          "id": "ls-02-01-02",
+          "title": "Counting Goals!",
+          "tasks": [
+            {
+              "type": "multiple-choice",
+              "prompt": "Your team scores 4 goals! ⚽⚽⚽⚽ How do you say 'four'?",
+              "options": ["drei", "fünf", "vier", "zwei"],
+              "correct": 2
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "You have 5 Gummy Bears 🐻🐻🐻🐻🐻. How do you say 'five'?",
+              "options": ["eins", "zwei", "drei", "fünf"],
+              "correct": 3
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "___, zwei, drei, vier, fünf!",
+              "answer": "Eins",
+              "hint": "Start counting from the beginning!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Eins, zwei, ___, vier, fünf!",
+              "answer": "drei",
+              "hint": "After zwei (2) comes...?"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Eins, zwei, drei, ___, fünf!",
+              "answer": "vier",
+              "hint": "Before fünf (5) comes...?"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Count the soccer balls: ⚽⚽⚽ — How many?",
+              "options": ["eins", "zwei", "drei", "vier"],
+              "correct": 2
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Vier Tore! Fantastisch!",
+              "english": "Four goals! Fantastic!",
+              "confirmWord": "vier"
+            }
+          ]
+        },
+        {
+          "id": "ls-02-01-03",
+          "title": "1–5 Challenge ⭐",
+          "tasks": [
+            {
+              "type": "multiple-choice",
+              "prompt": "'Fünf' means...",
+              "options": ["three", "four", "five", "six"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Eins, ___, drei, vier, fünf!",
+              "answer": "zwei",
+              "hint": "After one (eins) comes...?"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "You win 2 Roblox coins 🎮🎮. How do you say 'two'?",
+              "options": ["eins", "zwei", "drei", "vier"],
+              "correct": 1
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Eins' means...",
+              "options": ["two", "three", "one", "five"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Eins, zwei, drei, vier, ___!",
+              "answer": "fünf",
+              "hint": "The last number — 5!"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Eins, zwei, drei, vier, fünf!",
+              "english": "One, two, three, four, five!",
+              "confirmWord": "fünf"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Count the stars: ⭐⭐⭐⭐ — How many?",
+              "options": ["drei", "vier", "fünf", "zwei"],
+              "correct": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch-02-02",
+      "title": "Six to Ten",
+      "lessons": [
+        {
+          "id": "ls-02-02-01",
+          "title": "Meet 6, 7, 8, 9, 10",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "sechs",
+              "english": "six (6)",
+              "hint": "Sounds like 'zex' — six zigzag zippers!",
+              "emoji": "6️⃣",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "sieben",
+              "english": "seven (7)",
+              "hint": "Say 'zee-ben' — seven bees buzzing!",
+              "emoji": "7️⃣",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "acht",
+              "english": "eight (8)",
+              "hint": "Short and sharp — 'aht'!",
+              "emoji": "8️⃣",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "neun",
+              "english": "nine (9)",
+              "hint": "Say 'noyn' — nine noisy children!",
+              "emoji": "9️⃣",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "zehn",
+              "english": "ten (10)",
+              "hint": "Say 'tsayn' — ten amazing goals!",
+              "emoji": "🔟",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "How do you say '7' in German?",
+              "options": ["sechs", "sieben", "acht", "neun"],
+              "correct": 1
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Zehn' means...",
+              "options": ["six", "seven", "nine", "ten"],
+              "correct": 3
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Sechs, sieben, acht, neun, zehn!",
+              "english": "Six, seven, eight, nine, ten!",
+              "confirmWord": "zehn"
+            }
+          ]
+        },
+        {
+          "id": "ls-02-02-02",
+          "title": "Count to 10!",
+          "tasks": [
+            {
+              "type": "fill-in-blank",
+              "sentence": "Sechs, ___, acht!",
+              "answer": "sieben",
+              "hint": "Between 6 and 8!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "___, neun, zehn!",
+              "answer": "Acht",
+              "hint": "Before neun (9) comes...?"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Count the soccer balls: ⚽⚽⚽⚽⚽⚽⚽ — How many?",
+              "options": ["sechs", "sieben", "acht", "neun"],
+              "correct": 1
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Ronaldo scored 10 goals! In German, 10 is...",
+              "options": ["acht", "neun", "sieben", "zehn"],
+              "correct": 3
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Sechs, sieben, ___, neun, zehn!",
+              "answer": "acht",
+              "hint": "After sieben (7)..."
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Neun' means...",
+              "options": ["six", "seven", "eight", "nine"],
+              "correct": 3
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Fünf, sechs, ___, acht!",
+              "answer": "sieben",
+              "hint": "After sechs (6)..."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Zehn Spieler auf dem Feld!",
+              "english": "Ten players on the field!",
+              "confirmWord": "zehn"
+            }
+          ]
+        },
+        {
+          "id": "ls-02-02-03",
+          "title": "1–10 Challenge 🏆",
+          "tasks": [
+            {
+              "type": "multiple-choice",
+              "prompt": "Count: ⚽⚽⚽⚽⚽⚽⚽⚽⚽ — How many goals?",
+              "options": ["sieben", "acht", "neun", "zehn"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Eins, zwei, drei, vier, fünf, sechs, ___, acht, neun, zehn!",
+              "answer": "sieben",
+              "hint": "Number 7!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "A soccer team has how many players? (Zehn means...)",
+              "options": ["8", "9", "10", "11"],
+              "correct": 2
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Which is bigger: fünf or acht?",
+              "options": ["fünf (5)", "acht (8)"],
+              "correct": 1
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Neun plus eins ist ___!",
+              "answer": "zehn",
+              "hint": "9 + 1 = ?"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Eins bis zehn: eins, zwei, drei, vier, fünf, sechs, sieben, acht, neun, zehn!",
+              "english": "One to ten: one, two, three, four, five, six, seven, eight, nine, ten!",
+              "confirmWord": "sechs"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Sieben' means...",
+              "options": ["five", "six", "seven", "eight"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Drei plus vier ist ___!",
+              "answer": "sieben",
+              "hint": "3 + 4 = ?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch-02-03",
+      "title": "Teen Numbers: 11 to 20",
+      "lessons": [
+        {
+          "id": "ls-02-03-01",
+          "title": "Eleven to Fifteen",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "elf",
+              "english": "eleven (11)",
+              "hint": "Like the magical elves! Say 'elf'!",
+              "emoji": "1️⃣1️⃣",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "zwölf",
+              "english": "twelve (12)",
+              "hint": "That ö is special! Say 'tsvolf'!",
+              "emoji": "1️⃣2️⃣",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "dreizehn",
+              "english": "thirteen (13)",
+              "hint": "drei (3) + zehn (10) = dreizehn!",
+              "emoji": "1️⃣3️⃣",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "vierzehn",
+              "english": "fourteen (14)",
+              "hint": "vier (4) + zehn (10) = vierzehn!",
+              "emoji": "1️⃣4️⃣",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "fünfzehn",
+              "english": "fifteen (15)",
+              "hint": "fünf (5) + zehn (10) = fünfzehn!",
+              "emoji": "1️⃣5️⃣",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Elf' means...",
+              "options": ["ten", "eleven", "twelve", "thirteen"],
+              "correct": 1
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Messi wears #10. But zwölf means...",
+              "options": ["ten (10)", "eleven (11)", "twelve (12)", "thirteen (13)"],
+              "correct": 2
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Elf, zwölf, dreizehn, vierzehn, fünfzehn!",
+              "english": "Eleven, twelve, thirteen, fourteen, fifteen!",
+              "confirmWord": "zwölf"
+            }
+          ]
+        },
+        {
+          "id": "ls-02-03-02",
+          "title": "Sixteen to Twenty",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "sechzehn",
+              "english": "sixteen (16)",
+              "hint": "sechs (6) + zehn (10) = sechzehn!",
+              "emoji": "1️⃣6️⃣",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "siebzehn",
+              "english": "seventeen (17)",
+              "hint": "sieben (7) + zehn = siebzehn!",
+              "emoji": "1️⃣7️⃣",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "achtzehn",
+              "english": "eighteen (18)",
+              "hint": "acht (8) + zehn = achtzehn!",
+              "emoji": "1️⃣8️⃣",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "neunzehn",
+              "english": "nineteen (19)",
+              "hint": "neun (9) + zehn = neunzehn!",
+              "emoji": "1️⃣9️⃣",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "zwanzig",
+              "english": "twenty (20)",
+              "hint": "Completely new! Say 'tsvan-tsig'!",
+              "emoji": "2️⃣0️⃣",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "18 in German is...",
+              "options": ["sechzehn", "siebzehn", "achtzehn", "neunzehn"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Sechzehn, siebzehn, ___, neunzehn, zwanzig!",
+              "answer": "achtzehn",
+              "hint": "After 17 comes...?"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Zwanzig Spieler im Team!",
+              "english": "Twenty players in the team!",
+              "confirmWord": "zwanzig"
+            }
+          ]
+        },
+        {
+          "id": "ls-02-03-03",
+          "title": "🔢 Number Master Challenge!",
+          "tasks": [
+            {
+              "type": "multiple-choice",
+              "prompt": "A Clash Royale card costs 13 elixir 💎. That's...",
+              "options": ["zwölf", "dreizehn", "vierzehn", "fünfzehn"],
+              "correct": 1
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Zehn plus zehn ist ___!",
+              "answer": "zwanzig",
+              "hint": "10 + 10 = ?"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "There are 20 kids at your birthday party 🎂. In German...",
+              "options": ["neunzehn", "achtzehn", "zwanzig", "sechzehn"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Zehn plus fünf ist ___!",
+              "answer": "fünfzehn",
+              "hint": "10 + 5 = ?"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Siebzehn' means...",
+              "options": ["fifteen", "sixteen", "seventeen", "eighteen"],
+              "correct": 2
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Count the emoji: ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ — How many?",
+              "options": ["neun", "zehn", "elf", "zwölf"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "___, zwölf, dreizehn, vierzehn, fünfzehn!",
+              "answer": "Elf",
+              "hint": "11, 12, 13..."
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Your Roblox character reaches level 19! In German...",
+              "options": ["siebzehn", "achtzehn", "neunzehn", "zwanzig"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Sechzehn, ___, achtzehn!",
+              "answer": "siebzehn",
+              "hint": "Between 16 and 18!"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Elf, zwölf, dreizehn, vierzehn, fünfzehn, sechzehn, siebzehn, achtzehn, neunzehn, zwanzig!",
+              "english": "Eleven to twenty!",
+              "confirmWord": "zwanzig"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

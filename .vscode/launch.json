@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Dev Server + Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/DeutschForJay/src",
+      "preLaunchTask": "npm: dev",
+      "sourceMapPathOverrides": {
+        "/@fs/*": "${workspaceFolder}/DeutschForJay/*"
+      }
+    },
+    {
+      "name": "Deploy to Synology",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": ["${workspaceFolder}/DeutschForJay/deploy.sh"],
+      "cwd": "${workspaceFolder}/DeutschForJay",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Attach to Chrome",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9222,
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/DeutschForJay/src",
+      "sourceMapPathOverrides": {
+        "/@fs/*": "${workspaceFolder}/DeutschForJay/*"
+      }
+    }
+  ]
+}

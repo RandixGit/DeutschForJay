@@ -1,0 +1,558 @@
+{
+  "id": "module-01",
+  "title": "Hallo! Greetings & Basics",
+  "theme": "Soccer Rookie",
+  "description": "Learn to say hello, goodbye, please, thank you, and introduce yourself in German!",
+  "xpRequired": 0,
+  "badge": { "name": "Ball Boy", "icon": "⚽" },
+  "chapters": [
+    {
+      "id": "ch-01-01",
+      "title": "Saying Hello",
+      "lessons": [
+        {
+          "id": "ls-01-01-01",
+          "title": "First Words",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "Hallo",
+              "english": "Hello",
+              "hint": "Sounds exactly like English 'Hello'!",
+              "emoji": "👋",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Tschüss",
+              "english": "Bye / Goodbye",
+              "hint": "Say 'chüss' — a fun bubbly sound!",
+              "emoji": "👋",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Bitte",
+              "english": "Please",
+              "hint": "Always be polite — like 'bidde'!",
+              "emoji": "🙏",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Danke",
+              "english": "Thank you",
+              "hint": "Say 'dahn-keh'!",
+              "emoji": "😊",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "What does 'Hallo' mean?",
+              "options": ["Hello", "Goodbye", "Please", "Thank you"],
+              "correct": 0,
+              "explanation": "Hallo = Hello — just like in English!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Your friend leaves the soccer pitch. You shout...",
+              "options": ["Hallo!", "Tschüss!", "Bitte!", "Danke!"],
+              "correct": 1,
+              "explanation": "Tschüss means Bye/Goodbye!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "H_llo! Wie geht's?",
+              "answer": "Hallo",
+              "hint": "It's just like the English word!"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Hallo! Wie geht's?",
+              "english": "Hello! How are you?",
+              "confirmWord": "hallo"
+            }
+          ]
+        },
+        {
+          "id": "ls-01-01-02",
+          "title": "Yes & No",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "Ja",
+              "english": "Yes",
+              "hint": "Sounds like 'Ya!' in 'Yeah!'",
+              "emoji": "✅",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Nein",
+              "english": "No",
+              "hint": "Sounds like the number 'nine'!",
+              "emoji": "❌",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Your team scores! You're SUPER happy. Say YES in German!",
+              "options": ["Nein!", "Bitte!", "Ja!", "Tschüss!"],
+              "correct": 2,
+              "explanation": "Ja = Yes — like 'Ya!' when you're excited!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Do you want broccoli? Definitely NOT! You say...",
+              "options": ["Ja!", "Hallo!", "Nein!", "Danke!"],
+              "correct": 2,
+              "explanation": "Nein = No!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "___, ich will Fußball spielen!",
+              "answer": "Ja",
+              "hint": "Say YES — you ALWAYS want to play soccer!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "___, ich mag kein Brokkoli!",
+              "answer": "Nein",
+              "hint": "Say NO to the broccoli!"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Ja oder Nein?",
+              "english": "Yes or no?",
+              "confirmWord": "nein"
+            }
+          ]
+        },
+        {
+          "id": "ls-01-01-03",
+          "title": "Please & Thank You",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "Bitte",
+              "english": "Please",
+              "hint": "Always be polite — 'bid-teh'!",
+              "emoji": "🙏",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Danke",
+              "english": "Thank you",
+              "hint": "'Dahn-keh' — your parents love to hear this!",
+              "emoji": "😊",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Gern geschehen",
+              "english": "You're welcome",
+              "hint": "Literally: 'gladly happened'!",
+              "emoji": "😄",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "You want a cookie 🍪. What do you politely say?",
+              "options": ["Tschüss!", "Nein!", "Bitte!", "Danke!"],
+              "correct": 2,
+              "explanation": "Bitte = Please — always ask nicely!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Someone passes you the soccer ball perfectly. You say...",
+              "options": ["Bitte!", "Nein!", "Tschüss!", "Danke!"],
+              "correct": 3,
+              "explanation": "Danke = Thank you!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Ein Keks, ___!",
+              "answer": "bitte",
+              "hint": "Ask nicely for the cookie!"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Bitte und Danke!",
+              "english": "Please and thank you!",
+              "confirmWord": "danke"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch-01-02",
+      "title": "How Are You?",
+      "lessons": [
+        {
+          "id": "ls-01-02-01",
+          "title": "Asking How's It Going",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "Wie geht's?",
+              "english": "How are you? (informal)",
+              "hint": "Short for 'Wie geht es?' — say 'vee geyts'!",
+              "emoji": "🤔",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Gut",
+              "english": "Good / Well",
+              "hint": "Short, sweet, easy — 'goot'!",
+              "emoji": "😊",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Prima",
+              "english": "Great / Awesome",
+              "hint": "Same as English 'primo' — GREAT!",
+              "emoji": "🌟",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Schlecht",
+              "english": "Bad / Not good",
+              "hint": "Say 'shlecht' — like 'bad luck'!",
+              "emoji": "😞",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Your team just won the championship! 🏆 How are you?",
+              "options": ["Schlecht", "Nein", "Prima!", "Tschüss"],
+              "correct": 2,
+              "explanation": "Prima = Great/Awesome — perfect for a win!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "You fell off your bike and hurt your knee 🤕. How do you feel?",
+              "options": ["Gut", "Prima", "Schlecht", "Ja"],
+              "correct": 2,
+              "explanation": "Schlecht = Bad — that sounds painful!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Wie ___'s?",
+              "answer": "geht",
+              "hint": "How are ___?"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Wie geht's? Prima, danke!",
+              "english": "How are you? Great, thanks!",
+              "confirmWord": "prima"
+            }
+          ]
+        },
+        {
+          "id": "ls-01-02-02",
+          "title": "I'm Doing Well!",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "Mir geht's gut",
+              "english": "I'm doing well",
+              "hint": "'Mir' = to me, 'geht's' = it's going — so 'it's going well for me'!",
+              "emoji": "😊",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Und dir?",
+              "english": "And you? (informal)",
+              "hint": "Ask it back to your friend! 'oond deer'",
+              "emoji": "❓",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Super!",
+              "english": "Super! / Amazing!",
+              "hint": "Same as English 'super' — easy!",
+              "emoji": "⭐",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "How do you say 'I'm doing well'?",
+              "options": ["Und dir?", "Wie geht's?", "Mir geht's gut", "Super!"],
+              "correct": 2
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Your teammate asks 'Wie geht's?' — how do you ask back?",
+              "options": ["Mir geht's gut", "Super!", "Schlecht", "Und dir?"],
+              "correct": 3,
+              "explanation": "Und dir? = And you? — always polite to ask back!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Mir geht's ___, danke!",
+              "answer": "gut",
+              "hint": "Doing ___!"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Mir geht's gut. Und dir?",
+              "english": "I'm doing well. And you?",
+              "confirmWord": "gut"
+            }
+          ]
+        },
+        {
+          "id": "ls-01-02-03",
+          "title": "Greetings Review ⭐",
+          "tasks": [
+            {
+              "type": "multiple-choice",
+              "prompt": "You arrive at soccer practice. What do you say?",
+              "options": ["Tschüss!", "Schlecht!", "Hallo!", "Nein!"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Wie geht's? — ___, danke!",
+              "answer": "Gut",
+              "hint": "It's ___!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Practice is over. You're leaving. You say...",
+              "options": ["Hallo!", "Ja!", "Prima!", "Tschüss!"],
+              "correct": 3
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Hallo! Wie ___'s?",
+              "answer": "geht",
+              "hint": "How ___?"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Your friend scored 3 goals! They must feel...",
+              "options": ["Schlecht", "Prima!", "Nein", "Tschüss"],
+              "correct": 1
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Hallo! Wie geht's? Prima! Tschüss!",
+              "english": "Hello! How are you? Great! Bye!",
+              "confirmWord": "tschüss"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Und dir?' means...",
+              "options": ["How are you?", "And you?", "I'm fine", "You're welcome"],
+              "correct": 1
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Mir geht's super! Und ___?",
+              "answer": "dir",
+              "hint": "And ___?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch-01-03",
+      "title": "What's Your Name?",
+      "lessons": [
+        {
+          "id": "ls-01-03-01",
+          "title": "Saying Your Name",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "Wie heißt du?",
+              "english": "What's your name?",
+              "hint": "'Wie heißt' = 'What is called' — 'vee haisst doo'!",
+              "emoji": "❓",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Ich heiße ...",
+              "english": "My name is ...",
+              "hint": "'Ich heiße Jay' — I am called Jay!",
+              "emoji": "😊",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Ich bin ...",
+              "english": "I am ...",
+              "hint": "'Ich bin Jay' — I am Jay!",
+              "emoji": "👤",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "A new player joins your team. How do you ask their name?",
+              "options": ["Wie geht's?", "Tschüss!", "Wie heißt du?", "Und dir?"],
+              "correct": 2,
+              "explanation": "Wie heißt du? = What's your name?"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Jay wants to say 'My name is Jay'. He says...",
+              "options": ["Wie heißt du?", "Ich bin gut", "Ich heiße Jay", "Danke Jay"],
+              "correct": 2,
+              "explanation": "Ich heiße Jay = My name is Jay!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Wie ___ du?",
+              "answer": "heißt",
+              "hint": "What's your ___?"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Ich ___ Jay!",
+              "answer": "heiße",
+              "hint": "My name ___..."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Wie heißt du? Ich heiße Tim.",
+              "english": "What's your name? My name is Tim.",
+              "confirmWord": "heiße"
+            }
+          ]
+        },
+        {
+          "id": "ls-01-03-02",
+          "title": "Nice to Meet You!",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "Freut mich!",
+              "english": "Nice to meet you!",
+              "hint": "Short and sweet — 'froyt mich'!",
+              "emoji": "🤝",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Schön dich kennenzulernen",
+              "english": "Nice to meet you (formal)",
+              "hint": "Literally: 'Beautiful to get to know you'!",
+              "emoji": "😊",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Woher kommst du?",
+              "english": "Where are you from?",
+              "hint": "'Woher' = from where, 'kommst' = come!",
+              "emoji": "🌍",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "A new teammate joins and says their name. You reply...",
+              "options": ["Tschüss!", "Schlecht!", "Freut mich!", "Nein!"],
+              "correct": 2,
+              "explanation": "Freut mich! = Nice to meet you!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Freut mich!' means...",
+              "options": ["See you later!", "How are you?", "Nice to meet you!", "Where are you from?"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "___ mich!",
+              "answer": "Freut",
+              "hint": "Pleased to ___!"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Freut mich! Ich heiße Lukas.",
+              "english": "Nice to meet you! My name is Lukas.",
+              "confirmWord": "freut"
+            }
+          ]
+        },
+        {
+          "id": "ls-01-03-03",
+          "title": "🏆 Module 1 Final Challenge",
+          "tasks": [
+            {
+              "type": "multiple-choice",
+              "prompt": "You walk onto the field and meet your new coach. First you say...",
+              "options": ["Tschüss!", "Hallo!", "Schlecht!", "Nein!"],
+              "correct": 1
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "The coach asks your name. How do they ask?",
+              "options": ["Wie geht's?", "Woher kommst du?", "Wie heißt du?", "Freut mich?"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Ich ___ Jay!",
+              "answer": "heiße",
+              "hint": "My name ___..."
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "The coach says 'Freut mich!' — what does this mean?",
+              "options": ["Goodbye!", "How are you?", "Nice to meet you!", "Please!"],
+              "correct": 2
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "The coach asks 'Wie geht's?' You're feeling amazing today. You say...",
+              "options": ["Schlecht", "Tschüss", "Nein", "Prima!"],
+              "correct": 3
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Mir geht's ___!",
+              "answer": "prima",
+              "hint": "Feeling ___!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "After training, everyone leaves. You shout...",
+              "options": ["Hallo!", "Bitte!", "Tschüss!", "Danke!"],
+              "correct": 2
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Hallo! Wie heißt du? Ich heiße Max. Freut mich! Tschüss!",
+              "english": "Hello! What's your name? My name is Max. Nice to meet you! Bye!",
+              "confirmWord": "freut"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Wie geht's? — ___, danke! Und dir?",
+              "answer": "Gut",
+              "hint": "Doing ___!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Your coach passes you the water bottle. What do you say?",
+              "options": ["Bitte!", "Schlecht!", "Nein!", "Danke!"],
+              "correct": 3
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

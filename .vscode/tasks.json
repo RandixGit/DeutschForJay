@@ -1,0 +1,39 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "npm: dev",
+      "type": "npm",
+      "script": "dev",
+      "path": "DeutschForJay/",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "vite",
+        "pattern": {
+          "regexp": "^(.*)$",
+          "file": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*VITE.*starting",
+          "endsPattern": "^.*Local:.*localhost"
+        }
+      }
+    }
+  ,
+    {
+      "label": "Deploy to Synology",
+      "type": "shell",
+      "command": "./deploy.sh",
+      "options": {
+        "cwd": "${workspaceFolder}/DeutschForJay"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}
