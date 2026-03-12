@@ -29,4 +29,4 @@ echo "🚀 Deploying to $MOUNT_PATH ..."
 rsync -av --delete dist/ "$MOUNT_PATH/"
 
 echo ""
-echo "✅ Done! Open http://NAS007.local/GermanTutor/ in your browser"
+echo "✅ Done! Open https://randix.synology.me/GermanTutor/ in your browser"

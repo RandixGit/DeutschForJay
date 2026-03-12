@@ -6,10 +6,10 @@
       "type": "chrome",
       "request": "launch",
       "url": "http://localhost:5173",
-      "webRoot": "${workspaceFolder}/DeutschForJay/src",
+      "webRoot": "${workspaceFolder}/src",
       "preLaunchTask": "npm: dev",
       "sourceMapPathOverrides": {
-        "/@fs/*": "${workspaceFolder}/DeutschForJay/*"
+        "/@fs/*": "${workspaceFolder}/*"
       }
     },
     {
@@ -17,9 +17,17 @@
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "/bin/bash",
-      "runtimeArgs": ["${workspaceFolder}/DeutschForJay/deploy.sh"],
-      "cwd": "${workspaceFolder}/DeutschForJay",
+      "runtimeArgs": ["${workspaceFolder}/deploy.sh"],
+      "cwd": "${workspaceFolder}",
       "console": "integratedTerminal"
+    },
+    {
+      "name": "Deploy to Synology + Open",
+      "type": "chrome",
+      "request": "launch",
+      "url": "https://randix.synology.me/GermanTutor/",
+      "preLaunchTask": "Deploy to Synology",
+      "webRoot": "${workspaceFolder}/src"
     },
     {
       "name": "Attach to Chrome",
@@ -27,9 +35,9 @@
       "request": "attach",
       "port": 9222,
       "url": "http://localhost:5173",
-      "webRoot": "${workspaceFolder}/DeutschForJay/src",
+      "webRoot": "${workspaceFolder}/src",
       "sourceMapPathOverrides": {
-        "/@fs/*": "${workspaceFolder}/DeutschForJay/*"
+        "/@fs/*": "${workspaceFolder}/*"
       }
     }
   ]
