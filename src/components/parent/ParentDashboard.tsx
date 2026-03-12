@@ -17,6 +17,7 @@ export default function ParentDashboard() {
     setParentPin,
     markCouponPaid,
     resetProgress,
+    playerName,
   } = useGameStore()
 
   const [pinInput, setPinInput] = useState('')
@@ -154,7 +155,7 @@ export default function ParentDashboard() {
 
         {/* Progress Summary */}
         <div className="card p-4 space-y-2">
-          <h3 className="text-slate-300 font-semibold text-sm uppercase tracking-wide">Jay's Progress</h3>
+          <h3 className="text-slate-300 font-semibold text-sm uppercase tracking-wide">{playerName}'s Progress</h3>
           <div className="grid grid-cols-3 gap-3 text-center">
             <div>
               <p className="text-amber-400 font-bold text-2xl">{xp}</p>
@@ -183,7 +184,7 @@ export default function ParentDashboard() {
               📝 Needs Review ({struggledLessons.length})
             </h3>
             <p className="text-slate-400 text-sm">
-              Jay scored under 50% on these lessons. Encourage a retry!
+              {playerName} scored under 50% on these lessons. Encourage a retry!
             </p>
           </div>
         )}
@@ -196,7 +197,7 @@ export default function ParentDashboard() {
 
           {pendingCoupons.length === 0 && (
             <p className="text-slate-500 text-sm">
-              No pending coupons. Jay earns one every 5 lessons!
+              No pending coupons. {playerName} earns one every 5 lessons!
             </p>
           )}
 
@@ -248,7 +249,7 @@ export default function ParentDashboard() {
             </button>
           ) : (
             <div className="space-y-2">
-              <p className="text-red-300 text-sm">This will erase ALL of Jay's XP, lessons, and coupons. Are you sure?</p>
+              <p className="text-red-300 text-sm">This will erase ALL of {playerName}'s XP, lessons, and coupons. Are you sure?</p>
               <div className="flex gap-2">
                 <button
                   className="btn-danger text-sm py-2 px-4"

@@ -6,25 +6,30 @@ import LessonView from './components/layout/LessonView'
 import ResultsScreen from './components/layout/ResultsScreen'
 import ParentDashboard from './components/parent/ParentDashboard'
 import CardUnlock from './components/rewards/CardUnlock'
+import WelcomeScreen from './components/layout/WelcomeScreen'
 
 function ScreenContent() {
   const screen = useGameStore((s) => s.screen)
+  const playerName = useGameStore((s) => s.playerName)
+
+  const effectiveScreen = !playerName ? 'welcome' : screen
 
   return (
     <AnimatePresence mode="wait">
       <motion.div
-        key={screen}
+        key={effectiveScreen}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
         className="h-full"
       >
-        {screen === 'map' && <ModuleMap />}
-        {screen === 'lesson' && <LessonView />}
-        {screen === 'results' && <ResultsScreen />}
-        {screen === 'card-unlock' && <CardUnlock />}
-        {screen === 'parent' && <ParentDashboard />}
+        {effectiveScreen === 'welcome' && <WelcomeScreen />}
+        {effectiveScreen === 'map' && <ModuleMap />}
+        {effectiveScreen === 'lesson' && <LessonView />}
+        {effectiveScreen === 'results' && <ResultsScreen />}
+        {effectiveScreen === 'card-unlock' && <CardUnlock />}
+        {effectiveScreen === 'parent' && <ParentDashboard />}
       </motion.div>
     </AnimatePresence>
   )

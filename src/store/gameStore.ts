@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware'
 import type { TaskResult } from '../types/curriculum'
 
 export type { TaskResult }
-export type Screen = 'map' | 'lesson' | 'results' | 'card-unlock' | 'parent'
+export type Screen = 'welcome' | 'map' | 'lesson' | 'results' | 'card-unlock' | 'parent'
 
 export interface Coupon {
   id: string
@@ -24,6 +24,9 @@ export interface LessonResult {
 interface GameState {
   // Navigation
   screen: Screen
+
+  // Player
+  playerName: string | null
 
   // Active lesson
   activeLessonId: string | null
@@ -48,6 +51,7 @@ interface GameState {
 
   // Actions
   setScreen: (screen: Screen) => void
+  setPlayerName: (name: string) => void
   startLesson: (lessonId: string) => void
   recordTaskResult: (result: TaskResult) => void
   finishLesson: (lessonId: string, totalTasks: number) => void
@@ -88,7 +92,10 @@ export const useGameStore = create<GameState>()(
   persist(
     (set, get) => ({
       // Navigation
-      screen: 'map',
+      screen: 'welcome',
+
+      // Player
+      playerName: null,
 
       // Active lesson
       activeLessonId: null,
@@ -112,6 +119,7 @@ export const useGameStore = create<GameState>()(
       pendingCardUnlock: null,
 
       setScreen: (screen) => set({ screen }),
+      setPlayerName: (name) => set({ playerName: name, screen: 'map' }),
 
       startLesson: (lessonId) =>
         set({
@@ -211,6 +219,7 @@ export const useGameStore = create<GameState>()(
       name: 'deutsch-for-jay-progress',
       // Don't persist transient fields
       partialize: (state) => ({
+        playerName: state.playerName,
         xp: state.xp,
         completedLessons: state.completedLessons,
         struggledLessons: state.struggledLessons,

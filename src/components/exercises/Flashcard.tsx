@@ -14,8 +14,9 @@ export default function Flashcard({ task, onComplete }: Props) {
   const { speak } = useTTS()
 
   function handleFlip() {
-    setFlipped(true)
-    if (task.tts) speak(task.german, 'de-DE')
+    const next = !flipped
+    setFlipped(next)
+    if (task.tts && next) speak(task.german, 'de-DE')
   }
 
   function handleResponse(knew: boolean) {
@@ -33,14 +34,14 @@ export default function Flashcard({ task, onComplete }: Props) {
     <div className="exercise-container">
       <p className="text-slate-400 text-sm text-center uppercase tracking-wide">Flashcard</p>
       <p className="text-slate-300 text-center text-base">
-        Tap the card to reveal the answer!
+        Tap the card to flip between German and English!
       </p>
 
       {/* Flip card */}
       <div
         className="perspective w-full cursor-pointer"
         style={{ height: '220px' }}
-        onClick={!flipped ? handleFlip : undefined}
+        onClick={!answered ? handleFlip : undefined}
       >
         <div className={`flip-card-inner w-full h-full ${flipped ? 'flipped' : ''}`}>
           {/* Front */}
@@ -63,6 +64,9 @@ export default function Flashcard({ task, onComplete }: Props) {
             >
               🔊 Hear it in German
             </button>
+            {!answered && (
+              <p className="text-slate-500 text-xs mt-1">← Tap card to flip back</p>
+            )}
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ const CARD_THEMES = [
 ]
 
 export default function CardUnlock() {
-  const { pendingCardUnlock, collectCard, setScreen } = useGameStore()
+  const { pendingCardUnlock, collectCard, setScreen, playerName } = useGameStore()
   const [revealed, setRevealed] = useState(false)
 
   const chapter = pendingCardUnlock
@@ -60,7 +60,7 @@ export default function CardUnlock() {
           {/* Back of card (shown first) */}
           <div className="flip-card-front card w-full h-full flex flex-col items-center justify-center bg-slate-800 border-2 border-blue-500">
             <div className="text-6xl mb-4">🇩🇪</div>
-            <p className="text-blue-400 font-bold text-xl">Deutsch für Jay</p>
+            <p className="text-blue-400 font-bold text-xl">Deutsch für {playerName}</p>
             <p className="text-slate-400 text-sm mt-2">Tap to reveal your card!</p>
             <motion.div
               animate={{ scale: [1, 1.1, 1] }}

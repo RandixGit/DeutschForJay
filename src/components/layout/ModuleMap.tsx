@@ -5,7 +5,7 @@ import { ALL_MODULES } from '../../services/curriculum'
 import type { Module, Chapter, Lesson } from '../../types/curriculum'
 
 export default function ModuleMap() {
-  const { xp, completedLessons, struggledLessons, startLesson, setScreen } = useGameStore()
+  const { xp, completedLessons, struggledLessons, startLesson, setScreen, playerName } = useGameStore()
   const { current: lvl } = getLevel(xp)
 
   const [selectedModule, setSelectedModule] = useState<Module | null>(null)
@@ -151,7 +151,7 @@ export default function ModuleMap() {
       <div className="px-4 pt-4 pb-3 border-b border-slate-800">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-white font-bold text-xl">Deutsch für Jay 🇩🇪</h1>
+            <h1 className="text-white font-bold text-xl">Deutsch für {playerName} 🇩🇪</h1>
             <p className="text-slate-400 text-sm">{lvl.icon} {lvl.name} · {xp} XP</p>
           </div>
           <button
