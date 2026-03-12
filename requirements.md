@@ -1,4 +1,4 @@
-# Vision:
+# Vision
 A fun and engaging learning experience for my 9 year old son to learn German quickly. There should be a clear engagement loop to keep him interested, for example by injecting funny memes or cool facts as rewards, or by keeping tally of 'XP' that unlocks exciting things.
 coupons for pocket money that either parent can approve/set to consumed on their phone or on the local device in the experiencey.
 
@@ -41,6 +41,6 @@ Segment the experience in clear learning modules starting simple with the goal o
 As inspiration for theming the exercises: My son likes Roblox, Clash Royale, One Piece and absolutely loves soccer
 
 
-## Advanced features:
+## Advanced features
 * Use STT to validate German input. Can kokoro do this as well?
 * * a way to extend the learning content; an editor that allows to add learning content accross all exercise types
