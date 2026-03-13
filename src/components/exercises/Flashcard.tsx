@@ -22,7 +22,7 @@ export default function Flashcard({ task, onComplete }: Props) {
   function handleResponse(knew: boolean) {
     if (answered) return
     setAnswered(true)
-    onComplete({ correct: knew, attempts: 1 })
+    onComplete({ correct: knew, attempts: 1, taskType: 'flashcard', expectedAnswer: task.german })
   }
 
   function handleTTS(e: React.MouseEvent) {

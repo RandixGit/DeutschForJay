@@ -17,6 +17,7 @@ export default function ListenConfirm({ task, onComplete }: Props) {
   const [attempts, setAttempts] = useState(0)
   const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle')
   const [showTranslation, setShowTranslation] = useState(false)
+  const [wrongInputs, setWrongInputs] = useState<string[]>([])
   const { speak } = useTTS()
 
   function handlePlay() {
@@ -34,8 +35,9 @@ export default function ListenConfirm({ task, onComplete }: Props) {
 
     if (isCorrect) {
       setStatus('correct')
-      setTimeout(() => onComplete({ correct: true, attempts: newAttempts }), 1000)
+      setTimeout(() => onComplete({ correct: true, attempts: newAttempts, taskType: 'listen-confirm', wrongAnswers: wrongInputs, expectedAnswer: task.confirmWord }), 1000)
     } else {
+      setWrongInputs((prev) => [...prev, input.trim()])
       setStatus('wrong')
       setTimeout(() => {
         setStatus('idle')

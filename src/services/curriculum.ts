@@ -1,12 +1,10 @@
 import type { Module, Lesson, Task } from '../types/curriculum'
-import module01 from '../curriculum/module-01.json'
-import module02 from '../curriculum/module-02.json'
 
-// All modules in order
-export const ALL_MODULES: Module[] = [
-  module01 as Module,
-  module02 as Module,
-]
+// Auto-discover all module JSON files — just drop a new module-XX.json and it's picked up
+const moduleFiles = import.meta.glob('../curriculum/module-*.json', { eager: true })
+export const ALL_MODULES: Module[] = Object.values(moduleFiles)
+  .map(m => (m as { default: Module }).default)
+  .sort((a, b) => a.xpRequired - b.xpRequired)
 
 export function getModule(moduleId: string): Module | undefined {
   return ALL_MODULES.find((m) => m.id === moduleId)

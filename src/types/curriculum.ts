@@ -42,6 +42,9 @@ export type Task =
 export interface TaskResult {
   correct: boolean
   attempts: number  // how many tries it took
+  taskType: TaskType
+  wrongAnswers?: string[]  // actual wrong inputs submitted by the student
+  expectedAnswer?: string  // the correct answer for this task
 }
 
 export interface Lesson {

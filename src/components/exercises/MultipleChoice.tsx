@@ -12,6 +12,7 @@ export default function MultipleChoice({ task, onComplete }: Props) {
   const [selected, setSelected] = useState<number | null>(null)
   const [attempts, setAttempts] = useState(0)
   const [done, setDone] = useState(false)
+  const [wrongSelections, setWrongSelections] = useState<string[]>([])
   const { speak } = useTTS()
 
   function handleSelect(idx: number) {
@@ -30,9 +31,10 @@ export default function MultipleChoice({ task, onComplete }: Props) {
       setDone(true)
       // Short delay so user sees the green feedback, then advance
       setTimeout(() => {
-        onComplete({ correct: true, attempts: newAttempts })
+        onComplete({ correct: true, attempts: newAttempts, taskType: 'multiple-choice', wrongAnswers: wrongSelections, expectedAnswer: task.options[task.correct] })
       }, 900)
     } else {
+      setWrongSelections((prev) => [...prev, task.options[idx]])
       // Wrong — shake and let them try again after a moment
       setTimeout(() => setSelected(null), 800)
     }

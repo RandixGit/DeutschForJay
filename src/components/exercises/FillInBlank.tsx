@@ -16,6 +16,7 @@ export default function FillInBlank({ task, onComplete }: Props) {
   const [attempts, setAttempts] = useState(0)
   const [showHint, setShowHint] = useState(false)
   const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle')
+  const [wrongInputs, setWrongInputs] = useState<string[]>([])
   const inputRef = useRef<HTMLInputElement>(null)
   const { speak } = useTTS()
 
@@ -40,9 +41,10 @@ export default function FillInBlank({ task, onComplete }: Props) {
       setStatus('correct')
       if (task.tts) speak(task.sentence.replace('___', task.answer), 'de-DE')
       setTimeout(() => {
-        onComplete({ correct: true, attempts: newAttempts })
+        onComplete({ correct: true, attempts: newAttempts, taskType: 'fill-in-blank', wrongAnswers: wrongInputs, expectedAnswer: task.answer })
       }, 1000)
     } else {
+      setWrongInputs((prev) => [...prev, input.trim()])
       setStatus('wrong')
       setTimeout(() => {
         setStatus('idle')

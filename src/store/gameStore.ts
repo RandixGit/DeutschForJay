@@ -19,6 +19,7 @@ export interface LessonResult {
   stars: number      // 1–3
   xpEarned: number
   completedAt: string
+  taskResults?: TaskResult[]  // per-task detail for curriculum generation analysis
 }
 
 export interface PlayerProfile {
@@ -67,6 +68,7 @@ interface GameState {
   // Transient (not persisted — reset after navigation)
   lastLessonResult: LessonResult | null
   pendingCardUnlock: string | null   // chapterId if a card was just unlocked
+  debugAllUnlocked: boolean          // parent review mode — bypass module XP locks
 
   // Actions
   setScreen: (screen: Screen) => void
@@ -84,6 +86,7 @@ interface GameState {
   resetProgress: () => void
   resetProgressForPlayer: (id: string) => void
   markCouponPaidForPlayer: (playerId: string, couponId: string) => void
+  debugUnlockAllModules: () => void
 }
 
 const XP_PER_CORRECT_FIRST_TRY = 10
@@ -190,6 +193,7 @@ export const useGameStore = create<GameState>()(
       // Transient
       lastLessonResult: null,
       pendingCardUnlock: null,
+      debugAllUnlocked: false,
 
       setScreen: (screen) => set({ screen }),
 
@@ -280,6 +284,7 @@ export const useGameStore = create<GameState>()(
           stars,
           xpEarned,
           completedAt: new Date().toISOString(),
+          taskResults: state.taskResults,
         }
 
         const isStruggled = score < 50
@@ -437,6 +442,10 @@ export const useGameStore = create<GameState>()(
         } else {
           set({ players: newPlayers })
         }
+      },
+
+      debugUnlockAllModules: () => {
+        set((state) => ({ debugAllUnlocked: !state.debugAllUnlocked }))
       },
     })
     },
