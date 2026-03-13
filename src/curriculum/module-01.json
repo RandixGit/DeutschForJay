@@ -164,11 +164,25 @@
               "explanation": "Bitte = Please — always ask nicely!"
             },
             {
+              "type": "word-order",
+              "prompt": "Build the sentence: Say 'yes please thank you!'",
+              "correctOrder": ["Ja", "bitte", "danke!"],
+              "english": "Yes please thank you!",
+              "tts": true
+            },
+            {
               "type": "multiple-choice",
               "prompt": "Someone passes you the soccer ball perfectly. You say...",
               "options": ["Bitte!", "Nein!", "Tschüss!", "Danke!"],
               "correct": 3,
               "explanation": "Danke = Thank you!"
+            },
+            {
+              "type": "word-order",
+              "prompt": "Build the sentence: Say 'no thank you!'",
+              "correctOrder": ["Nein", "danke!"],
+              "english": "No thank you!",
+              "tts": true
             },
             {
               "type": "fill-in-blank",
@@ -326,6 +340,13 @@
               "hint": "It's ___!"
             },
             {
+              "type": "word-order",
+              "prompt": "Build the sentence: Say hello and ask how someone is doing",
+              "correctOrder": ["Hallo!", "Wie", "geht's?"],
+              "english": "Hello! How are you?",
+              "tts": true
+            },
+            {
               "type": "multiple-choice",
               "prompt": "Practice is over. You're leaving. You say...",
               "options": ["Hallo!", "Ja!", "Prima!", "Tschüss!"],
@@ -336,6 +357,13 @@
               "sentence": "Hallo! Wie ___'s?",
               "answer": "geht",
               "hint": "How ___?"
+            },
+            {
+              "type": "word-order",
+              "prompt": "Build the sentence: Say you're doing great, thanks!",
+              "correctOrder": ["Mir", "geht's", "prima,", "danke!"],
+              "english": "I'm doing great, thanks!",
+              "tts": true
             },
             {
               "type": "multiple-choice",
@@ -503,6 +531,13 @@
               "correct": 2
             },
             {
+              "type": "word-order",
+              "prompt": "Build the sentence: Tell someone your name is Jay",
+              "correctOrder": ["Ich", "heiße", "Jay!"],
+              "english": "My name is Jay!",
+              "tts": true
+            },
+            {
               "type": "fill-in-blank",
               "sentence": "Ich ___ Jay!",
               "answer": "heiße",
@@ -525,6 +560,13 @@
               "sentence": "Mir geht's ___!",
               "answer": "prima",
               "hint": "Feeling ___!"
+            },
+            {
+              "type": "word-order",
+              "prompt": "Build the sentence: Ask someone what their name is",
+              "correctOrder": ["Wie", "heißt", "du?"],
+              "english": "What's your name?",
+              "tts": true
             },
             {
               "type": "multiple-choice",

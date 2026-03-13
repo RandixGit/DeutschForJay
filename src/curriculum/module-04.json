@@ -154,6 +154,13 @@
               "hint": "My ___ is my best friend!"
             },
             {
+              "type": "word-order",
+              "prompt": "Put the words in order: Say you love your family!",
+              "correctOrder": ["Ich", "liebe", "meine", "Familie!"],
+              "english": "I love my family!",
+              "tts": true
+            },
+            {
               "type": "multiple-choice",
               "prompt": "A tiny person who cries a lot is...",
               "options": ["der Opa", "der Papa", "das Baby", "der Bruder"],
@@ -164,6 +171,13 @@
               "sentence": "Meine ___ ist älter als ich.",
               "answer": "Schwester",
               "hint": "My ___ is older than me."
+            },
+            {
+              "type": "word-order",
+              "prompt": "Build the sentence: The baby is sleeping!",
+              "correctOrder": ["Das", "Baby", "schläft!"],
+              "english": "The baby is sleeping!",
+              "tts": true
             },
             {
               "type": "multiple-choice",
@@ -330,6 +344,13 @@
               "correct": 1
             },
             {
+              "type": "word-order",
+              "prompt": "Put the words in order: Say you are in the kitchen!",
+              "correctOrder": ["Ich", "bin", "in", "der", "Küche."],
+              "english": "I am in the kitchen.",
+              "tts": true
+            },
+            {
               "type": "fill-in-blank",
               "sentence": "Ich schlafe im ___.",
               "answer": "Schlafzimmer",
@@ -346,6 +367,13 @@
               "sentence": "Wir spielen Fußball im ___.",
               "answer": "Garten",
               "hint": "We play soccer in the ___."
+            },
+            {
+              "type": "word-order",
+              "prompt": "Build the sentence: Open the door, please!",
+              "correctOrder": ["Mach", "die", "Tür", "auf!"],
+              "english": "Open the door!",
+              "tts": true
             },
             {
               "type": "multiple-choice",
@@ -518,6 +546,13 @@
               "hint": "My ___ cooks in the kitchen."
             },
             {
+              "type": "word-order",
+              "prompt": "Put the words in order: Say your mom is cooking!",
+              "correctOrder": ["Meine", "Mama", "kocht!"],
+              "english": "My mom is cooking!",
+              "tts": true
+            },
+            {
               "type": "multiple-choice",
               "prompt": "'Mein Opa liest ein Buch' means...",
               "options": ["My grandpa reads a book", "My dad plays soccer", "My brother sleeps", "My grandma cooks"],
@@ -534,6 +569,13 @@
               "prompt": "Where does the family watch TV?",
               "options": ["das Badezimmer", "das Schlafzimmer", "die Küche", "das Wohnzimmer"],
               "correct": 3
+            },
+            {
+              "type": "word-order",
+              "prompt": "Build the sentence: My brother plays in the garden!",
+              "correctOrder": ["Mein", "Bruder", "spielt", "im", "Garten!"],
+              "english": "My brother plays in the garden!",
+              "tts": true
             },
             {
               "type": "fill-in-blank",

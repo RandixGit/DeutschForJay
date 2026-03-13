@@ -87,13 +87,68 @@ Modules are auto-discovered via `import.meta.glob` — just drop a new `module-X
 
 ### Generating new modules
 
-Use the Claude Code slash command:
+New modules are generated via the `/generate-module` Claude Code slash command. The generator reads the existing curriculum, analyzes student performance, and produces a complete module JSON tailored to what the student needs to practice.
+
+#### Basic usage
 
 ```
 /generate-module Animals & Nature
 ```
 
-This reads existing modules, optionally fetches student performance data from Firestore, and generates a new module with struggle-aware content reinforcement.
+This will:
+
+1. **Fetch student data** from Firestore (requires `GOOGLE_APPLICATION_CREDENTIALS` — see setup below)
+2. **Read all existing modules** to catalog vocabulary already taught and avoid duplication
+3. **Analyze struggles** — which lessons scored low, what wrong answers were given, which task types had the most retries
+4. **Generate a module** with 3 chapters, 9 lessons, and 45-72 tasks following the schema in [curriculum/schema.md](curriculum/schema.md)
+5. **Write the JSON** to `src/curriculum/module-XX.json` — auto-discovered, no import changes needed
+
+#### Struggle-aware generation
+
+When student data is available, the generator:
+
+- Weaves previously struggled vocabulary into Chapter 1 as a warm-up review
+- Increases the proportion of task types the student found hardest (e.g., more fill-in-blank if they struggled with typing)
+- Uses the student's actual wrong answers as distractor options in multiple-choice questions
+- Ends with a "Challenge" lesson mixing new and old vocabulary
+
+#### Skipping student data
+
+If Firestore credentials aren't set up, the generator will inform you and continue without student data. You can also explicitly skip it:
+
+```
+/generate-module Colors & Clothing --no-student-data
+```
+
+Or paste a performance report manually — copy it from the **Parent Dashboard** using the "Copy Performance Report" button under Parent Tools.
+
+#### Firestore setup for the generator
+
+The fetch script uses Firebase Admin SDK and needs a service account key:
+
+1. Go to Firebase Console → Project Settings → Service Accounts
+2. Click "Generate new private key" and save the JSON file
+3. Set the env var: `export GOOGLE_APPLICATION_CREDENTIALS=/path/to/your-service-account.json`
+
+The service account key is gitignored via the `*-service-account*.json` pattern.
+
+You can also run the fetch script standalone to inspect student data:
+
+```bash
+npx tsx scripts/fetch-student-data.ts                # all players
+npx tsx scripts/fetch-student-data.ts --player Jay    # specific player
+```
+
+#### Performance data tracking
+
+The app captures detailed per-task analytics that feed into module generation:
+
+- **Task type** (flashcard, multiple-choice, fill-in-blank, listen-confirm)
+- **Wrong answers** — the actual text the student typed or selected
+- **Expected answer** — what the correct answer was
+- **Attempt count** — how many tries it took
+
+This data is stored in `LessonResult.taskResults`, persisted to localStorage and synced to Firestore automatically.
 
 ---
 

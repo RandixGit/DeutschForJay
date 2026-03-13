@@ -3,6 +3,7 @@ import Flashcard from './Flashcard'
 import MultipleChoice from './MultipleChoice'
 import FillInBlank from './FillInBlank'
 import ListenConfirm from './ListenConfirm'
+import WordOrder from './WordOrder'
 
 interface Props {
   task: Task
@@ -19,6 +20,8 @@ export default function ExerciseRouter({ task, onComplete }: Props) {
       return <FillInBlank task={task} onComplete={onComplete} />
     case 'listen-confirm':
       return <ListenConfirm task={task} onComplete={onComplete} />
+    case 'word-order':
+      return <WordOrder task={task} onComplete={onComplete} />
     default:
       return <p className="text-red-400">Unknown exercise type</p>
   }

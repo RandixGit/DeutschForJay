@@ -154,6 +154,13 @@
               "hint": "I would like ___, please! (cold and sweet)"
             },
             {
+              "type": "word-order",
+              "prompt": "Put the words in order: Say the chocolate is yummy!",
+              "correctOrder": ["Die", "Schokolade", "ist", "lecker!"],
+              "english": "The chocolate is yummy!",
+              "tts": true
+            },
+            {
               "type": "multiple-choice",
               "prompt": "'Lecker' means...",
               "options": ["ugly", "big", "delicious", "cold"],
@@ -171,6 +178,13 @@
               "options": ["das Eis", "die Wurst", "der Kuchen", "die Gummibärchen"],
               "correct": 1,
               "explanation": "Die Wurst — Germany loves Bratwurst on the grill!"
+            },
+            {
+              "type": "word-order",
+              "prompt": "Build the sentence: Say you like ice cream!",
+              "correctOrder": ["Ich", "mag", "Eis!"],
+              "english": "I like ice cream!",
+              "tts": true
             },
             {
               "type": "fill-in-blank",
@@ -331,6 +345,13 @@
               "correct": 2
             },
             {
+              "type": "word-order",
+              "prompt": "Put the words in order: Say you are hungry!",
+              "correctOrder": ["Ich", "habe", "Hunger!"],
+              "english": "I am hungry!",
+              "tts": true
+            },
+            {
               "type": "fill-in-blank",
               "sentence": "Ich möchte ___, bitte!",
               "answer": "Wasser",
@@ -348,6 +369,13 @@
               "sentence": "Ich habe ___! Kann ich Saft haben?",
               "answer": "Durst",
               "hint": "I am ___! Can I have juice?"
+            },
+            {
+              "type": "word-order",
+              "prompt": "Build the sentence: Order some water politely!",
+              "correctOrder": ["Ich", "möchte", "Wasser,", "bitte!"],
+              "english": "I would like water, please!",
+              "tts": true
             },
             {
               "type": "multiple-choice",
@@ -519,6 +547,13 @@
               "hint": "I am ___! I want pizza!"
             },
             {
+              "type": "word-order",
+              "prompt": "Put the words in order: Say you are thirsty!",
+              "correctOrder": ["Ich", "habe", "Durst!"],
+              "english": "I am thirsty!",
+              "tts": true
+            },
+            {
               "type": "multiple-choice",
               "prompt": "'Ich möchte Milch, bitte' means...",
               "options": ["I have milk", "I would like milk, please", "I drink milk", "I love milk"],
@@ -542,6 +577,13 @@
               "sentence": "Ich habe ___! Ich möchte Wasser!",
               "answer": "Durst",
               "hint": "I am ___! I want water!"
+            },
+            {
+              "type": "word-order",
+              "prompt": "Build the sentence: Order some pizza politely!",
+              "correctOrder": ["Ich", "möchte", "Pizza,", "bitte!"],
+              "english": "I would like pizza, please!",
+              "tts": true
             },
             {
               "type": "multiple-choice",

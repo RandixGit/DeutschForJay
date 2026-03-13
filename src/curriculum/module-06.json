@@ -154,6 +154,13 @@
               "hint": "Thursday, ___, Saturday!"
             },
             {
+              "type": "word-order",
+              "prompt": "Put the words in order: Say today is Monday!",
+              "correctOrder": ["Heute", "ist", "Montag!"],
+              "english": "Today is Monday!",
+              "tts": true
+            },
+            {
               "type": "multiple-choice",
               "prompt": "The weekend days are Samstag und...",
               "options": ["Montag", "Freitag", "Mittwoch", "Sonntag"],
@@ -164,6 +171,13 @@
               "sentence": "Montag, Dienstag, ___, Donnerstag!",
               "answer": "Mittwoch",
               "hint": "Monday, Tuesday, ___, Thursday!"
+            },
+            {
+              "type": "word-order",
+              "prompt": "Build the sentence: Say tomorrow is Saturday!",
+              "correctOrder": ["Morgen", "ist", "Samstag!"],
+              "english": "Tomorrow is Saturday!",
+              "tts": true
             },
             {
               "type": "multiple-choice",
@@ -330,6 +344,13 @@
               "correct": 2
             },
             {
+              "type": "word-order",
+              "prompt": "Put the words in order: Say it is cold!",
+              "correctOrder": ["Es", "ist", "kalt!"],
+              "english": "It is cold!",
+              "tts": true
+            },
+            {
               "type": "fill-in-blank",
               "sentence": "Es ist ___ und es schneit!",
               "answer": "kalt",
@@ -346,6 +367,13 @@
               "sentence": "Der ___ bläst die Blätter weg.",
               "answer": "Wind",
               "hint": "The ___ blows the leaves away."
+            },
+            {
+              "type": "word-order",
+              "prompt": "Build the sentence: Say the sun is shining!",
+              "correctOrder": ["Die", "Sonne", "scheint!"],
+              "english": "The sun is shining!",
+              "tts": true
             },
             {
               "type": "multiple-choice",
@@ -519,6 +547,13 @@
               "hint": "Good ___! How are you?"
             },
             {
+              "type": "word-order",
+              "prompt": "Put the words in order: Say it is warm today!",
+              "correctOrder": ["Es", "ist", "warm", "heute!"],
+              "english": "It is warm today!",
+              "tts": true
+            },
+            {
               "type": "multiple-choice",
               "prompt": "It's raining and cold. 'Es regnet und es ist...'",
               "options": ["heiß", "warm", "kalt", "prima"],
@@ -541,6 +576,13 @@
               "sentence": "Die ___ scheint und es ist warm.",
               "answer": "Sonne",
               "hint": "The ___ is shining and it is warm."
+            },
+            {
+              "type": "word-order",
+              "prompt": "Build the sentence: Say good night, sleep well!",
+              "correctOrder": ["Gute", "Nacht,", "schlaf", "gut!"],
+              "english": "Good night, sleep well!",
+              "tts": true
             },
             {
               "type": "multiple-choice",

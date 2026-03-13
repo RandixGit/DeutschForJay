@@ -1,4 +1,4 @@
-export type TaskType = 'flashcard' | 'multiple-choice' | 'fill-in-blank' | 'listen-confirm'
+export type TaskType = 'flashcard' | 'multiple-choice' | 'fill-in-blank' | 'listen-confirm' | 'word-order'
 
 export interface FlashcardTask {
   type: 'flashcard'
@@ -33,11 +33,20 @@ export interface ListenConfirmTask {
   confirmWord: string  // user must type this (case-insensitive) to confirm
 }
 
+export interface WordOrderTask {
+  type: 'word-order'
+  prompt: string                // instruction in English, e.g. "Put the words in the right order"
+  correctOrder: string[]        // words in the correct German order
+  english: string               // English translation shown as hint
+  tts?: boolean
+}
+
 export type Task =
   | FlashcardTask
   | MultipleChoiceTask
   | FillInBlankTask
   | ListenConfirmTask
+  | WordOrderTask
 
 export interface TaskResult {
   correct: boolean

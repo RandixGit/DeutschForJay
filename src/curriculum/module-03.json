@@ -154,6 +154,13 @@
               "hint": "Tomatoes are ___!"
             },
             {
+              "type": "word-order",
+              "prompt": "Build the sentence: The sky is blue",
+              "correctOrder": ["Der", "Himmel", "ist", "blau."],
+              "english": "The sky is blue.",
+              "tts": true
+            },
+            {
               "type": "multiple-choice",
               "prompt": "Which two colors make a soccer ball?",
               "options": ["rot und blau", "schwarz und weiß", "grün und gelb", "lila und orange"],
@@ -164,6 +171,13 @@
               "sentence": "Der Himmel ist ___.",
               "answer": "blau",
               "hint": "The sky is ___."
+            },
+            {
+              "type": "word-order",
+              "prompt": "Build the sentence: Grass is green!",
+              "correctOrder": ["Gras", "ist", "grün!"],
+              "english": "Grass is green!",
+              "tts": true
             },
             {
               "type": "multiple-choice",
@@ -329,6 +343,13 @@
               "correct": 2
             },
             {
+              "type": "word-order",
+              "prompt": "Build the sentence: The dog is big!",
+              "correctOrder": ["Der", "Hund", "ist", "groß!"],
+              "english": "The dog is big!",
+              "tts": true
+            },
+            {
               "type": "fill-in-blank",
               "sentence": "Der ___ schwimmt im Wasser.",
               "answer": "Fisch",
@@ -345,6 +366,13 @@
               "sentence": "Der ___ bellt laut!",
               "answer": "Hund",
               "hint": "The ___ barks loudly!"
+            },
+            {
+              "type": "word-order",
+              "prompt": "Build the sentence: The cat is small!",
+              "correctOrder": ["Die", "Katze", "ist", "klein!"],
+              "english": "The cat is small!",
+              "tts": true
             },
             {
               "type": "multiple-choice",
@@ -508,6 +536,13 @@
               "hint": "The ___ is small and grey."
             },
             {
+              "type": "word-order",
+              "prompt": "Build the sentence: The bear is brown!",
+              "correctOrder": ["Der", "Bär", "ist", "braun!"],
+              "english": "The bear is brown!",
+              "tts": true
+            },
+            {
               "type": "multiple-choice",
               "prompt": "A fast player on the soccer field is...",
               "options": ["langsam", "klein", "schnell", "grau"],
@@ -524,6 +559,13 @@
               "prompt": "'Der grüne Vogel' means...",
               "options": ["the red fish", "the green bird", "the brown dog", "the grey cat"],
               "correct": 1
+            },
+            {
+              "type": "word-order",
+              "prompt": "Build the sentence: The horse is fast!",
+              "correctOrder": ["Das", "Pferd", "ist", "schnell!"],
+              "english": "The horse is fast!",
+              "tts": true
             },
             {
               "type": "fill-in-blank",

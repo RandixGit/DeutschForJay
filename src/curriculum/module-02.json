@@ -140,6 +140,13 @@
               "hint": "After one (eins) comes...?"
             },
             {
+              "type": "word-order",
+              "prompt": "Put the numbers in order: Count from 1 to 3!",
+              "correctOrder": ["Eins,", "zwei,", "drei!"],
+              "english": "One, two, three!",
+              "tts": true
+            },
+            {
               "type": "multiple-choice",
               "prompt": "You win 2 Roblox coins 🎮🎮. How do you say 'two'?",
               "options": ["eins", "zwei", "drei", "vier"],
@@ -150,6 +157,13 @@
               "prompt": "'Eins' means...",
               "options": ["two", "three", "one", "five"],
               "correct": 2
+            },
+            {
+              "type": "word-order",
+              "prompt": "Put the numbers in order: Count from 3 to 5!",
+              "correctOrder": ["Drei,", "vier,", "fünf!"],
+              "english": "Three, four, five!",
+              "tts": true
             },
             {
               "type": "fill-in-blank",
@@ -306,6 +320,13 @@
               "correct": 2
             },
             {
+              "type": "word-order",
+              "prompt": "Put the numbers in order: Count from 6 to 8!",
+              "correctOrder": ["Sechs,", "sieben,", "acht!"],
+              "english": "Six, seven, eight!",
+              "tts": true
+            },
+            {
               "type": "fill-in-blank",
               "sentence": "Eins, zwei, drei, vier, fünf, sechs, ___, acht, neun, zehn!",
               "answer": "sieben",
@@ -322,6 +343,13 @@
               "prompt": "Which is bigger: fünf or acht?",
               "options": ["fünf (5)", "acht (8)"],
               "correct": 1
+            },
+            {
+              "type": "word-order",
+              "prompt": "Put the numbers in order: Count from 8 to 10!",
+              "correctOrder": ["Acht,", "neun,", "zehn!"],
+              "english": "Eight, nine, ten!",
+              "tts": true
             },
             {
               "type": "fill-in-blank",
@@ -500,6 +528,13 @@
               "hint": "10 + 10 = ?"
             },
             {
+              "type": "word-order",
+              "prompt": "Put the numbers in order: Count from 11 to 13!",
+              "correctOrder": ["Elf,", "zwölf,", "dreizehn!"],
+              "english": "Eleven, twelve, thirteen!",
+              "tts": true
+            },
+            {
               "type": "multiple-choice",
               "prompt": "There are 20 kids at your birthday party 🎂. In German...",
               "options": ["neunzehn", "achtzehn", "zwanzig", "sechzehn"],
@@ -516,6 +551,13 @@
               "prompt": "'Siebzehn' means...",
               "options": ["fifteen", "sixteen", "seventeen", "eighteen"],
               "correct": 2
+            },
+            {
+              "type": "word-order",
+              "prompt": "Put the numbers in order: Count from 18 to 20!",
+              "correctOrder": ["Achtzehn,", "neunzehn,", "zwanzig!"],
+              "english": "Eighteen, nineteen, twenty!",
+              "tts": true
             },
             {
               "type": "multiple-choice",
