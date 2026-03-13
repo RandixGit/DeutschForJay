@@ -1,0 +1,576 @@
+{
+  "id": "module-06",
+  "title": "Tage & Wetter! Days & Weather",
+  "theme": "Weather Wizard",
+  "description": "Learn the days of the week, weather, and how to talk about your day!",
+  "xpRequired": 1400,
+  "badge": { "name": "Weather Wizard", "icon": "⛅" },
+  "chapters": [
+    {
+      "id": "ch-06-01",
+      "title": "Days of the Week",
+      "lessons": [
+        {
+          "id": "ls-06-01-01",
+          "title": "Monday to Wednesday",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "Montag",
+              "english": "Monday",
+              "hint": "Mon-tag — 'Moon day' just like English 'Monday'!",
+              "emoji": "🌙",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Dienstag",
+              "english": "Tuesday",
+              "hint": "Say 'deens-tahg' — service day!",
+              "emoji": "2️⃣",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Mittwoch",
+              "english": "Wednesday",
+              "hint": "'Mitt' = middle + 'Woche' = week — it's MID-WEEK!",
+              "emoji": "3️⃣",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "heute",
+              "english": "today",
+              "hint": "Say 'hoy-teh' — what about TODAY?",
+              "emoji": "📅",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "The first day of the school week is...",
+              "options": ["Mittwoch", "Dienstag", "Montag", "Freitag"],
+              "correct": 2,
+              "explanation": "Montag = Monday — start of the week!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Mittwoch' literally means 'mid-week'. It's...",
+              "options": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Montag, ___, Mittwoch!",
+              "answer": "Dienstag",
+              "hint": "Monday, ___, Wednesday!"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Heute ist Montag. Morgen ist Dienstag!",
+              "english": "Today is Monday. Tomorrow is Tuesday!",
+              "confirmWord": "heute"
+            }
+          ]
+        },
+        {
+          "id": "ls-06-01-02",
+          "title": "Thursday to Sunday",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "Donnerstag",
+              "english": "Thursday",
+              "hint": "'Donner' = thunder! Thor's day — THUNDER-day!",
+              "emoji": "⚡",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Freitag",
+              "english": "Friday",
+              "hint": "'Frei' = free — FREITAG = FREE DAY! Almost weekend!",
+              "emoji": "🎉",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Samstag",
+              "english": "Saturday",
+              "hint": "Say 'zahms-tahg' — SOCCER DAY! ⚽",
+              "emoji": "⚽",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Sonntag",
+              "english": "Sunday",
+              "hint": "'Sonne' = sun — SUN-day, just like English!",
+              "emoji": "☀️",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "TGIF! The best day of the week is...",
+              "options": ["Donnerstag", "Freitag", "Samstag", "Sonntag"],
+              "correct": 1,
+              "explanation": "Freitag = Friday — the weekend starts!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Donner means 'thunder'. So Donnerstag is...",
+              "options": ["Tuesday", "Wednesday", "Thursday", "Friday"],
+              "correct": 2,
+              "explanation": "Donnerstag = Thursday — Thor's thunder day!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Am ___ spiele ich Fußball!",
+              "answer": "Samstag",
+              "hint": "On ___ I play soccer!"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag, Sonntag!",
+              "english": "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday!",
+              "confirmWord": "sonntag"
+            }
+          ]
+        },
+        {
+          "id": "ls-06-01-03",
+          "title": "Days Challenge 📅",
+          "tasks": [
+            {
+              "type": "multiple-choice",
+              "prompt": "Which day literally means 'mid-week'?",
+              "options": ["Montag", "Dienstag", "Mittwoch", "Donnerstag"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Donnerstag, ___, Samstag!",
+              "answer": "Freitag",
+              "hint": "Thursday, ___, Saturday!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "The weekend days are Samstag und...",
+              "options": ["Montag", "Freitag", "Mittwoch", "Sonntag"],
+              "correct": 3
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Montag, Dienstag, ___, Donnerstag!",
+              "answer": "Mittwoch",
+              "hint": "Monday, Tuesday, ___, Thursday!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Heute ist Freitag' means...",
+              "options": ["Today is Thursday", "Today is Friday", "Today is Saturday", "Today is Sunday"],
+              "correct": 1
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "___ ist Fußballtag!",
+              "answer": "Samstag",
+              "hint": "___ is soccer day!"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Heute ist Freitag! Morgen ist Samstag — Fußballtag!",
+              "english": "Today is Friday! Tomorrow is Saturday — soccer day!",
+              "confirmWord": "freitag"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch-06-02",
+      "title": "What's the Weather?",
+      "lessons": [
+        {
+          "id": "ls-06-02-01",
+          "title": "Sun, Rain & Clouds",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "die Sonne",
+              "english": "the sun",
+              "hint": "Say 'zon-neh' — Sonne shines!",
+              "emoji": "☀️",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "der Regen",
+              "english": "the rain",
+              "hint": "Say 'ray-gen' — like 'rain' with a 'g'!",
+              "emoji": "🌧️",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "der Schnee",
+              "english": "the snow",
+              "hint": "Say 'shnay' — SNOW day!",
+              "emoji": "❄️",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "der Wind",
+              "english": "the wind",
+              "hint": "Same as English — Wind!",
+              "emoji": "💨",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Perfect weather for soccer! ☀️ The sun is...",
+              "options": ["der Regen", "der Schnee", "die Sonne", "der Wind"],
+              "correct": 2,
+              "explanation": "Die Sonne = the sun — perfect match day weather!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "The match is cancelled because of...",
+              "options": ["die Sonne", "der Regen", "der Wind", "das Eis"],
+              "correct": 1,
+              "explanation": "Der Regen = the rain — no soccer in the rain!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Im Winter gibt es ___.",
+              "answer": "Schnee",
+              "hint": "In winter there is ___."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Die Sonne scheint! Kein Regen heute!",
+              "english": "The sun is shining! No rain today!",
+              "confirmWord": "sonne"
+            }
+          ]
+        },
+        {
+          "id": "ls-06-02-02",
+          "title": "Hot & Cold",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "heiß",
+              "english": "hot",
+              "hint": "Say 'hice' — like 'heist' but hot!",
+              "emoji": "🔥",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "kalt",
+              "english": "cold",
+              "hint": "Say 'kahlt' — brrr, cold!",
+              "emoji": "🥶",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "warm",
+              "english": "warm",
+              "hint": "Same as English — warm!",
+              "emoji": "🌤️",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Wie ist das Wetter?",
+              "english": "How is the weather?",
+              "hint": "'Wetter' = weather — ask about the weather!",
+              "emoji": "🌤️",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "It's summer, 35 degrees! It is...",
+              "options": ["kalt", "warm", "heiß", "windig"],
+              "correct": 2,
+              "explanation": "Heiß = hot — summer heat!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "It's snowing outside and you need a thick jacket. It is...",
+              "options": ["heiß", "warm", "kalt", "prima"],
+              "correct": 2,
+              "explanation": "Kalt = cold — bundle up!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Wie ist das ___?",
+              "answer": "Wetter",
+              "hint": "How is the ___?"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Es ist heiß heute! Die Sonne scheint!",
+              "english": "It is hot today! The sun is shining!",
+              "confirmWord": "heiß"
+            }
+          ]
+        },
+        {
+          "id": "ls-06-02-03",
+          "title": "Weather Report ⛅",
+          "tasks": [
+            {
+              "type": "multiple-choice",
+              "prompt": "You want to go swimming 🏊. You hope it's...",
+              "options": ["kalt", "Es regnet", "heiß", "Es schneit"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Es ist ___ und es schneit!",
+              "answer": "kalt",
+              "hint": "It is ___ and it's snowing!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Die Sonne scheint' means...",
+              "options": ["It's raining", "It's snowing", "The sun is shining", "It's windy"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Der ___ bläst die Blätter weg.",
+              "answer": "Wind",
+              "hint": "The ___ blows the leaves away."
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Perfect soccer weather is...",
+              "options": ["kalt und Regen", "heiß und Wind", "warm und Sonne", "Schnee und kalt"],
+              "correct": 2,
+              "explanation": "Warm und Sonne = warm and sunny — let's play!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Im Sommer ist es ___ und die Sonne scheint.",
+              "answer": "heiß",
+              "hint": "In summer it is ___ and the sun shines."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Wie ist das Wetter? Es ist warm und die Sonne scheint! Perfekt für Fußball!",
+              "english": "How is the weather? It is warm and the sun is shining! Perfect for soccer!",
+              "confirmWord": "wetter"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch-06-03",
+      "title": "My Day",
+      "lessons": [
+        {
+          "id": "ls-06-03-01",
+          "title": "Morning to Night",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "der Morgen",
+              "english": "the morning",
+              "hint": "Say 'mor-gen' — Guten Morgen = Good morning!",
+              "emoji": "🌅",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "der Nachmittag",
+              "english": "the afternoon",
+              "hint": "'Nach' = after + 'Mittag' = midday!",
+              "emoji": "☀️",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "der Abend",
+              "english": "the evening",
+              "hint": "Say 'ah-bent' — Guten Abend = Good evening!",
+              "emoji": "🌆",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "die Nacht",
+              "english": "the night",
+              "hint": "Say 'naht' — Gute Nacht = Good night!",
+              "emoji": "🌙",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "You wake up and say 'Guten ___!'",
+              "options": ["Abend", "Nacht", "Morgen", "Nachmittag"],
+              "correct": 2,
+              "explanation": "Guten Morgen! = Good morning!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Before bed, you say 'Gute ___!'",
+              "options": ["Morgen", "Nacht", "Abend", "Tag"],
+              "correct": 1,
+              "explanation": "Gute Nacht! = Good night!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Am ___ spiele ich mit Freunden.",
+              "answer": "Nachmittag",
+              "hint": "In the ___ I play with friends."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Guten Morgen! Guten Tag! Guten Abend! Gute Nacht!",
+              "english": "Good morning! Good day! Good evening! Good night!",
+              "confirmWord": "abend"
+            }
+          ]
+        },
+        {
+          "id": "ls-06-03-02",
+          "title": "What I Do",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "aufstehen",
+              "english": "to get up / wake up",
+              "hint": "'Auf' = up + 'stehen' = stand — stand up!",
+              "emoji": "⏰",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "zur Schule gehen",
+              "english": "to go to school",
+              "hint": "'Schule' = school, 'gehen' = to go!",
+              "emoji": "🏫",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "die Hausaufgaben",
+              "english": "the homework",
+              "hint": "'Haus' = home + 'Aufgaben' = tasks — home tasks!",
+              "emoji": "📚",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "ins Bett gehen",
+              "english": "to go to bed",
+              "hint": "'Bett' = bed — time for bed!",
+              "emoji": "🛏️",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Your alarm rings at 7 AM ⏰. Time to...",
+              "options": ["ins Bett gehen", "schlafen", "aufstehen", "kochen"],
+              "correct": 2,
+              "explanation": "Aufstehen = get up — time to start the day!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "After school, you do your...",
+              "options": ["Frühstück", "Mittagessen", "Hausaufgaben", "Fußball"],
+              "correct": 2,
+              "explanation": "Hausaufgaben = homework — then you can play!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Ich gehe zur ___.",
+              "answer": "Schule",
+              "hint": "I go to ___."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Ich stehe auf, gehe zur Schule, mache Hausaufgaben und gehe ins Bett!",
+              "english": "I get up, go to school, do homework and go to bed!",
+              "confirmWord": "schule"
+            }
+          ]
+        },
+        {
+          "id": "ls-06-03-03",
+          "title": "🏆 Module 6 Final Challenge",
+          "tasks": [
+            {
+              "type": "multiple-choice",
+              "prompt": "It's the middle of the week! That day is called...",
+              "options": ["Montag", "Dienstag", "Mittwoch", "Donnerstag"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Guten ___! Wie geht's?",
+              "answer": "Morgen",
+              "hint": "Good ___! How are you?"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "It's raining and cold. 'Es regnet und es ist...'",
+              "options": ["heiß", "warm", "kalt", "prima"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Am ___ habe ich kein Schule!",
+              "answer": "Samstag",
+              "hint": "On ___ I have no school!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Before eating dinner, everyone says...",
+              "options": ["Gute Nacht!", "Tschüss!", "Guten Appetit!", "Wie geht's?"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Die ___ scheint und es ist warm.",
+              "answer": "Sonne",
+              "hint": "The ___ is shining and it is warm."
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Your day: aufstehen → Schule → Hausaufgaben → Fußball → ...",
+              "options": ["aufstehen", "zur Schule gehen", "ins Bett gehen", "Frühstück"],
+              "correct": 2,
+              "explanation": "Ins Bett gehen = go to bed — end of a great day!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Gute ___! Schlaf gut!",
+              "answer": "Nacht",
+              "hint": "Good ___! Sleep well!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Heute ist Samstag, die Sonne scheint und ich spiele Fußball!' — How does Jay feel?",
+              "options": ["Schlecht!", "Langsam!", "Prima!", "Kalt!"],
+              "correct": 2,
+              "explanation": "Prima! = Great! — Soccer on a sunny Saturday is the BEST!"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Guten Morgen! Heute ist Samstag! Die Sonne scheint und es ist warm. Ich spiele Fußball mit meinem Bruder im Garten! Prima!",
+              "english": "Good morning! Today is Saturday! The sun is shining and it is warm. I play soccer with my brother in the garden! Great!",
+              "confirmWord": "samstag"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

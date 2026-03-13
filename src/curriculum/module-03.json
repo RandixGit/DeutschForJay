@@ -1,0 +1,557 @@
+{
+  "id": "module-03",
+  "title": "Farben & Tiere! Colors & Animals",
+  "theme": "Safari Striker",
+  "description": "Learn colors and animals in German — spot the creatures and name the rainbow!",
+  "xpRequired": 400,
+  "badge": { "name": "Color Champion", "icon": "🎨" },
+  "chapters": [
+    {
+      "id": "ch-03-01",
+      "title": "Colors of the Rainbow",
+      "lessons": [
+        {
+          "id": "ls-03-01-01",
+          "title": "Basic Colors",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "rot",
+              "english": "red",
+              "hint": "Like 'rotten' tomatoes — they're RED!",
+              "emoji": "🔴",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "blau",
+              "english": "blue",
+              "hint": "Say 'blau' — sounds like 'blau-berry'!",
+              "emoji": "🔵",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "grün",
+              "english": "green",
+              "hint": "That ü again! Say 'grüün' — green grass!",
+              "emoji": "🟢",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "gelb",
+              "english": "yellow",
+              "hint": "Say 'gelp' — like a golden sun!",
+              "emoji": "🟡",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Your team plays in RED jerseys 🔴. What color is that?",
+              "options": ["blau", "rot", "grün", "gelb"],
+              "correct": 1,
+              "explanation": "Rot = red — the color of champions!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "The sky on a sunny day is...",
+              "options": ["rot", "gelb", "grün", "blau"],
+              "correct": 3,
+              "explanation": "Blau = blue — like the sky!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Das Gras ist ___!",
+              "answer": "grün",
+              "hint": "Grass is ___!"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Rot, blau, grün, gelb — die Farben!",
+              "english": "Red, blue, green, yellow — the colors!",
+              "confirmWord": "farben"
+            }
+          ]
+        },
+        {
+          "id": "ls-03-01-02",
+          "title": "More Colors",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "schwarz",
+              "english": "black",
+              "hint": "Say 'shvarts' — like Schwarzenegger!",
+              "emoji": "⚫",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "weiß",
+              "english": "white",
+              "hint": "Say 'vice' — white as snow!",
+              "emoji": "⚪",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "orange",
+              "english": "orange",
+              "hint": "Almost the same as English! Say 'oh-rahn-zheh'!",
+              "emoji": "🟠",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "lila",
+              "english": "purple",
+              "hint": "Like the name 'Lila' — pretty purple!",
+              "emoji": "🟣",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "A soccer ball is usually schwarz und...",
+              "options": ["rot", "weiß", "grün", "lila"],
+              "correct": 1,
+              "explanation": "Schwarz und weiß = black and white — classic soccer ball!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Lila' means...",
+              "options": ["orange", "pink", "purple", "brown"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Die Nacht ist ___.",
+              "answer": "schwarz",
+              "hint": "The night is ___."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Schwarz und weiß, wie ein Fußball!",
+              "english": "Black and white, like a soccer ball!",
+              "confirmWord": "weiß"
+            }
+          ]
+        },
+        {
+          "id": "ls-03-01-03",
+          "title": "Color Challenge 🌈",
+          "tasks": [
+            {
+              "type": "multiple-choice",
+              "prompt": "Bananas are...",
+              "options": ["rot", "blau", "gelb", "grün"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Tomaten sind ___!",
+              "answer": "rot",
+              "hint": "Tomatoes are ___!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Which two colors make a soccer ball?",
+              "options": ["rot und blau", "schwarz und weiß", "grün und gelb", "lila und orange"],
+              "correct": 1
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Der Himmel ist ___.",
+              "answer": "blau",
+              "hint": "The sky is ___."
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Grass on the soccer field is...",
+              "options": ["gelb", "rot", "blau", "grün"],
+              "correct": 3
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Schnee ist ___.",
+              "answer": "weiß",
+              "hint": "Snow is ___."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Rot, blau, grün, gelb, schwarz, weiß, orange, lila!",
+              "english": "Red, blue, green, yellow, black, white, orange, purple!",
+              "confirmWord": "orange"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch-03-02",
+      "title": "Animals on the Farm",
+      "lessons": [
+        {
+          "id": "ls-03-02-01",
+          "title": "Farm Friends",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "der Hund",
+              "english": "the dog",
+              "hint": "Say 'hoond' — a hound dog!",
+              "emoji": "🐕",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "die Katze",
+              "english": "the cat",
+              "hint": "Say 'kah-tseh' — a cool cat!",
+              "emoji": "🐈",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "das Pferd",
+              "english": "the horse",
+              "hint": "Say 'pfaird' — that 'pf' is special in German!",
+              "emoji": "🐴",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "die Kuh",
+              "english": "the cow",
+              "hint": "Say 'koo' — the cow says moo!",
+              "emoji": "🐄",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Your best friend with four legs and a wagging tail is...",
+              "options": ["die Katze", "der Hund", "die Kuh", "das Pferd"],
+              "correct": 1,
+              "explanation": "Der Hund = the dog — man's best friend!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Die Katze' means...",
+              "options": ["the dog", "the horse", "the cat", "the cow"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Die ___ gibt Milch.",
+              "answer": "Kuh",
+              "hint": "The ___ gives milk."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Der Hund und die Katze spielen zusammen!",
+              "english": "The dog and the cat play together!",
+              "confirmWord": "hund"
+            }
+          ]
+        },
+        {
+          "id": "ls-03-02-02",
+          "title": "More Animals",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "der Vogel",
+              "english": "the bird",
+              "hint": "Say 'foh-gel' — a bird singing!",
+              "emoji": "🐦",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "der Fisch",
+              "english": "the fish",
+              "hint": "Almost like 'fish'! Say 'fish'!",
+              "emoji": "🐟",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "die Maus",
+              "english": "the mouse",
+              "hint": "Say 'mows' — like 'mouse' but with an 'ow'!",
+              "emoji": "🐭",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "der Bär",
+              "english": "the bear",
+              "hint": "Say 'bair' — like a big bear hug!",
+              "emoji": "🐻",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Nemo is a...",
+              "options": ["der Vogel", "der Fisch", "die Maus", "der Bär"],
+              "correct": 1,
+              "explanation": "Der Fisch = the fish — like Finding Nemo!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Gummy Bears in German are 'Gummibärchen'. 'Bär' means...",
+              "options": ["fish", "bird", "mouse", "bear"],
+              "correct": 3,
+              "explanation": "Bär = bear — Gummibärchen = little gummy bears!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Der ___ fliegt am Himmel.",
+              "answer": "Vogel",
+              "hint": "The ___ flies in the sky."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Die Maus ist klein und der Bär ist groß!",
+              "english": "The mouse is small and the bear is big!",
+              "confirmWord": "maus"
+            }
+          ]
+        },
+        {
+          "id": "ls-03-02-03",
+          "title": "Animal Quiz 🐾",
+          "tasks": [
+            {
+              "type": "multiple-choice",
+              "prompt": "Which animal says 'Miau' in German?",
+              "options": ["der Hund", "der Fisch", "die Katze", "die Kuh"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Der ___ schwimmt im Wasser.",
+              "answer": "Fisch",
+              "hint": "The ___ swims in water."
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "On a farm, which animal do you ride?",
+              "options": ["die Maus", "die Kuh", "der Fisch", "das Pferd"],
+              "correct": 3
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Der ___ bellt laut!",
+              "answer": "Hund",
+              "hint": "The ___ barks loudly!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Der Bär' means...",
+              "options": ["the bird", "the bear", "the mouse", "the fish"],
+              "correct": 1
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Die ___ frisst Käse.",
+              "answer": "Maus",
+              "hint": "The ___ eats cheese."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Hund, Katze, Pferd, Kuh, Vogel, Fisch, Maus, Bär!",
+              "english": "Dog, cat, horse, cow, bird, fish, mouse, bear!",
+              "confirmWord": "pferd"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch-03-03",
+      "title": "Colorful Animals",
+      "lessons": [
+        {
+          "id": "ls-03-03-01",
+          "title": "What Color Is It?",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "braun",
+              "english": "brown",
+              "hint": "Say 'brown' — almost the same!",
+              "emoji": "🟤",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "grau",
+              "english": "grey",
+              "hint": "Say 'grou' — grey like a rainy day!",
+              "emoji": "🩶",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "A brown bear is 'ein ___ Bär'.",
+              "options": ["roter", "brauner", "grauer", "weißer"],
+              "correct": 1,
+              "explanation": "Braun = brown — like a chocolate bear!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "An elephant is usually...",
+              "options": ["braun", "weiß", "grau", "rot"],
+              "correct": 2,
+              "explanation": "Grau = grey — like an elephant!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Der Hund ist ___.",
+              "answer": "braun",
+              "hint": "The dog is ___. (a common dog color)"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Die Katze ist ___ und weiß.",
+              "answer": "schwarz",
+              "hint": "The cat is ___ and white."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Der braune Hund und die graue Maus!",
+              "english": "The brown dog and the grey mouse!",
+              "confirmWord": "braune"
+            }
+          ]
+        },
+        {
+          "id": "ls-03-03-02",
+          "title": "Describing Animals",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "groß",
+              "english": "big / large",
+              "hint": "Say 'grohs' — GROHS like a giant!",
+              "emoji": "🦕",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "klein",
+              "english": "small / little",
+              "hint": "Say 'kline' — a tiny little thing!",
+              "emoji": "🐜",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "schnell",
+              "english": "fast / quick",
+              "hint": "Say 'shnell' — like a snail? NO, super fast!",
+              "emoji": "⚡",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "langsam",
+              "english": "slow",
+              "hint": "Say 'lahng-zahm' — nice and slooow!",
+              "emoji": "🐢",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "A cheetah is super...",
+              "options": ["langsam", "klein", "schnell", "grau"],
+              "correct": 2,
+              "explanation": "Schnell = fast — cheetahs are the fastest!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "An ant is very...",
+              "options": ["groß", "schnell", "braun", "klein"],
+              "correct": 3,
+              "explanation": "Klein = small — ants are tiny!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Der Bär ist ___!",
+              "answer": "groß",
+              "hint": "The bear is ___!"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Das Pferd ist groß und schnell!",
+              "english": "The horse is big and fast!",
+              "confirmWord": "schnell"
+            }
+          ]
+        },
+        {
+          "id": "ls-03-03-03",
+          "title": "🏆 Module 3 Final Challenge",
+          "tasks": [
+            {
+              "type": "multiple-choice",
+              "prompt": "The German flag is schwarz, ___, and gelb.",
+              "options": ["blau", "grün", "rot", "weiß"],
+              "correct": 2,
+              "explanation": "The German flag: schwarz (black), rot (red), gelb (gold/yellow)!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Die ___ ist klein und grau.",
+              "answer": "Maus",
+              "hint": "The ___ is small and grey."
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "A fast player on the soccer field is...",
+              "options": ["langsam", "klein", "schnell", "grau"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Der ___ ist braun und groß.",
+              "answer": "Bär",
+              "hint": "The ___ is brown and big."
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Der grüne Vogel' means...",
+              "options": ["the red fish", "the green bird", "the brown dog", "the grey cat"],
+              "correct": 1
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Der ___ ist schnell!",
+              "answer": "Hund",
+              "hint": "The ___ is fast! (man's best friend)"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Which animal gives milk?",
+              "options": ["der Hund", "die Katze", "die Kuh", "der Vogel"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Das ___ ist groß und braun.",
+              "answer": "Pferd",
+              "hint": "The ___ is big and brown."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Der kleine braune Hund ist schnell! Die große graue Katze ist langsam!",
+              "english": "The small brown dog is fast! The big grey cat is slow!",
+              "confirmWord": "langsam"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

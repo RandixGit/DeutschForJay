@@ -1,18 +1,32 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useGameStore, getLevel } from '../../store/gameStore'
 import { ALL_MODULES } from '../../services/curriculum'
 import type { Module, Chapter, Lesson } from '../../types/curriculum'
 
 export default function ModuleMap() {
-  const { xp, completedLessons, struggledLessons, startLesson, setScreen, playerName, switchPlayer, players } = useGameStore()
+  const { xp, completedLessons, struggledLessons, startLesson, setScreen, playerName, setPlayerName, switchPlayer, players, debugAllUnlocked } = useGameStore()
   const { current: lvl } = getLevel(xp)
 
   const [selectedModule, setSelectedModule] = useState<Module | null>(null)
   const [selectedChapter, setSelectedChapter] = useState<Chapter | null>(null)
+  const [isEditingName, setIsEditingName] = useState(false)
+  const [editName, setEditName] = useState(playerName ?? '')
+  const nameInputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (isEditingName) nameInputRef.current?.focus()
+  }, [isEditingName])
+
+  function saveName() {
+    const trimmed = editName.trim()
+    if (trimmed) setPlayerName(trimmed)
+    else setEditName(playerName ?? '')
+    setIsEditingName(false)
+  }
 
   function isModuleUnlocked(mod: Module) {
-    return xp >= mod.xpRequired
+    return debugAllUnlocked || xp >= mod.xpRequired
   }
 
   function isLessonCompleted(lessonId: string) {
@@ -151,7 +165,35 @@ export default function ModuleMap() {
       <div className="px-4 pt-4 pb-3 border-b border-slate-800">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-white font-bold text-xl">Deutsch für {playerName} 🇩🇪</h1>
+            <h1 className="text-white font-bold text-xl flex items-center gap-1">
+              Deutsch für{' '}
+              {isEditingName ? (
+                <input
+                  ref={nameInputRef}
+                  className="bg-slate-700 text-white font-bold text-xl rounded px-1 outline-none border border-slate-500 focus:border-blue-400 w-32"
+                  value={editName}
+                  maxLength={30}
+                  onChange={e => setEditName(e.target.value)}
+                  onKeyDown={e => {
+                    if (e.key === 'Enter') saveName()
+                    if (e.key === 'Escape') { setEditName(playerName ?? ''); setIsEditingName(false) }
+                  }}
+                  onBlur={saveName}
+                />
+              ) : (
+                <>
+                  {playerName}
+                  <button
+                    className="text-slate-400 hover:text-white ml-1"
+                    onClick={() => { setEditName(playerName ?? ''); setIsEditingName(true) }}
+                    title="Edit name"
+                  >
+                    ✏️
+                  </button>
+                </>
+              )}
+              {' '}🇩🇪
+            </h1>
             <p className="text-slate-400 text-sm">{lvl.icon} {lvl.name} · {xp} XP</p>
           </div>
           <div className="flex items-center gap-1">

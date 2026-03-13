@@ -15,10 +15,14 @@ function PlayerCard({
   player,
   onReset,
   onMarkCouponPaid,
+  onUnlockAll,
+  allUnlocked,
 }: {
   player: PlayerProfile
   onReset: (id: string) => void
   onMarkCouponPaid: (playerId: string, couponId: string) => void
+  onUnlockAll: () => void
+  allUnlocked: boolean
 }) {
   const [showReset, setShowReset] = useState(false)
   const { current: lvl } = getLevel(player.xp)
@@ -113,6 +117,26 @@ function PlayerCard({
         )}
       </div>
 
+      {/* Debug Tools */}
+      <div className="card p-4 bg-slate-800/50 border border-slate-700">
+        <h3 className="text-slate-300 font-semibold text-sm uppercase tracking-wide mb-2">🔧 Parent Tools</h3>
+        <button
+          className={`text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors ${
+            allUnlocked
+              ? 'bg-green-700 hover:bg-green-600'
+              : 'bg-purple-700 hover:bg-purple-600'
+          }`}
+          onClick={onUnlockAll}
+        >
+          {allUnlocked ? '🔓 All Modules Unlocked' : '🔒 Unlock All Modules'}
+        </button>
+        <p className="text-slate-500 text-xs mt-1">
+          {allUnlocked
+            ? 'Temporary — resets when app reloads. Tap again to re-lock.'
+            : 'Preview all content without affecting XP. Resets on reload.'}
+        </p>
+      </div>
+
       {/* Danger zone */}
       <div className="card p-4 bg-red-900/10 border border-red-900/30">
         <h3 className="text-red-400 font-semibold text-sm uppercase tracking-wide mb-2">⚠️ Danger Zone</h3>
@@ -157,6 +181,8 @@ export default function ParentDashboard() {
     setParentPin,
     markCouponPaidForPlayer,
     resetProgressForPlayer,
+    debugUnlockAllModules,
+    debugAllUnlocked,
   } = useGameStore()
 
   const [pinInput, setPinInput] = useState('')
@@ -300,6 +326,8 @@ export default function ParentDashboard() {
               player={player}
               onReset={resetProgressForPlayer}
               onMarkCouponPaid={markCouponPaidForPlayer}
+              onUnlockAll={debugUnlockAllModules}
+              allUnlocked={debugAllUnlocked}
             />
           </motion.div>
         ))}

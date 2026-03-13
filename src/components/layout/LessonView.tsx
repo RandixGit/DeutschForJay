@@ -15,6 +15,7 @@ export default function LessonView() {
     finishLesson,
     setScreen,
     collectedCards,
+    debugAllUnlocked,
   } = useGameStore()
 
   const [vocabOpen, setVocabOpen] = useState(false)
@@ -104,6 +105,18 @@ export default function LessonView() {
           )}
         </AnimatePresence>
       </div>
+
+      {/* Debug: skip task */}
+      {debugAllUnlocked && currentTask && (
+        <div className="px-4 pb-2 flex justify-center">
+          <button
+            className="bg-purple-700/80 hover:bg-purple-600 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors"
+            onClick={() => handleTaskComplete({ correct: true, attempts: 1, taskType: currentTask.type })}
+          >
+            ⏭ Skip Task
+          </button>
+        </div>
+      )}
 
       {/* Streak indicator */}
       {taskResults.length > 0 && (() => {

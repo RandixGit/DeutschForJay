@@ -1,0 +1,570 @@
+{
+  "id": "module-05",
+  "title": "Essen & Trinken! Food & Drink",
+  "theme": "Snack Attack",
+  "description": "Learn to talk about food and drinks — order like a pro in German!",
+  "xpRequired": 1000,
+  "badge": { "name": "Snack Master", "icon": "🍕" },
+  "chapters": [
+    {
+      "id": "ch-05-01",
+      "title": "Yummy Food",
+      "lessons": [
+        {
+          "id": "ls-05-01-01",
+          "title": "Basic Foods",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "das Brot",
+              "english": "the bread",
+              "hint": "Say 'broht' — Germans LOVE their bread!",
+              "emoji": "🍞",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "der Käse",
+              "english": "the cheese",
+              "hint": "Say 'kay-zeh' — cheesy goodness!",
+              "emoji": "🧀",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "die Wurst",
+              "english": "the sausage",
+              "hint": "Say 'voorst' — Germany's famous food!",
+              "emoji": "🌭",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "der Apfel",
+              "english": "the apple",
+              "hint": "Say 'ahp-fel' — like 'apple' with an 'f'!",
+              "emoji": "🍎",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Germany is famous for its sausages! What is 'sausage'?",
+              "options": ["das Brot", "der Käse", "die Wurst", "der Apfel"],
+              "correct": 2,
+              "explanation": "Die Wurst = the sausage — Bratwurst is the most famous!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Der Apfel' means...",
+              "options": ["the bread", "the cheese", "the sausage", "the apple"],
+              "correct": 3
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Ich esse ___ zum Frühstück.",
+              "answer": "Brot",
+              "hint": "I eat ___ for breakfast."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Brot mit Käse und Wurst — lecker!",
+              "english": "Bread with cheese and sausage — yummy!",
+              "confirmWord": "lecker"
+            }
+          ]
+        },
+        {
+          "id": "ls-05-01-02",
+          "title": "Sweet Treats",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "die Schokolade",
+              "english": "the chocolate",
+              "hint": "Say 'sho-ko-lah-deh' — mmm chocolate!",
+              "emoji": "🍫",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "das Eis",
+              "english": "the ice cream",
+              "hint": "Say 'ice' — like 'ice' cream!",
+              "emoji": "🍦",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "der Kuchen",
+              "english": "the cake",
+              "hint": "Say 'koo-chen' — birthday cake!",
+              "emoji": "🎂",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "die Gummibärchen",
+              "english": "the gummy bears",
+              "hint": "Gummi + Bärchen (little bears) = Gummy Bears! A German invention!",
+              "emoji": "🐻",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Haribo invented these in Germany! 🐻",
+              "options": ["der Kuchen", "die Schokolade", "die Gummibärchen", "das Eis"],
+              "correct": 2,
+              "explanation": "Die Gummibärchen = gummy bears — invented by Haribo in Bonn, Germany!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "On a hot day, you want...",
+              "options": ["das Brot", "die Wurst", "das Eis", "der Käse"],
+              "correct": 2,
+              "explanation": "Das Eis = ice cream — perfect for summer!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Oma backt einen ___!",
+              "answer": "Kuchen",
+              "hint": "Grandma bakes a ___!"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Ich liebe Schokolade und Gummibärchen!",
+              "english": "I love chocolate and gummy bears!",
+              "confirmWord": "schokolade"
+            }
+          ]
+        },
+        {
+          "id": "ls-05-01-03",
+          "title": "Food Quiz 🍽️",
+          "tasks": [
+            {
+              "type": "multiple-choice",
+              "prompt": "What do Germans eat for breakfast with Käse?",
+              "options": ["das Eis", "die Schokolade", "das Brot", "der Kuchen"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Ich möchte ___, bitte!",
+              "answer": "Eis",
+              "hint": "I would like ___, please! (cold and sweet)"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Lecker' means...",
+              "options": ["ugly", "big", "delicious", "cold"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Die ___ ist süß!",
+              "answer": "Schokolade",
+              "hint": "The ___ is sweet!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "At a German BBQ, you'd definitely find...",
+              "options": ["das Eis", "die Wurst", "der Kuchen", "die Gummibärchen"],
+              "correct": 1,
+              "explanation": "Die Wurst — Germany loves Bratwurst on the grill!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Ein roter ___ — lecker!",
+              "answer": "Apfel",
+              "hint": "A red ___ — yummy!"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Brot, Käse, Wurst, Apfel, Schokolade, Eis, Kuchen — alles lecker!",
+              "english": "Bread, cheese, sausage, apple, chocolate, ice cream, cake — all delicious!",
+              "confirmWord": "kuchen"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch-05-02",
+      "title": "Thirsty? Drinks!",
+      "lessons": [
+        {
+          "id": "ls-05-02-01",
+          "title": "What Do You Drink?",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "das Wasser",
+              "english": "the water",
+              "hint": "Say 'vah-ser' — like 'water' with a 'v'!",
+              "emoji": "💧",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "der Saft",
+              "english": "the juice",
+              "hint": "Say 'zahft' — fresh and juicy!",
+              "emoji": "🧃",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "die Milch",
+              "english": "the milk",
+              "hint": "Say 'milch' — almost like 'milk'!",
+              "emoji": "🥛",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "der Tee",
+              "english": "the tea",
+              "hint": "Say 'tay' — like 'tea' with a German twist!",
+              "emoji": "🍵",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "After soccer practice, you're thirsty! You drink...",
+              "options": ["der Käse", "das Wasser", "die Wurst", "das Brot"],
+              "correct": 1,
+              "explanation": "Das Wasser = water — stay hydrated!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Orange juice in German starts with which drink word?",
+              "options": ["die Milch", "der Tee", "der Saft", "das Wasser"],
+              "correct": 2,
+              "explanation": "Orangensaft — Saft = juice!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Die Kuh gibt ___.",
+              "answer": "Milch",
+              "hint": "The cow gives ___."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Ich trinke Wasser und Saft.",
+              "english": "I drink water and juice.",
+              "confirmWord": "trinke"
+            }
+          ]
+        },
+        {
+          "id": "ls-05-02-02",
+          "title": "Hungry & Thirsty",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "Ich habe Hunger",
+              "english": "I am hungry",
+              "hint": "Literally: 'I have hunger' — German is literal!",
+              "emoji": "😋",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Ich habe Durst",
+              "english": "I am thirsty",
+              "hint": "Literally: 'I have thirst'!",
+              "emoji": "🥤",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Ich möchte ...",
+              "english": "I would like ...",
+              "hint": "Say 'ich mökh-teh' — the polite way to order!",
+              "emoji": "🙏",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "essen",
+              "english": "to eat",
+              "hint": "Say 'essen' — time to eat!",
+              "emoji": "🍴",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Your stomach is growling! You say...",
+              "options": ["Ich habe Durst", "Ich bin müde", "Ich habe Hunger", "Ich bin gut"],
+              "correct": 2,
+              "explanation": "Ich habe Hunger = I am hungry!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "You want to order politely: 'I would like an apple, please.' Start with...",
+              "options": ["Ich habe", "Ich bin", "Ich möchte", "Ich esse"],
+              "correct": 2,
+              "explanation": "Ich möchte = I would like — very polite!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Ich ___ Hunger!",
+              "answer": "habe",
+              "hint": "I ___ hungry! (literally: I ___ hunger)"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Ich habe Hunger! Ich möchte Brot mit Käse, bitte!",
+              "english": "I am hungry! I would like bread with cheese, please!",
+              "confirmWord": "möchte"
+            }
+          ]
+        },
+        {
+          "id": "ls-05-02-03",
+          "title": "Ordering Food 🍽️",
+          "tasks": [
+            {
+              "type": "multiple-choice",
+              "prompt": "At a café, how do you say 'I would like tea, please'?",
+              "options": ["Ich habe Tee", "Ich bin Tee", "Ich möchte Tee, bitte", "Ich esse Tee"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Ich möchte ___, bitte!",
+              "answer": "Wasser",
+              "hint": "I would like ___, please! (the drink everyone needs)"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "After eating, you say 'Danke, das war ___!' (Thanks, that was ___!)",
+              "options": ["schlecht", "lecker", "groß", "schnell"],
+              "correct": 1,
+              "explanation": "Lecker = delicious — always compliment the cook!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Ich habe ___! Kann ich Saft haben?",
+              "answer": "Durst",
+              "hint": "I am ___! Can I have juice?"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Ich möchte Eis, bitte' means...",
+              "options": ["I have ice cream", "I eat ice cream", "I would like ice cream, please", "I love ice cream"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Ich möchte einen ___ essen.",
+              "answer": "Apfel",
+              "hint": "I would like to eat an ___."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Ich habe Durst! Ich möchte Orangensaft, bitte!",
+              "english": "I am thirsty! I would like orange juice, please!",
+              "confirmWord": "durst"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch-05-03",
+      "title": "Meals & Manners",
+      "lessons": [
+        {
+          "id": "ls-05-03-01",
+          "title": "Breakfast, Lunch & Dinner",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "das Frühstück",
+              "english": "breakfast",
+              "hint": "'Früh' = early + 'Stück' = piece — the early meal!",
+              "emoji": "🌅",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "das Mittagessen",
+              "english": "lunch",
+              "hint": "'Mittag' = midday + 'Essen' = food — midday meal!",
+              "emoji": "☀️",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "das Abendessen",
+              "english": "dinner",
+              "hint": "'Abend' = evening + 'Essen' = food — evening meal!",
+              "emoji": "🌙",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "Guten Appetit!",
+              "english": "Enjoy your meal!",
+              "hint": "Germans ALWAYS say this before eating!",
+              "emoji": "🍽️",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "The first meal of the day is...",
+              "options": ["das Mittagessen", "das Abendessen", "das Frühstück", "der Snack"],
+              "correct": 2,
+              "explanation": "Das Frühstück = breakfast — the early meal!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Before you start eating, everyone says...",
+              "options": ["Tschüss!", "Guten Appetit!", "Danke!", "Wie geht's?"],
+              "correct": 1,
+              "explanation": "Guten Appetit! — it's a German tradition!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Um zwölf Uhr essen wir ___.",
+              "answer": "Mittagessen",
+              "hint": "At twelve o'clock we eat ___."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Frühstück, Mittagessen, Abendessen — Guten Appetit!",
+              "english": "Breakfast, lunch, dinner — enjoy your meal!",
+              "confirmWord": "appetit"
+            }
+          ]
+        },
+        {
+          "id": "ls-05-03-02",
+          "title": "More Yummy Words",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "die Suppe",
+              "english": "the soup",
+              "hint": "Say 'zoo-peh' — like 'soup' with a twist!",
+              "emoji": "🍜",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "die Pizza",
+              "english": "the pizza",
+              "hint": "Same word — Pizza! Germans love it too!",
+              "emoji": "🍕",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "die Pommes",
+              "english": "the fries / chips",
+              "hint": "Say 'pom-mes' — from French 'pommes frites'!",
+              "emoji": "🍟",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "die Banane",
+              "english": "the banana",
+              "hint": "Say 'bah-nah-neh' — almost the same!",
+              "emoji": "🍌",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "At a German snack stand, you'd get fries called...",
+              "options": ["die Suppe", "die Banane", "die Pommes", "die Pizza"],
+              "correct": 2,
+              "explanation": "Die Pommes = fries — a classic German snack!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "A yellow fruit that monkeys love...",
+              "options": ["der Apfel", "die Banane", "die Wurst", "der Käse"],
+              "correct": 1
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Ich möchte ___ mit Pommes!",
+              "answer": "Pizza",
+              "hint": "I'd like ___ with fries!"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Pizza, Pommes und Eis — mein Lieblingsessen!",
+              "english": "Pizza, fries and ice cream — my favorite food!",
+              "confirmWord": "pommes"
+            }
+          ]
+        },
+        {
+          "id": "ls-05-03-03",
+          "title": "🏆 Module 5 Final Challenge",
+          "tasks": [
+            {
+              "type": "multiple-choice",
+              "prompt": "You wake up and it's time for...",
+              "options": ["das Abendessen", "das Mittagessen", "das Frühstück", "der Snack"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Ich habe ___! Ich möchte Pizza!",
+              "answer": "Hunger",
+              "hint": "I am ___! I want pizza!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Ich möchte Milch, bitte' means...",
+              "options": ["I have milk", "I would like milk, please", "I drink milk", "I love milk"],
+              "correct": 1
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Guten ___!",
+              "answer": "Appetit",
+              "hint": "Enjoy your ___!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Germany's most famous food is...",
+              "options": ["die Pizza", "die Suppe", "die Wurst", "die Banane"],
+              "correct": 2,
+              "explanation": "Die Wurst — Germany has over 1,500 types of sausage!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Ich habe ___! Ich möchte Wasser!",
+              "answer": "Durst",
+              "hint": "I am ___! I want water!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Bread with cheese and sausage is a typical German...",
+              "options": ["Abendessen", "Frühstück", "Mittagessen", "Snack"],
+              "correct": 1,
+              "explanation": "A classic German Frühstück (breakfast)!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Das war ___! Danke, Mama!",
+              "answer": "lecker",
+              "hint": "That was ___! Thanks, Mom!"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Ich habe Hunger! Ich möchte Brot mit Wurst und Käse, bitte. Und einen Saft! Guten Appetit!",
+              "english": "I am hungry! I would like bread with sausage and cheese, please. And a juice! Enjoy your meal!",
+              "confirmWord": "hunger"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

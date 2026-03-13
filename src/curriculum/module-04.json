@@ -1,0 +1,567 @@
+{
+  "id": "module-04",
+  "title": "Familie & Zuhause! Family & Home",
+  "theme": "Team Captain",
+  "description": "Meet the family and explore the house — in German!",
+  "xpRequired": 700,
+  "badge": { "name": "Family Star", "icon": "🏠" },
+  "chapters": [
+    {
+      "id": "ch-04-01",
+      "title": "My Family",
+      "lessons": [
+        {
+          "id": "ls-04-01-01",
+          "title": "Mom, Dad & Me",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "die Mama",
+              "english": "mom / mum",
+              "hint": "Same as English — Mama!",
+              "emoji": "👩",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "der Papa",
+              "english": "dad",
+              "hint": "Same as English — Papa!",
+              "emoji": "👨",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "der Bruder",
+              "english": "the brother",
+              "hint": "Say 'broo-der' — like 'brother'!",
+              "emoji": "👦",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "die Schwester",
+              "english": "the sister",
+              "hint": "Say 'shves-ter' — your sis!",
+              "emoji": "👧",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Your dad in German is...",
+              "options": ["die Mama", "der Papa", "der Bruder", "die Schwester"],
+              "correct": 1,
+              "explanation": "Der Papa = dad — easy one!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Die Schwester' means...",
+              "options": ["mother", "father", "brother", "sister"],
+              "correct": 3,
+              "explanation": "Die Schwester = the sister!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Mein ___ spielt Fußball mit mir.",
+              "answer": "Bruder",
+              "hint": "My ___ plays soccer with me."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Mama, Papa, Bruder und Schwester — meine Familie!",
+              "english": "Mom, Dad, brother and sister — my family!",
+              "confirmWord": "familie"
+            }
+          ]
+        },
+        {
+          "id": "ls-04-01-02",
+          "title": "Grandparents & More",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "die Oma",
+              "english": "grandma",
+              "hint": "Oma — a lovely word for grandma!",
+              "emoji": "👵",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "der Opa",
+              "english": "grandpa",
+              "hint": "Opa — the best grandpa ever!",
+              "emoji": "👴",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "das Baby",
+              "english": "the baby",
+              "hint": "Same as English — Baby!",
+              "emoji": "👶",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "die Familie",
+              "english": "the family",
+              "hint": "Say 'fah-mee-lee-eh' — almost like English!",
+              "emoji": "👨‍👩‍👧‍👦",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Your grandmother in German is...",
+              "options": ["der Opa", "die Mama", "die Oma", "die Schwester"],
+              "correct": 2,
+              "explanation": "Die Oma = grandma!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Der Opa' means...",
+              "options": ["grandma", "grandpa", "uncle", "dad"],
+              "correct": 1
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Die ___ backt Kuchen für mich.",
+              "answer": "Oma",
+              "hint": "___ bakes cake for me."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Oma und Opa kommen zu Besuch!",
+              "english": "Grandma and grandpa are coming to visit!",
+              "confirmWord": "opa"
+            }
+          ]
+        },
+        {
+          "id": "ls-04-01-03",
+          "title": "Family Quiz 👨‍👩‍👧‍👦",
+          "tasks": [
+            {
+              "type": "multiple-choice",
+              "prompt": "Your mom's mom is your...",
+              "options": ["die Mama", "die Schwester", "die Oma", "das Baby"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Mein ___ ist mein bester Freund!",
+              "answer": "Bruder",
+              "hint": "My ___ is my best friend!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "A tiny person who cries a lot is...",
+              "options": ["der Opa", "der Papa", "das Baby", "der Bruder"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Meine ___ ist älter als ich.",
+              "answer": "Schwester",
+              "hint": "My ___ is older than me."
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Mama, Papa, Bruder, Schwester — that's my...",
+              "options": ["Schule", "Familie", "Mannschaft", "Freunde"],
+              "correct": 1,
+              "explanation": "Familie = family!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Der ___ erzählt mir Geschichten.",
+              "answer": "Opa",
+              "hint": "___ tells me stories."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Ich liebe meine Familie! Mama, Papa, Bruder und Schwester!",
+              "english": "I love my family! Mom, Dad, brother and sister!",
+              "confirmWord": "liebe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch-04-02",
+      "title": "Rooms in the House",
+      "lessons": [
+        {
+          "id": "ls-04-02-01",
+          "title": "Welcome Home!",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "das Haus",
+              "english": "the house",
+              "hint": "Say 'hows' — like 'house'!",
+              "emoji": "🏠",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "das Zimmer",
+              "english": "the room",
+              "hint": "Say 'tsim-mer' — a room to explore!",
+              "emoji": "🚪",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "die Küche",
+              "english": "the kitchen",
+              "hint": "Say 'kü-cheh' — where the snacks are!",
+              "emoji": "🍳",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "das Badezimmer",
+              "english": "the bathroom",
+              "hint": "'Baden' = bathing + 'Zimmer' = room!",
+              "emoji": "🛁",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Where do you cook dinner?",
+              "options": ["das Badezimmer", "die Küche", "das Zimmer", "das Haus"],
+              "correct": 1,
+              "explanation": "Die Küche = the kitchen — time to cook!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Das Haus' means...",
+              "options": ["the room", "the kitchen", "the house", "the bathroom"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Ich putze mir die Zähne im ___.",
+              "answer": "Badezimmer",
+              "hint": "I brush my teeth in the ___."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Willkommen in meinem Haus!",
+              "english": "Welcome to my house!",
+              "confirmWord": "haus"
+            }
+          ]
+        },
+        {
+          "id": "ls-04-02-02",
+          "title": "More Rooms",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "das Schlafzimmer",
+              "english": "the bedroom",
+              "hint": "'Schlaf' = sleep + 'Zimmer' = room!",
+              "emoji": "🛏️",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "das Wohnzimmer",
+              "english": "the living room",
+              "hint": "'Wohn' = living + 'Zimmer' = room!",
+              "emoji": "🛋️",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "der Garten",
+              "english": "the garden / yard",
+              "hint": "Say 'gar-ten' — like 'garden'!",
+              "emoji": "🌳",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "die Tür",
+              "english": "the door",
+              "hint": "Say 'tüür' — open the door!",
+              "emoji": "🚪",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Where do you sleep?",
+              "options": ["die Küche", "das Wohnzimmer", "das Schlafzimmer", "der Garten"],
+              "correct": 2,
+              "explanation": "Das Schlafzimmer = the bedroom — sweet dreams!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "You play soccer outside in the...",
+              "options": ["das Schlafzimmer", "die Küche", "das Badezimmer", "der Garten"],
+              "correct": 3,
+              "explanation": "Der Garten = the garden/yard — time to play!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Wir sehen fern im ___.",
+              "answer": "Wohnzimmer",
+              "hint": "We watch TV in the ___."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Mach bitte die Tür zu!",
+              "english": "Please close the door!",
+              "confirmWord": "tür"
+            }
+          ]
+        },
+        {
+          "id": "ls-04-02-03",
+          "title": "House Tour 🏡",
+          "tasks": [
+            {
+              "type": "multiple-choice",
+              "prompt": "Mama bakes cookies in the...",
+              "options": ["das Schlafzimmer", "die Küche", "der Garten", "das Badezimmer"],
+              "correct": 1
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Ich schlafe im ___.",
+              "answer": "Schlafzimmer",
+              "hint": "I sleep in the ___."
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Where do you take a bath?",
+              "options": ["die Küche", "das Wohnzimmer", "das Badezimmer", "der Garten"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Wir spielen Fußball im ___.",
+              "answer": "Garten",
+              "hint": "We play soccer in the ___."
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "The whole building you live in is...",
+              "options": ["das Zimmer", "die Tür", "das Haus", "der Garten"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Öffne die ___!",
+              "answer": "Tür",
+              "hint": "Open the ___!"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "In meinem Haus gibt es eine Küche, ein Wohnzimmer und ein Schlafzimmer!",
+              "english": "In my house there is a kitchen, a living room and a bedroom!",
+              "confirmWord": "küche"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch-04-03",
+      "title": "Family at Home",
+      "lessons": [
+        {
+          "id": "ls-04-03-01",
+          "title": "What Are They Doing?",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "spielen",
+              "english": "to play",
+              "hint": "Say 'shpee-len' — like 'spielen' soccer!",
+              "emoji": "⚽",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "kochen",
+              "english": "to cook",
+              "hint": "Say 'ko-chen' — cooking something yummy!",
+              "emoji": "👨‍🍳",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "schlafen",
+              "english": "to sleep",
+              "hint": "Say 'shlah-fen' — zzzzz!",
+              "emoji": "😴",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "lesen",
+              "english": "to read",
+              "hint": "Say 'lay-zen' — reading a cool book!",
+              "emoji": "📖",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Papa makes dinner. He is...",
+              "options": ["spielen", "schlafen", "kochen", "lesen"],
+              "correct": 2,
+              "explanation": "Kochen = to cook!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "You kick the ball around in the garden. You...",
+              "options": ["kochen", "spielen", "schlafen", "lesen"],
+              "correct": 1,
+              "explanation": "Spielen = to play!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Das Baby muss ___.",
+              "answer": "schlafen",
+              "hint": "The baby needs to ___."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Mama kocht in der Küche und Papa liest im Wohnzimmer.",
+              "english": "Mom cooks in the kitchen and Dad reads in the living room.",
+              "confirmWord": "kocht"
+            }
+          ]
+        },
+        {
+          "id": "ls-04-03-02",
+          "title": "My & Your",
+          "tasks": [
+            {
+              "type": "flashcard",
+              "german": "mein",
+              "english": "my (masculine/neuter)",
+              "hint": "Say 'mine' — it IS mine!",
+              "emoji": "👆",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "meine",
+              "english": "my (feminine)",
+              "hint": "'Meine' for 'die' words: meine Mama, meine Schwester!",
+              "emoji": "👆",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "dein",
+              "english": "your (masculine/neuter)",
+              "hint": "Say 'dine' — like 'thine' in old English!",
+              "emoji": "👉",
+              "tts": true
+            },
+            {
+              "type": "flashcard",
+              "german": "deine",
+              "english": "your (feminine)",
+              "hint": "'Deine' for 'die' words: deine Mama, deine Katze!",
+              "emoji": "👉",
+              "tts": true
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "How do you say 'my brother'?",
+              "options": ["dein Bruder", "meine Bruder", "mein Bruder", "deine Bruder"],
+              "correct": 2,
+              "explanation": "Mein Bruder — 'Bruder' is 'der', so we use 'mein'!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "How do you say 'your sister'?",
+              "options": ["mein Schwester", "dein Schwester", "meine Schwester", "deine Schwester"],
+              "correct": 3,
+              "explanation": "Deine Schwester — 'Schwester' is 'die', so we use 'deine'!"
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "___ Haus ist groß!",
+              "answer": "Mein",
+              "hint": "___ house is big!"
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Mein Bruder und deine Schwester spielen im Garten.",
+              "english": "My brother and your sister play in the garden.",
+              "confirmWord": "mein"
+            }
+          ]
+        },
+        {
+          "id": "ls-04-03-03",
+          "title": "🏆 Module 4 Final Challenge",
+          "tasks": [
+            {
+              "type": "multiple-choice",
+              "prompt": "It's bedtime! Where do you go?",
+              "options": ["die Küche", "der Garten", "das Schlafzimmer", "das Wohnzimmer"],
+              "correct": 2
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Meine ___ kocht in der Küche.",
+              "answer": "Mama",
+              "hint": "My ___ cooks in the kitchen."
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Mein Opa liest ein Buch' means...",
+              "options": ["My grandpa reads a book", "My dad plays soccer", "My brother sleeps", "My grandma cooks"],
+              "correct": 0
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Mein Bruder und ich ___ im Garten.",
+              "answer": "spielen",
+              "hint": "My brother and I ___ in the garden."
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "Where does the family watch TV?",
+              "options": ["das Badezimmer", "das Schlafzimmer", "die Küche", "das Wohnzimmer"],
+              "correct": 3
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "Die ___ ist meine beste Freundin!",
+              "answer": "Schwester",
+              "hint": "The ___ is my best friend!"
+            },
+            {
+              "type": "multiple-choice",
+              "prompt": "'Dein Hund schläft im Garten' means...",
+              "options": ["Your cat plays in the house", "Your dog sleeps in the garden", "My dog eats in the kitchen", "Your bird flies in the room"],
+              "correct": 1
+            },
+            {
+              "type": "fill-in-blank",
+              "sentence": "___ Oma backt Kuchen in der Küche.",
+              "answer": "Meine",
+              "hint": "___ grandma bakes cake in the kitchen."
+            },
+            {
+              "type": "listen-confirm",
+              "german": "Meine Familie wohnt in einem großen Haus mit einem schönen Garten!",
+              "english": "My family lives in a big house with a beautiful garden!",
+              "confirmWord": "garten"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
