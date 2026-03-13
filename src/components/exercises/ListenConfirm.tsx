@@ -4,6 +4,7 @@ import type { ListenConfirmTask, TaskResult } from '../../types/curriculum'
 import { useTTS } from '../../hooks/useTTS'
 
 const UMLAUTS = ['ä', 'ö', 'ü', 'Ä', 'Ö', 'Ü', 'ß']
+const normalizeGerman = (s: string) => s.trim().toLowerCase().replace(/ß/g, 'ss')
 
 interface Props {
   task: ListenConfirmTask
@@ -29,7 +30,7 @@ export default function ListenConfirm({ task, onComplete }: Props) {
     setAttempts(newAttempts)
 
     const isCorrect =
-      input.trim().toLowerCase() === task.confirmWord.toLowerCase()
+      normalizeGerman(input) === normalizeGerman(task.confirmWord)
 
     if (isCorrect) {
       setStatus('correct')

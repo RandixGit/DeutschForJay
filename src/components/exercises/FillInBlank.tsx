@@ -4,6 +4,7 @@ import type { FillInBlankTask, TaskResult } from '../../types/curriculum'
 import { useTTS } from '../../hooks/useTTS'
 
 const UMLAUTS = ['ä', 'ö', 'ü', 'Ä', 'Ö', 'Ü', 'ß']
+const normalizeGerman = (s: string) => s.trim().toLowerCase().replace(/ß/g, 'ss')
 
 interface Props {
   task: FillInBlankTask
@@ -33,7 +34,7 @@ export default function FillInBlank({ task, onComplete }: Props) {
     setAttempts(newAttempts)
 
     const isCorrect =
-      input.trim().toLowerCase() === task.answer.toLowerCase()
+      normalizeGerman(input) === normalizeGerman(task.answer)
 
     if (isCorrect) {
       setStatus('correct')
