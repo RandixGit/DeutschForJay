@@ -118,7 +118,7 @@ export default function LessonView() {
             className="bg-purple-700/80 hover:bg-purple-600 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors"
             onClick={() => handleTaskComplete({ correct: true, attempts: 1, taskType: currentTask.type })}
           >
-            ⏭ Skip Task
+            ⏭ [Debug] Skip Task
           </button>
         </div>
       )}
