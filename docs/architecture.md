@@ -1,6 +1,6 @@
 # DeutschForJay — Architecture
 
-A gamified, offline-first German learning app for kids. No backend — fully client-side with localStorage persistence.
+A gamified German learning app for kids. Offline-first with localStorage persistence, optional cloud sync via Firebase Auth + Firestore. Supports multiple player profiles per device.
 
 ---
 
@@ -10,11 +10,13 @@ A gamified, offline-first German learning app for kids. No backend — fully cli
 |---|---|
 | UI | React 18 + TypeScript |
 | State | Zustand (localStorage persistence) |
+| Cloud Sync | Firebase Auth (Google) + Firestore |
 | Styling | Tailwind CSS |
 | Animation | Framer Motion |
 | Speech | Web Speech API |
 | Build | Vite |
-| Data | Static JSON files |
+| Data | Static JSON files (auto-discovered via import.meta.glob) |
+| Tooling | tsx, firebase-admin (scripts) |
 
 ---
 
@@ -27,7 +29,7 @@ flowchart TD
     Lesson["LessonView<br/>Work through tasks"]
     Results["ResultsScreen<br/>Stars · XP earned"]
     Card["CardUnlock<br/>Collectible card flip"]
-    Parent["ParentDashboard<br/>PIN-protected"]
+    Parent["ParentDashboard<br/>PIN-protected, per-player stats"]
 
     Welcome --> Map
     Map --> Lesson
@@ -36,6 +38,7 @@ flowchart TD
     Card --> Map
     Results --> Map
     Map --> Parent
+    Map -->|switch player| Welcome
 ```
 
 ---
@@ -62,7 +65,8 @@ graph TD
 
 ```mermaid
 graph TD
-    App --> AppShell
+    App --> AuthContext
+    AuthContext --> AppShell
     AppShell --> XPBar
     AppShell --> WelcomeScreen
     AppShell --> ModuleMap
@@ -70,6 +74,8 @@ graph TD
     AppShell --> ResultsScreen
     AppShell --> CardUnlock
     AppShell --> ParentDashboard
+
+    AppShell --> useFirestoreSync
 
     LessonView --> ExerciseRouter
     ExerciseRouter --> Flashcard
@@ -82,18 +88,24 @@ graph TD
 
 ## State Management
 
-All state lives in a single Zustand store (`gameStore.ts`).
+All state lives in a single Zustand store (`gameStore.ts`). Multi-player profiles are stored as a `players` map keyed by player ID, with one active player at a time.
 
 ```mermaid
 flowchart LR
-    subgraph Persistent["Persistent (localStorage)"]
+    subgraph Persistent["Persistent (localStorage + Firestore)"]
+        players["players (map of PlayerProfile)"]
+        activePlayerId
+        parentPin
+    end
+
+    subgraph PlayerProfile["PlayerProfile (per player)"]
         playerName
         xp
         completedLessons
         collectedCards
         currentStreak
-        parentPin
         coupons
+        struggledLessons
     end
 
     subgraph Transient["Transient (session only)"]
@@ -102,10 +114,23 @@ flowchart LR
         activeTaskIndex
         taskResults
         pendingCardUnlock
+        debugAllUnlocked
     end
 
     Store[("gameStore<br/>Zustand")] --> Persistent
     Store --> Transient
+    players --> PlayerProfile
+```
+
+### Cloud Sync
+
+When signed in with Google, `useFirestoreSync` bidirectionally syncs the Zustand store with a Firestore document (`users/{uid}`). localStorage remains the source of truth for offline use; Firestore merges on reconnect.
+
+```mermaid
+flowchart LR
+    Zustand -->|write| localStorage
+    Zustand -->|write| Firestore
+    Firestore -->|on snapshot| Zustand
 ```
 
 ---
@@ -142,7 +167,7 @@ sequenceDiagram
         LessonView->>ExerciseRouter: render task[index]
         ExerciseRouter->>Player: show exercise
         Player->>ExerciseRouter: submit answer
-        ExerciseRouter->>gameStore: recordResult(correct, firstTry)
+        ExerciseRouter->>gameStore: recordResult(correct, firstTry, taskType, wrongAnswers)
         gameStore->>LessonView: taskIndex++
     end
     LessonView->>gameStore: completeLesson(score, xp)
@@ -156,16 +181,37 @@ sequenceDiagram
 ```
 src/
 ├── App.tsx                   # Screen router (state-based, no React Router)
-├── store/gameStore.ts        # All app state + actions
+├── store/gameStore.ts        # All app state + actions (multi-player)
 ├── types/curriculum.ts       # TypeScript interfaces for all data shapes
-├── services/curriculum.ts    # Query helpers for JSON curriculum data
-├── hooks/useTTS.ts           # Web Speech API wrapper (de-DE / en-US)
+├── services/
+│   ├── curriculum.ts         # Query helpers (auto-discovers module JSON via import.meta.glob)
+│   ├── firebase.ts           # Firebase app init, auth & Firestore exports
+│   ├── firestoreSync.ts      # Read/write player data to Firestore
+│   └── AuthContext.tsx        # React context for Google sign-in state
+├── hooks/
+│   ├── useTTS.ts             # Web Speech API wrapper (de-DE / en-US)
+│   └── useFirestoreSync.ts   # Zustand ↔ Firestore bidirectional sync
 ├── curriculum/
-│   ├── module-01.json        # Greetings & Basics
-│   └── module-02.json        # Module 2
+│   ├── module-01.json        # Hallo! Greetings & Basics
+│   ├── module-02.json        # Die Familie
+│   ├── module-03.json        # In der Schule
+│   ├── module-04.json        # Essen & Trinken
+│   ├── module-05.json        # Sport & Hobbys
+│   └── module-06.json        # In der Stadt
 └── components/
     ├── layout/               # Full-screen views (Map, Lesson, Results, …)
-    ├── exercises/            # Task components + router
+    ├── exercises/            # Task components + router (tracks wrong answers per task)
     ├── rewards/              # XPBar, CardUnlock
-    └── parent/               # ParentDashboard
+    └── parent/               # ParentDashboard (per-player, unlock-all toggle)
+scripts/
+└── fetch-student-data.ts     # Firestore → JSON export for AI curriculum generation
 ```
+
+## Curriculum Generation Pipeline
+
+New modules can be generated via the Claude Code slash command `/generate-module <topic>`. The pipeline:
+
+1. `scripts/fetch-student-data.ts` pulls per-task performance data from Firestore (wrong answers, struggle patterns)
+2. The AI reads all existing modules to avoid vocabulary duplication
+3. A new `module-XX.json` is generated with struggle-aware reinforcement
+4. The file is auto-discovered by `curriculum.ts` — no import changes needed

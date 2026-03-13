@@ -6,9 +6,9 @@ A gamified, offline-first German learning app built for Jay — a 9-year-old who
 
 ## What it is
 
-A browser-based learning game that runs entirely client-side — no backend, no login, no internet required after the initial load. Progress is saved to localStorage. It can be self-hosted on a Synology NAS (DS224+ or similar).
+A browser-based learning game with optional cloud sync. Progress is saved to localStorage for offline use, and optionally synced to Firestore when signed in with Google. It can be self-hosted on a Synology NAS (DS224+ or similar).
 
-Jay earns XP, unlocks levels with soccer-themed titles, and collects cards as he works through German lessons. Parents get a PIN-protected dashboard to monitor progress and manage pocket money coupons.
+Jay earns XP, unlocks levels with soccer-themed titles, and collects cards as he works through German lessons. Multiple player profiles are supported — each family member gets their own progress. Parents get a PIN-protected dashboard to monitor progress, manage pocket money coupons, and preview all content.
 
 ---
 
@@ -19,9 +19,14 @@ Jay earns XP, unlocks levels with soccer-themed titles, and collects cards as he
 - **4 Exercise Types** — flashcards, multiple choice, fill-in-blank, listen & confirm
 - **TTS** — German and English read-aloud via the Web Speech API
 - **Vocab Reference Panel** — look up words mid-lesson without losing your place
-- **Parent Dashboard** — PIN-protected; view progress, manage coupon rewards
+- **Multi-Player Profiles** — each family member gets their own progress, XP, and cards
+- **Cloud Sync** — optional Google sign-in syncs progress to Firestore across devices
+- **Parent Dashboard** — PIN-protected; view progress per player, manage coupons, unlock all modules for review
 - **Streak & Review** — lessons where Jay struggled are flagged for review
 - **Bidirectional Flashcards** — cards can be flipped either direction for recall practice
+- **Editable Player Name** — tap to rename directly from the module map
+- **ß/ss Equivalence** — accepts both `ß` and `ss` as correct in fill-in-blank answers
+- **AI-Assisted Curriculum** — generate new modules via Claude Code slash command, optionally using student performance data from Firestore
 
 ---
 
@@ -31,13 +36,15 @@ Jay earns XP, unlocks levels with soccer-themed titles, and collects cards as he
 |---|---|
 | UI | React 18 + TypeScript |
 | State | Zustand (localStorage persistence) |
+| Cloud Sync | Firebase Auth + Firestore (optional) |
 | Styling | Tailwind CSS |
 | Animation | Framer Motion |
 | Speech | Web Speech API (de-DE / en-US) |
 | Build | Vite |
-| Data | Static JSON files |
+| Data | Static JSON files (auto-discovered) |
+| Scripts | tsx (TypeScript runner for tooling) |
 
-No backend. No database. No external API keys required.
+Works fully offline with localStorage. Cloud sync is optional — add Firebase config via `VITE_FIREBASE_*` env vars to enable Google sign-in and cross-device sync.
 
 ---
 
@@ -67,12 +74,26 @@ Learning content lives in `src/curriculum/` as versioned JSON files.
 ```
 src/curriculum/
 ├── module-01.json   # Hallo! Greetings & Basics
-└── module-02.json   # ...
+├── module-02.json   # Die Familie (Family)
+├── module-03.json   # In der Schule (At School)
+├── module-04.json   # Essen & Trinken (Food & Drink)
+├── module-05.json   # Sport & Hobbys
+└── module-06.json   # In der Stadt (Around Town)
 ```
 
 The data hierarchy is: **Module → Chapter → Lesson → Task**. See [curriculum/schema.md](curriculum/schema.md) for the full JSON schema.
 
-Modules are themed around Jay's interests (soccer, gaming) and progress from basic greetings toward conversational fluency.
+Modules are auto-discovered via `import.meta.glob` — just drop a new `module-XX.json` file and it's picked up automatically. No import changes needed.
+
+### Generating new modules
+
+Use the Claude Code slash command:
+
+```
+/generate-module Animals & Nature
+```
+
+This reads existing modules, optionally fetches student performance data from Firestore, and generates a new module with struggle-aware content reinforcement.
 
 ---
 
@@ -98,14 +119,22 @@ src/
 ├── App.tsx                   # Screen router (state-based, no React Router)
 ├── store/gameStore.ts        # All app state + actions (Zustand)
 ├── types/curriculum.ts       # TypeScript interfaces
-├── services/curriculum.ts    # Query helpers for curriculum JSON
-├── hooks/useTTS.ts           # Web Speech API wrapper
-├── curriculum/               # Lesson content (JSON, versioned in git)
+├── services/
+│   ├── curriculum.ts         # Query helpers (auto-discovers module JSON)
+│   ├── firebase.ts           # Firebase app init + auth/db exports
+│   ├── firestoreSync.ts      # Firestore read/write for cloud persistence
+│   └── AuthContext.tsx        # React context for Google auth state
+├── hooks/
+│   ├── useTTS.ts             # Web Speech API wrapper
+│   └── useFirestoreSync.ts   # Hook to sync Zustand ↔ Firestore
+├── curriculum/               # Lesson content (JSON, auto-discovered)
 └── components/
     ├── layout/               # Full-screen views (Map, Lesson, Results, …)
     ├── exercises/            # Task components + router
     ├── rewards/              # XPBar, CardUnlock
     └── parent/               # ParentDashboard
+scripts/
+└── fetch-student-data.ts     # Pull student performance from Firestore (for AI module generation)
 docs/
 ├── architecture.md           # System design, component tree, data flow
 └── requirements.md           # Original vision and feature spec
