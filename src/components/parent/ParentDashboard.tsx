@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useGameStore, getLevel } from '../../store/gameStore'
 import type { PlayerProfile } from '../../store/gameStore'
-import { ALL_MODULES } from '../../services/curriculum'
+import { ALL_MODULES, getLesson } from '../../services/curriculum'
 
 const PIN_LENGTH = 4
 
@@ -25,6 +25,7 @@ function PlayerCard({
   allUnlocked: boolean
 }) {
   const [showReset, setShowReset] = useState(false)
+  const [reportCopied, setReportCopied] = useState(false)
   const { current: lvl } = getLevel(player.xp)
   const completedCount = Object.keys(player.completedLessons).length
   const pendingCoupons = player.coupons.filter((c) => !c.paidOut)
@@ -118,23 +119,74 @@ function PlayerCard({
       </div>
 
       {/* Debug Tools */}
-      <div className="card p-4 bg-slate-800/50 border border-slate-700">
-        <h3 className="text-slate-300 font-semibold text-sm uppercase tracking-wide mb-2">🔧 Parent Tools</h3>
-        <button
-          className={`text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors ${
-            allUnlocked
-              ? 'bg-green-700 hover:bg-green-600'
-              : 'bg-purple-700 hover:bg-purple-600'
-          }`}
-          onClick={onUnlockAll}
-        >
-          {allUnlocked ? '🔓 All Modules Unlocked' : '🔒 Unlock All Modules'}
-        </button>
-        <p className="text-slate-500 text-xs mt-1">
-          {allUnlocked
-            ? 'Temporary — resets when app reloads. Tap again to re-lock.'
-            : 'Preview all content without affecting XP. Resets on reload.'}
-        </p>
+      <div className="card p-4 bg-slate-800/50 border border-slate-700 space-y-3">
+        <h3 className="text-slate-300 font-semibold text-sm uppercase tracking-wide">🔧 Parent Tools</h3>
+        <div>
+          <button
+            className={`text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors ${
+              allUnlocked
+                ? 'bg-green-700 hover:bg-green-600'
+                : 'bg-purple-700 hover:bg-purple-600'
+            }`}
+            onClick={onUnlockAll}
+          >
+            {allUnlocked ? '🔓 All Modules Unlocked' : '🔒 Unlock All Modules'}
+          </button>
+          <p className="text-slate-500 text-xs mt-1">
+            {allUnlocked
+              ? 'Temporary — resets when app reloads. Tap again to re-lock.'
+              : 'Preview all content without affecting XP. Resets on reload.'}
+          </p>
+        </div>
+        <div>
+          <button
+            className={`text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors ${
+              reportCopied
+                ? 'bg-green-700 hover:bg-green-600'
+                : 'bg-blue-700 hover:bg-blue-600'
+            }`}
+            onClick={() => {
+              const vocab = new Set<string>()
+              for (const mod of ALL_MODULES) {
+                for (const ch of mod.chapters) {
+                  for (const ls of ch.lessons) {
+                    if (ls.id in player.completedLessons) {
+                      for (const t of ls.tasks) {
+                        if ('german' in t && t.german) vocab.add(t.german)
+                        if ('answer' in t && t.answer) vocab.add(t.answer)
+                        if ('confirmWord' in t && t.confirmWord) vocab.add(t.confirmWord)
+                      }
+                    }
+                  }
+                }
+              }
+              const report = {
+                player: player.name,
+                totalXP: player.xp,
+                level: lvl.name,
+                completedLessons: Object.values(player.completedLessons).map(lr => ({
+                  id: lr.lessonId,
+                  title: getLesson(lr.lessonId)?.title ?? lr.lessonId,
+                  score: lr.score,
+                  stars: lr.stars,
+                  xpEarned: lr.xpEarned,
+                  completedAt: lr.completedAt,
+                  taskResults: lr.taskResults ?? [],
+                })),
+                struggledLessons: player.struggledLessons,
+                vocabularyCovered: [...vocab].sort(),
+              }
+              navigator.clipboard.writeText(JSON.stringify(report, null, 2))
+              setReportCopied(true)
+              setTimeout(() => setReportCopied(false), 2000)
+            }}
+          >
+            {reportCopied ? '✅ Copied!' : '📋 Copy Performance Report'}
+          </button>
+          <p className="text-slate-500 text-xs mt-1">
+            Copies detailed progress data (scores, wrong answers, vocabulary) as JSON.
+          </p>
+        </div>
       </div>
 
       {/* Danger zone */}
