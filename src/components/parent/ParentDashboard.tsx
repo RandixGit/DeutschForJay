@@ -1,23 +1,162 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useGameStore, getLevel } from '../../store/gameStore'
+import type { PlayerProfile } from '../../store/gameStore'
 import { ALL_MODULES } from '../../services/curriculum'
 
 const PIN_LENGTH = 4
 
+const totalLessons = ALL_MODULES.reduce(
+  (sum, m) => sum + m.chapters.reduce((s, c) => s + c.lessons.length, 0),
+  0
+)
+
+function PlayerCard({
+  player,
+  onReset,
+  onMarkCouponPaid,
+}: {
+  player: PlayerProfile
+  onReset: (id: string) => void
+  onMarkCouponPaid: (playerId: string, couponId: string) => void
+}) {
+  const [showReset, setShowReset] = useState(false)
+  const { current: lvl } = getLevel(player.xp)
+  const completedCount = Object.keys(player.completedLessons).length
+  const pendingCoupons = player.coupons.filter((c) => !c.paidOut)
+  const paidCoupons = player.coupons.filter((c) => c.paidOut)
+
+  return (
+    <div className="space-y-3">
+      {/* Progress Summary */}
+      <div className="card p-4 space-y-2">
+        <h3 className="text-slate-300 font-semibold text-sm uppercase tracking-wide">
+          {lvl.icon} {player.name}
+        </h3>
+        <div className="grid grid-cols-3 gap-3 text-center">
+          <div>
+            <p className="text-amber-400 font-bold text-2xl">{player.xp}</p>
+            <p className="text-slate-400 text-xs">Total XP</p>
+          </div>
+          <div>
+            <p className="text-blue-400 font-bold text-2xl">{completedCount}</p>
+            <p className="text-slate-400 text-xs">Lessons done</p>
+          </div>
+          <div>
+            <p className="text-green-400 font-bold text-2xl">{player.currentStreak}</p>
+            <p className="text-slate-400 text-xs">Day streak 🔥</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-2 mt-1">
+          <span className="text-white font-semibold">{lvl.name}</span>
+          <span className="text-slate-400 text-sm ml-auto">{completedCount}/{totalLessons} lessons</span>
+        </div>
+      </div>
+
+      {/* Topics to Review */}
+      {player.struggledLessons.length > 0 && (
+        <div className="card p-4 bg-orange-900/20 border border-orange-700/50">
+          <h3 className="text-orange-300 font-semibold text-sm uppercase tracking-wide mb-1">
+            📝 Needs Review ({player.struggledLessons.length})
+          </h3>
+          <p className="text-slate-400 text-sm">
+            {player.name} scored under 50% on {player.struggledLessons.length} lesson{player.struggledLessons.length > 1 ? 's' : ''}. Encourage a retry!
+          </p>
+        </div>
+      )}
+
+      {/* Pocket Money Coupons */}
+      <div className="card p-4">
+        <h3 className="text-slate-300 font-semibold text-sm uppercase tracking-wide mb-3">
+          🎟️ Pocket Money Coupons
+        </h3>
+
+        {pendingCoupons.length === 0 && (
+          <p className="text-slate-500 text-sm">
+            No pending coupons. {player.name} earns one every 5 lessons!
+          </p>
+        )}
+
+        {pendingCoupons.map((coupon) => (
+          <motion.div
+            key={coupon.id}
+            layout
+            className="flex items-center gap-3 p-3 bg-amber-900/20 border border-amber-700/50 rounded-xl mb-2"
+          >
+            <div className="flex-1">
+              <p className="text-amber-300 font-semibold text-sm">{coupon.description}</p>
+              <p className="text-slate-500 text-xs">
+                Earned: {new Date(coupon.earnedAt).toLocaleDateString()}
+              </p>
+            </div>
+            <button
+              className="bg-green-600 hover:bg-green-500 text-white text-xs font-bold px-3 py-2 rounded-lg transition-colors shrink-0"
+              onClick={() => onMarkCouponPaid(player.id, coupon.id)}
+            >
+              ✅ Paid Out
+            </button>
+          </motion.div>
+        ))}
+
+        {paidCoupons.length > 0 && (
+          <details className="mt-2">
+            <summary className="text-slate-500 text-sm cursor-pointer">
+              {paidCoupons.length} paid out coupon{paidCoupons.length > 1 ? 's' : ''}
+            </summary>
+            {paidCoupons.map((coupon) => (
+              <div key={coupon.id} className="flex items-center gap-2 p-2 opacity-50 mt-1">
+                <span className="text-slate-500 text-xs line-through flex-1">{coupon.description}</span>
+                <span className="text-green-600 text-xs">✓ Paid {coupon.paidOutAt ? new Date(coupon.paidOutAt).toLocaleDateString() : ''}</span>
+              </div>
+            ))}
+          </details>
+        )}
+      </div>
+
+      {/* Danger zone */}
+      <div className="card p-4 bg-red-900/10 border border-red-900/30">
+        <h3 className="text-red-400 font-semibold text-sm uppercase tracking-wide mb-2">⚠️ Danger Zone</h3>
+        {!showReset ? (
+          <button
+            className="text-red-400 hover:text-red-300 text-sm underline"
+            onClick={() => setShowReset(true)}
+          >
+            Reset {player.name}'s progress...
+          </button>
+        ) : (
+          <div className="space-y-2">
+            <p className="text-red-300 text-sm">
+              This will erase ALL of {player.name}'s XP, lessons, and coupons. Are you sure?
+            </p>
+            <div className="flex gap-2">
+              <button
+                className="btn-danger text-sm py-2 px-4"
+                onClick={() => { onReset(player.id); setShowReset(false) }}
+              >
+                Yes, reset everything
+              </button>
+              <button
+                className="btn-secondary text-sm py-2 px-4"
+                onClick={() => setShowReset(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
 export default function ParentDashboard() {
   const {
-    xp,
-    completedLessons,
-    struggledLessons,
-    currentStreak,
-    coupons,
+    players,
     parentPin,
     setScreen,
     setParentPin,
-    markCouponPaid,
-    resetProgress,
-    playerName,
+    markCouponPaidForPlayer,
+    resetProgressForPlayer,
   } = useGameStore()
 
   const [pinInput, setPinInput] = useState('')
@@ -25,17 +164,8 @@ export default function ParentDashboard() {
   const [isSettingPin, setIsSettingPin] = useState(!parentPin)
   const [confirmPin, setConfirmPin] = useState('')
   const [pinError, setPinError] = useState('')
-  const [showReset, setShowReset] = useState(false)
 
-  const { current: lvl } = getLevel(xp)
-  const pendingCoupons = coupons.filter((c) => !c.paidOut)
-  const paidCoupons = coupons.filter((c) => c.paidOut)
-
-  const totalLessons = ALL_MODULES.reduce(
-    (sum, m) => sum + m.chapters.reduce((s, c) => s + c.lessons.length, 0),
-    0
-  )
-  const completedCount = Object.keys(completedLessons).length
+  const playerList = Object.values(players)
 
   function handlePinEntry(digit: string) {
     if (pinInput.length >= PIN_LENGTH) return
@@ -151,122 +281,28 @@ export default function ParentDashboard() {
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-4 pb-6 space-y-4">
-
-        {/* Progress Summary */}
-        <div className="card p-4 space-y-2">
-          <h3 className="text-slate-300 font-semibold text-sm uppercase tracking-wide">{playerName}'s Progress</h3>
-          <div className="grid grid-cols-3 gap-3 text-center">
-            <div>
-              <p className="text-amber-400 font-bold text-2xl">{xp}</p>
-              <p className="text-slate-400 text-xs">Total XP</p>
-            </div>
-            <div>
-              <p className="text-blue-400 font-bold text-2xl">{completedCount}</p>
-              <p className="text-slate-400 text-xs">Lessons done</p>
-            </div>
-            <div>
-              <p className="text-green-400 font-bold text-2xl">{currentStreak}</p>
-              <p className="text-slate-400 text-xs">Day streak 🔥</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2 mt-1">
-            <span className="text-xl">{lvl.icon}</span>
-            <span className="text-white font-semibold">{lvl.name}</span>
-            <span className="text-slate-400 text-sm ml-auto">{completedCount}/{totalLessons} lessons</span>
-          </div>
-        </div>
-
-        {/* Topics to Review */}
-        {struggledLessons.length > 0 && (
-          <div className="card p-4 bg-orange-900/20 border border-orange-700/50">
-            <h3 className="text-orange-300 font-semibold text-sm uppercase tracking-wide mb-2">
-              📝 Needs Review ({struggledLessons.length})
-            </h3>
-            <p className="text-slate-400 text-sm">
-              {playerName} scored under 50% on these lessons. Encourage a retry!
-            </p>
-          </div>
-        )}
-
-        {/* Pocket Money Coupons */}
-        <div className="card p-4">
-          <h3 className="text-slate-300 font-semibold text-sm uppercase tracking-wide mb-3">
-            🎟️ Pocket Money Coupons
-          </h3>
-
-          {pendingCoupons.length === 0 && (
-            <p className="text-slate-500 text-sm">
-              No pending coupons. {playerName} earns one every 5 lessons!
-            </p>
-          )}
-
-          {pendingCoupons.map((coupon) => (
-            <motion.div
-              key={coupon.id}
-              layout
-              className="flex items-center gap-3 p-3 bg-amber-900/20 border border-amber-700/50 rounded-xl mb-2"
-            >
-              <div className="flex-1">
-                <p className="text-amber-300 font-semibold text-sm">{coupon.description}</p>
-                <p className="text-slate-500 text-xs">
-                  Earned: {new Date(coupon.earnedAt).toLocaleDateString()}
-                </p>
+      <div className="flex-1 overflow-y-auto px-4 pb-6 space-y-6">
+        {playerList.map((player, idx) => (
+          <motion.div
+            key={player.id}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.08 }}
+          >
+            {playerList.length > 1 && (
+              <div className="flex items-center gap-2 mb-2">
+                <div className="h-px flex-1 bg-slate-700" />
+                <span className="text-slate-400 text-xs font-medium px-2">{player.name}</span>
+                <div className="h-px flex-1 bg-slate-700" />
               </div>
-              <button
-                className="bg-green-600 hover:bg-green-500 text-white text-xs font-bold px-3 py-2 rounded-lg transition-colors shrink-0"
-                onClick={() => markCouponPaid(coupon.id)}
-              >
-                ✅ Paid Out
-              </button>
-            </motion.div>
-          ))}
-
-          {paidCoupons.length > 0 && (
-            <details className="mt-2">
-              <summary className="text-slate-500 text-sm cursor-pointer">
-                {paidCoupons.length} paid out coupon{paidCoupons.length > 1 ? 's' : ''}
-              </summary>
-              {paidCoupons.map((coupon) => (
-                <div key={coupon.id} className="flex items-center gap-2 p-2 opacity-50 mt-1">
-                  <span className="text-slate-500 text-xs line-through flex-1">{coupon.description}</span>
-                  <span className="text-green-600 text-xs">✓ Paid {coupon.paidOutAt ? new Date(coupon.paidOutAt).toLocaleDateString() : ''}</span>
-                </div>
-              ))}
-            </details>
-          )}
-        </div>
-
-        {/* Danger zone */}
-        <div className="card p-4 bg-red-900/10 border border-red-900/30">
-          <h3 className="text-red-400 font-semibold text-sm uppercase tracking-wide mb-2">⚠️ Danger Zone</h3>
-          {!showReset ? (
-            <button
-              className="text-red-400 hover:text-red-300 text-sm underline"
-              onClick={() => setShowReset(true)}
-            >
-              Reset all progress...
-            </button>
-          ) : (
-            <div className="space-y-2">
-              <p className="text-red-300 text-sm">This will erase ALL of {playerName}'s XP, lessons, and coupons. Are you sure?</p>
-              <div className="flex gap-2">
-                <button
-                  className="btn-danger text-sm py-2 px-4"
-                  onClick={() => { resetProgress(); setShowReset(false) }}
-                >
-                  Yes, reset everything
-                </button>
-                <button
-                  className="btn-secondary text-sm py-2 px-4"
-                  onClick={() => setShowReset(false)}
-                >
-                  Cancel
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
+            )}
+            <PlayerCard
+              player={player}
+              onReset={resetProgressForPlayer}
+              onMarkCouponPaid={markCouponPaidForPlayer}
+            />
+          </motion.div>
+        ))}
       </div>
     </div>
   )

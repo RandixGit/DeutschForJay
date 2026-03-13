@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { MultipleChoiceTask, TaskResult } from '../../types/curriculum'
+import { useTTS } from '../../hooks/useTTS'
 
 interface Props {
   task: MultipleChoiceTask
@@ -11,6 +12,7 @@ export default function MultipleChoice({ task, onComplete }: Props) {
   const [selected, setSelected] = useState<number | null>(null)
   const [attempts, setAttempts] = useState(0)
   const [done, setDone] = useState(false)
+  const { speak } = useTTS()
 
   function handleSelect(idx: number) {
     if (done) return
@@ -18,6 +20,11 @@ export default function MultipleChoice({ task, onComplete }: Props) {
     const newAttempts = attempts + 1
     setSelected(idx)
     setAttempts(newAttempts)
+
+    // TTS the clicked option in German when options are German words
+    if (task.promptLanguage !== 'en') {
+      speak(task.options[idx], 'de-DE')
+    }
 
     if (isCorrect) {
       setDone(true)

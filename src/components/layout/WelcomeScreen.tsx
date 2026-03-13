@@ -3,13 +3,13 @@ import { motion } from 'framer-motion'
 import { useGameStore } from '../../store/gameStore'
 
 export default function WelcomeScreen() {
-  const setPlayerName = useGameStore((s) => s.setPlayerName)
+  const createPlayer = useGameStore((s) => s.createPlayer)
   const [name, setName] = useState('')
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     const trimmed = name.trim()
-    if (trimmed) setPlayerName(trimmed)
+    if (trimmed) createPlayer(trimmed)
   }
 
   return (

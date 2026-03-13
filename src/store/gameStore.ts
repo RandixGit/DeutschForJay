@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware'
 import type { TaskResult } from '../types/curriculum'
 
 export type { TaskResult }
-export type Screen = 'welcome' | 'map' | 'lesson' | 'results' | 'card-unlock' | 'parent'
+export type Screen = 'welcome' | 'player-select' | 'map' | 'lesson' | 'results' | 'card-unlock' | 'parent'
 
 export interface Coupon {
   id: string
@@ -21,11 +21,27 @@ export interface LessonResult {
   completedAt: string
 }
 
+export interface PlayerProfile {
+  id: string
+  name: string
+  xp: number
+  completedLessons: Record<string, LessonResult>
+  struggledLessons: string[]
+  collectedCards: string[]
+  currentStreak: number
+  lastPlayedDate: string | null
+  coupons: Coupon[]
+}
+
 interface GameState {
   // Navigation
   screen: Screen
 
-  // Player
+  // Multi-player
+  players: Record<string, PlayerProfile>
+  activePlayerId: string | null
+
+  // Player (flat, mirrors active player for component compatibility)
   playerName: string | null
 
   // Active lesson
@@ -33,7 +49,7 @@ interface GameState {
   activeTaskIndex: number
   taskResults: TaskResult[]
 
-  // Persistent progress
+  // Persistent progress (mirrors active player)
   xp: number
   completedLessons: Record<string, LessonResult>  // lessonId → result
   struggledLessons: string[]
@@ -45,6 +61,9 @@ interface GameState {
   parentPin: string | null
   coupons: Coupon[]
 
+  // Hydration flag (set to true by onRehydrateStorage, never persisted)
+  _hydrated: boolean
+
   // Transient (not persisted — reset after navigation)
   lastLessonResult: LessonResult | null
   pendingCardUnlock: string | null   // chapterId if a card was just unlocked
@@ -52,6 +71,9 @@ interface GameState {
   // Actions
   setScreen: (screen: Screen) => void
   setPlayerName: (name: string) => void
+  createPlayer: (name: string) => void
+  selectPlayer: (id: string) => void
+  switchPlayer: () => void
   startLesson: (lessonId: string) => void
   recordTaskResult: (result: TaskResult) => void
   finishLesson: (lessonId: string, totalTasks: number) => void
@@ -60,6 +82,8 @@ interface GameState {
   addCoupon: (description: string) => void
   markCouponPaid: (couponId: string) => void
   resetProgress: () => void
+  resetProgressForPlayer: (id: string) => void
+  markCouponPaidForPlayer: (playerId: string, couponId: string) => void
 }
 
 const XP_PER_CORRECT_FIRST_TRY = 10
@@ -88,11 +112,57 @@ function calcXP(taskResults: TaskResult[], stars: number): number {
   return taskXP + bonus
 }
 
+function extractProfile(id: string, state: GameState): PlayerProfile {
+  return {
+    id,
+    name: state.playerName ?? '',
+    xp: state.xp,
+    completedLessons: state.completedLessons,
+    struggledLessons: state.struggledLessons,
+    collectedCards: state.collectedCards,
+    currentStreak: state.currentStreak,
+    lastPlayedDate: state.lastPlayedDate,
+    coupons: state.coupons,
+  }
+}
+
+function profileToFlatFields(p: PlayerProfile) {
+  return {
+    playerName: p.name,
+    xp: p.xp,
+    completedLessons: p.completedLessons,
+    struggledLessons: p.struggledLessons,
+    collectedCards: p.collectedCards,
+    currentStreak: p.currentStreak,
+    lastPlayedDate: p.lastPlayedDate,
+    coupons: p.coupons,
+  }
+}
+
+const blankProfileFields = {
+  xp: 0,
+  completedLessons: {} as Record<string, LessonResult>,
+  struggledLessons: [] as string[],
+  collectedCards: [] as string[],
+  currentStreak: 0,
+  lastPlayedDate: null as string | null,
+  coupons: [] as Coupon[],
+}
+
+// Captured during store creation to avoid TDZ self-reference in onRehydrateStorage
+let _set: ((partial: Partial<GameState>) => void) | null = null
+
 export const useGameStore = create<GameState>()(
   persist(
-    (set, get) => ({
+    (set, get) => {
+      _set = set as (partial: Partial<GameState>) => void
+      return ({
       // Navigation
       screen: 'welcome',
+
+      // Multi-player
+      players: {},
+      activePlayerId: null,
 
       // Player
       playerName: null,
@@ -114,12 +184,76 @@ export const useGameStore = create<GameState>()(
       parentPin: null,
       coupons: [],
 
+      // Hydration flag
+      _hydrated: false,
+
       // Transient
       lastLessonResult: null,
       pendingCardUnlock: null,
 
       setScreen: (screen) => set({ screen }),
-      setPlayerName: (name) => set({ playerName: name, screen: 'map' }),
+
+      setPlayerName: (name) => {
+        // Legacy: treat as createPlayer if no active player
+        const state = get()
+        if (!state.activePlayerId) {
+          const id = crypto.randomUUID()
+          const profile: PlayerProfile = { id, name, ...blankProfileFields }
+          set({
+            players: { ...state.players, [id]: profile },
+            activePlayerId: id,
+            playerName: name,
+            ...blankProfileFields,
+            screen: 'map',
+          })
+        } else {
+          const state2 = get()
+          const pid = state2.activePlayerId!
+          const updated = { ...state2.players[pid], name }
+          set({
+            playerName: name,
+            players: { ...state2.players, [pid]: updated },
+          })
+        }
+      },
+
+      createPlayer: (name) => {
+        const state = get()
+        const id = crypto.randomUUID()
+        const profile: PlayerProfile = { id, name, ...blankProfileFields }
+        set({
+          players: { ...state.players, [id]: profile },
+          activePlayerId: id,
+          playerName: name,
+          ...blankProfileFields,
+          screen: 'map',
+        })
+      },
+
+      selectPlayer: (id) => {
+        const state = get()
+        const profile = state.players[id]
+        if (!profile) return
+        set({
+          activePlayerId: id,
+          ...profileToFlatFields(profile),
+          screen: 'map',
+        })
+      },
+
+      switchPlayer: () => {
+        const state = get()
+        if (state.activePlayerId) {
+          const updated = extractProfile(state.activePlayerId, state)
+          set({
+            players: { ...state.players, [state.activePlayerId]: updated },
+            activePlayerId: null,
+            screen: 'player-select',
+          })
+        } else {
+          set({ screen: 'player-select' })
+        }
+      },
 
       startLesson: (lessonId) =>
         set({
@@ -162,63 +296,157 @@ export const useGameStore = create<GameState>()(
             ? state.currentStreak + 1
             : 1
 
-        set({
-          completedLessons: { ...state.completedLessons, [lessonId]: lessonResult },
+        const newCompletedLessons = { ...state.completedLessons, [lessonId]: lessonResult }
+        const newXP = state.xp + xpEarned
+
+        const updatedProfileFields = {
+          xp: newXP,
+          completedLessons: newCompletedLessons,
           struggledLessons: newStruggled,
-          xp: state.xp + xpEarned,
+          currentStreak: streak,
+          lastPlayedDate: today,
+        }
+
+        const newPlayers = state.activePlayerId
+          ? {
+              ...state.players,
+              [state.activePlayerId]: {
+                ...extractProfile(state.activePlayerId, state),
+                ...updatedProfileFields,
+              },
+            }
+          : state.players
+
+        set({
+          completedLessons: newCompletedLessons,
+          struggledLessons: newStruggled,
+          xp: newXP,
           lastLessonResult: lessonResult,
           currentStreak: streak,
           lastPlayedDate: today,
           screen: 'results',
+          players: newPlayers,
         })
       },
 
-      collectCard: (chapterId) =>
-        set((state) => ({
-          collectedCards: [...new Set([...state.collectedCards, chapterId])],
+      collectCard: (chapterId) => {
+        const state = get()
+        const newCards = [...new Set([...state.collectedCards, chapterId])]
+        const newPlayers = state.activePlayerId
+          ? {
+              ...state.players,
+              [state.activePlayerId]: {
+                ...extractProfile(state.activePlayerId, state),
+                collectedCards: newCards,
+              },
+            }
+          : state.players
+        set({
+          collectedCards: newCards,
           pendingCardUnlock: null,
-        })),
+          players: newPlayers,
+        })
+      },
 
       setParentPin: (pin) => set({ parentPin: pin }),
 
-      addCoupon: (description) =>
-        set((state) => ({
-          coupons: [
-            ...state.coupons,
-            {
-              id: `coupon-${Date.now()}`,
-              description,
-              earnedAt: new Date().toISOString(),
-              paidOut: false,
-            },
-          ],
-        })),
+      addCoupon: (description) => {
+        const state = get()
+        const newCoupon: Coupon = {
+          id: `coupon-${Date.now()}`,
+          description,
+          earnedAt: new Date().toISOString(),
+          paidOut: false,
+        }
+        const newCoupons = [...state.coupons, newCoupon]
+        const newPlayers = state.activePlayerId
+          ? {
+              ...state.players,
+              [state.activePlayerId]: {
+                ...extractProfile(state.activePlayerId, state),
+                coupons: newCoupons,
+              },
+            }
+          : state.players
+        set({ coupons: newCoupons, players: newPlayers })
+      },
 
-      markCouponPaid: (couponId) =>
-        set((state) => ({
-          coupons: state.coupons.map((c) =>
-            c.id === couponId
-              ? { ...c, paidOut: true, paidOutAt: new Date().toISOString() }
-              : c
-          ),
-        })),
+      markCouponPaid: (couponId) => {
+        const state = get()
+        const newCoupons = state.coupons.map((c) =>
+          c.id === couponId
+            ? { ...c, paidOut: true, paidOutAt: new Date().toISOString() }
+            : c
+        )
+        const newPlayers = state.activePlayerId
+          ? {
+              ...state.players,
+              [state.activePlayerId]: {
+                ...extractProfile(state.activePlayerId, state),
+                coupons: newCoupons,
+              },
+            }
+          : state.players
+        set({ coupons: newCoupons, players: newPlayers })
+      },
 
-      resetProgress: () =>
-        set({
-          xp: 0,
-          completedLessons: {},
-          struggledLessons: [],
-          collectedCards: [],
-          currentStreak: 0,
-          lastPlayedDate: null,
-          coupons: [],
-          screen: 'map',
-        }),
-    }),
+      resetProgress: () => {
+        const state = get()
+        if (state.activePlayerId) {
+          const resetFields = { ...blankProfileFields }
+          const updatedProfile = {
+            ...state.players[state.activePlayerId],
+            ...resetFields,
+          }
+          set({
+            ...resetFields,
+            players: { ...state.players, [state.activePlayerId]: updatedProfile },
+            screen: 'map',
+          })
+        } else {
+          set({ ...blankProfileFields, screen: 'map' })
+        }
+      },
+
+      markCouponPaidForPlayer: (playerId, couponId) => {
+        const state = get()
+        const profile = state.players[playerId]
+        if (!profile) return
+        const newCoupons = profile.coupons.map((c) =>
+          c.id === couponId
+            ? { ...c, paidOut: true, paidOutAt: new Date().toISOString() }
+            : c
+        )
+        const updatedProfile = { ...profile, coupons: newCoupons }
+        const newPlayers = { ...state.players, [playerId]: updatedProfile }
+        if (playerId === state.activePlayerId) {
+          set({ coupons: newCoupons, players: newPlayers })
+        } else {
+          set({ players: newPlayers })
+        }
+      },
+
+      resetProgressForPlayer: (id) => {
+        const state = get()
+        const profile = state.players[id]
+        if (!profile) return
+        const resetProfile = { ...profile, ...blankProfileFields }
+        const newPlayers = { ...state.players, [id]: resetProfile }
+        if (id === state.activePlayerId) {
+          set({ ...blankProfileFields, players: newPlayers })
+        } else {
+          set({ players: newPlayers })
+        }
+      },
+    })
+    },
     {
       name: 'deutsch-for-jay-progress',
-      // Don't persist transient fields
       partialize: (state) => ({
+        players: state.players,
+        activePlayerId: state.activePlayerId,
+        parentPin: state.parentPin,
+        // Keep legacy fields for migration detection
         playerName: state.playerName,
         xp: state.xp,
         completedLessons: state.completedLessons,
@@ -226,9 +454,45 @@ export const useGameStore = create<GameState>()(
         collectedCards: state.collectedCards,
         currentStreak: state.currentStreak,
         lastPlayedDate: state.lastPlayedDate,
-        parentPin: state.parentPin,
         coupons: state.coupons,
       }),
+      onRehydrateStorage: () => (state) => {
+        try {
+          if (!state) return
+          // Migrate old single-player format (no players map)
+          if (
+            state.playerName &&
+            (!state.players || Object.keys(state.players).length === 0)
+          ) {
+            const id = crypto.randomUUID()
+            const profile: PlayerProfile = {
+              id,
+              name: state.playerName,
+              xp: state.xp ?? 0,
+              completedLessons: state.completedLessons ?? {},
+              struggledLessons: state.struggledLessons ?? [],
+              collectedCards: state.collectedCards ?? [],
+              currentStreak: state.currentStreak ?? 0,
+              lastPlayedDate: state.lastPlayedDate ?? null,
+              coupons: state.coupons ?? [],
+            }
+            _set?.({
+              players: { [id]: profile },
+              activePlayerId: id,
+              screen: 'map',
+              ...profileToFlatFields(profile),
+            })
+          } else if (state.activePlayerId && state.players?.[state.activePlayerId]) {
+            // Normal load: populate flat fields from active player
+            const p = state.players[state.activePlayerId]
+            _set?.({ ...profileToFlatFields(p), screen: 'map' })
+          }
+        } catch (e) {
+          console.error('[gameStore] rehydration error:', e)
+        } finally {
+          _set?.({ _hydrated: true })
+        }
+      },
     }
   )
 )

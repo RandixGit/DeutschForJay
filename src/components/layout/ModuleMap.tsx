@@ -5,7 +5,7 @@ import { ALL_MODULES } from '../../services/curriculum'
 import type { Module, Chapter, Lesson } from '../../types/curriculum'
 
 export default function ModuleMap() {
-  const { xp, completedLessons, struggledLessons, startLesson, setScreen, playerName } = useGameStore()
+  const { xp, completedLessons, struggledLessons, startLesson, setScreen, playerName, switchPlayer, players } = useGameStore()
   const { current: lvl } = getLevel(xp)
 
   const [selectedModule, setSelectedModule] = useState<Module | null>(null)
@@ -154,13 +154,24 @@ export default function ModuleMap() {
             <h1 className="text-white font-bold text-xl">Deutsch für {playerName} 🇩🇪</h1>
             <p className="text-slate-400 text-sm">{lvl.icon} {lvl.name} · {xp} XP</p>
           </div>
-          <button
-            className="text-slate-400 hover:text-white text-2xl"
-            onClick={() => setScreen('parent')}
-            title="Parent Dashboard"
-          >
-            👨‍👩‍👦
-          </button>
+          <div className="flex items-center gap-1">
+            {Object.keys(players).length > 1 && (
+              <button
+                className="text-slate-400 hover:text-white text-xl"
+                onClick={switchPlayer}
+                title="Switch Player"
+              >
+                👥
+              </button>
+            )}
+            <button
+              className="text-slate-400 hover:text-white text-2xl"
+              onClick={() => setScreen('parent')}
+              title="Parent Dashboard"
+            >
+              👨‍👩‍👦
+            </button>
+          </div>
         </div>
       </div>
 
