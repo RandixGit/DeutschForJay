@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import type { FlashcardTask, TaskResult } from '../../types/curriculum'
 import { useTTS } from '../../hooks/useTTS'
+import { useSFX } from '../../hooks/useSFX'
+import { useConfetti } from '../../hooks/useConfetti'
 
 interface Props {
   task: FlashcardTask
@@ -12,16 +14,23 @@ export default function Flashcard({ task, onComplete }: Props) {
   const [flipped, setFlipped] = useState(false)
   const [answered, setAnswered] = useState(false)
   const { speak } = useTTS()
+  const { play } = useSFX()
+  const { burstSmall } = useConfetti()
 
   function handleFlip() {
     const next = !flipped
     setFlipped(next)
+    play('buttonClick')
     if (task.tts && next) speak(task.german, 'de-DE')
   }
 
   function handleResponse(knew: boolean) {
     if (answered) return
     setAnswered(true)
+    if (knew) {
+      play('correctDing')
+      burstSmall()
+    }
     onComplete({ correct: knew, attempts: 1, taskType: 'flashcard', expectedAnswer: task.german })
   }
 

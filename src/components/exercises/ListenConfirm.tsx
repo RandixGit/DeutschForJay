@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { ListenConfirmTask, TaskResult } from '../../types/curriculum'
 import { useTTS } from '../../hooks/useTTS'
+import { useSFX } from '../../hooks/useSFX'
+import { useConfetti } from '../../hooks/useConfetti'
+import FloatingXP from '../rewards/FloatingXP'
 
 const UMLAUTS = ['ä', 'ö', 'ü', 'Ä', 'Ö', 'Ü', 'ß']
 const normalizeGerman = (s: string) => s.trim().toLowerCase().replace(/ß/g, 'ss')
@@ -18,7 +21,10 @@ export default function ListenConfirm({ task, onComplete }: Props) {
   const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle')
   const [showTranslation, setShowTranslation] = useState(false)
   const [wrongInputs, setWrongInputs] = useState<string[]>([])
+  const [showXP, setShowXP] = useState(false)
   const { speak } = useTTS()
+  const { play } = useSFX()
+  const { burstSmall } = useConfetti()
 
   function handlePlay() {
     speak(task.german, 'de-DE')
@@ -35,8 +41,12 @@ export default function ListenConfirm({ task, onComplete }: Props) {
 
     if (isCorrect) {
       setStatus('correct')
+      play('correctDing')
+      burstSmall()
+      setShowXP(true)
       setTimeout(() => onComplete({ correct: true, attempts: newAttempts, taskType: 'listen-confirm', wrongAnswers: wrongInputs, expectedAnswer: task.confirmWord }), 1000)
     } else {
+      play('wrongBuzz')
       setWrongInputs((prev) => [...prev, input.trim()])
       setStatus('wrong')
       setTimeout(() => {
@@ -51,7 +61,8 @@ export default function ListenConfirm({ task, onComplete }: Props) {
   }
 
   return (
-    <div className="exercise-container">
+    <div className="exercise-container relative">
+      <AnimatePresence>{showXP && <FloatingXP amount={attempts === 1 ? 10 : 5} onComplete={() => setShowXP(false)} />}</AnimatePresence>
       <p className="text-slate-400 text-sm text-center uppercase tracking-wide">Listen & Confirm</p>
 
       {/* Instructions */}

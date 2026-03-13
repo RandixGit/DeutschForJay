@@ -2,6 +2,9 @@ import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { WordOrderTask, TaskResult } from '../../types/curriculum'
 import { useTTS } from '../../hooks/useTTS'
+import { useSFX } from '../../hooks/useSFX'
+import { useConfetti } from '../../hooks/useConfetti'
+import FloatingXP from '../rewards/FloatingXP'
 
 interface Props {
   task: WordOrderTask
@@ -34,7 +37,10 @@ export default function WordOrder({ task, onComplete }: Props) {
   const [attempts, setAttempts] = useState(0)
   const [done, setDone] = useState(false)
   const [showWrong, setShowWrong] = useState(false)
+  const [showXP, setShowXP] = useState(false)
   const { speak } = useTTS()
+  const { play } = useSFX()
+  const { burstSmall } = useConfetti()
 
   // Words still available in the bank
   const available = shuffled.filter((word, idx) => {
@@ -78,6 +84,9 @@ export default function WordOrder({ task, onComplete }: Props) {
 
     if (placed.join(' ') === task.correctOrder.join(' ')) {
       setDone(true)
+      play('correctDing')
+      burstSmall()
+      setShowXP(true)
       if (task.tts) {
         speak(task.correctOrder.join(' '), 'de-DE')
       }
@@ -90,6 +99,7 @@ export default function WordOrder({ task, onComplete }: Props) {
         })
       }, 1200)
     } else {
+      play('wrongBuzz')
       setShowWrong(true)
       setTimeout(() => {
         setShowWrong(false)
@@ -117,7 +127,8 @@ export default function WordOrder({ task, onComplete }: Props) {
   const allPlaced = placed.length === task.correctOrder.length
 
   return (
-    <div className="exercise-container">
+    <div className="exercise-container relative">
+      <AnimatePresence>{showXP && <FloatingXP amount={attempts === 1 ? 10 : 5} onComplete={() => setShowXP(false)} />}</AnimatePresence>
       <p className="text-slate-400 text-sm text-center uppercase tracking-wide">Arrange the Words</p>
 
       {/* Prompt */}

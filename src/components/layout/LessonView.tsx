@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useGameStore } from '../../store/gameStore'
 import { getLessonTasks, getChapterForLesson, isChapterComplete } from '../../services/curriculum'
 import ExerciseRouter from '../exercises/ExerciseRouter'
+import { useSFX } from '../../hooks/useSFX'
+import { useConfetti } from '../../hooks/useConfetti'
 import type { TaskResult } from '../../types/curriculum'
 
 export default function LessonView() {
@@ -19,6 +21,9 @@ export default function LessonView() {
   } = useGameStore()
 
   const [vocabOpen, setVocabOpen] = useState(false)
+  const { play } = useSFX()
+  const { burstFire, burstRainbow } = useConfetti()
+  const prevStreakRef = useRef(0)
 
   const tasks = activeLessonId ? getLessonTasks(activeLessonId) : []
   const totalTasks = tasks.length
@@ -120,16 +125,40 @@ export default function LessonView() {
 
       {/* Streak indicator */}
       {taskResults.length > 0 && (() => {
-        const last3 = taskResults.slice(-3)
-        const streak = last3.filter(r => r.correct && r.attempts === 1).length
+        // Count consecutive first-try correct answers from the end
+        let streak = 0
+        for (let i = taskResults.length - 1; i >= 0; i--) {
+          if (taskResults[i].correct && taskResults[i].attempts === 1) streak++
+          else break
+        }
+
+        // Trigger celebration SFX + confetti when streak increases past milestones
+        if (streak > prevStreakRef.current) {
+          if (streak === 3 || streak === 5) {
+            setTimeout(() => { play('streakChime'); burstFire() }, 100)
+          } else if (streak >= 7 && prevStreakRef.current < 7) {
+            setTimeout(() => { play('streakChime'); burstRainbow() }, 100)
+          }
+        }
+        prevStreakRef.current = streak
+
         if (streak >= 2) {
+          const msg = streak >= 7 ? 'LEGENDAR!' :
+            streak >= 5 ? 'Unaufhaltsam! (Unstoppable!)' :
+            streak >= 3 ? 'Hat trick! Drei richtig!' :
+            `${streak} in a row!`
           return (
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-center pb-2 text-amber-400 text-sm"
+              key={streak}
+              initial={{ opacity: 0, y: 10, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              className={`text-center pb-2 font-bold text-sm ${
+                streak >= 7 ? 'text-purple-400 text-base' :
+                streak >= 5 ? 'text-orange-400' :
+                'text-amber-400'
+              }`}
             >
-              🔥 {streak} in a row!
+              🔥 {msg}
             </motion.div>
           )
         }

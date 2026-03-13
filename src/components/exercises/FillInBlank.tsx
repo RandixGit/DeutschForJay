@@ -2,6 +2,9 @@ import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { FillInBlankTask, TaskResult } from '../../types/curriculum'
 import { useTTS } from '../../hooks/useTTS'
+import { useSFX } from '../../hooks/useSFX'
+import { useConfetti } from '../../hooks/useConfetti'
+import FloatingXP from '../rewards/FloatingXP'
 
 const UMLAUTS = ['ä', 'ö', 'ü', 'Ä', 'Ö', 'Ü', 'ß']
 const normalizeGerman = (s: string) => s.trim().toLowerCase().replace(/ß/g, 'ss')
@@ -17,8 +20,11 @@ export default function FillInBlank({ task, onComplete }: Props) {
   const [showHint, setShowHint] = useState(false)
   const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle')
   const [wrongInputs, setWrongInputs] = useState<string[]>([])
+  const [showXP, setShowXP] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const { speak } = useTTS()
+  const { play } = useSFX()
+  const { burstSmall } = useConfetti()
 
   const parts = task.sentence.split('___')
   const before = parts[0] ?? ''
@@ -39,11 +45,15 @@ export default function FillInBlank({ task, onComplete }: Props) {
 
     if (isCorrect) {
       setStatus('correct')
+      play('correctDing')
+      burstSmall()
+      setShowXP(true)
       if (task.tts) speak(task.sentence.replace('___', task.answer), 'de-DE')
       setTimeout(() => {
         onComplete({ correct: true, attempts: newAttempts, taskType: 'fill-in-blank', wrongAnswers: wrongInputs, expectedAnswer: task.answer })
       }, 1000)
     } else {
+      play('wrongBuzz')
       setWrongInputs((prev) => [...prev, input.trim()])
       setStatus('wrong')
       setTimeout(() => {
@@ -54,7 +64,8 @@ export default function FillInBlank({ task, onComplete }: Props) {
   }
 
   return (
-    <div className="exercise-container">
+    <div className="exercise-container relative">
+      <AnimatePresence>{showXP && <FloatingXP amount={attempts === 1 ? 10 : 5} onComplete={() => setShowXP(false)} />}</AnimatePresence>
       <p className="text-slate-400 text-sm text-center uppercase tracking-wide">Fill in the blank</p>
 
       {/* Sentence with blank */}

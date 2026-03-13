@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useGameStore } from '../../store/gameStore'
 import { ALL_MODULES } from '../../services/curriculum'
+import { useSFX } from '../../hooks/useSFX'
+import { useConfetti } from '../../hooks/useConfetti'
 
 // Soccer/One Piece themed card art
 const CARD_THEMES = [
@@ -16,6 +18,8 @@ const CARD_THEMES = [
 export default function CardUnlock() {
   const { pendingCardUnlock, collectCard, setScreen, playerName } = useGameStore()
   const [revealed, setRevealed] = useState(false)
+  const { play } = useSFX()
+  const { burstGold } = useConfetti()
 
   const chapter = pendingCardUnlock
     ? ALL_MODULES.flatMap((m) => m.chapters).find((c) => c.id === pendingCardUnlock)
@@ -29,9 +33,13 @@ export default function CardUnlock() {
 
   function handleReveal() {
     setRevealed(true)
+    play('cardReveal')
+    // Gold confetti after flip animation completes
+    setTimeout(() => burstGold(), 600)
   }
 
   function handleCollect() {
+    play('buttonClick')
     if (pendingCardUnlock) collectCard(pendingCardUnlock)
     setScreen('map')
   }

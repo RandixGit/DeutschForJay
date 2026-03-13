@@ -62,6 +62,9 @@ interface GameState {
   parentPin: string | null
   coupons: Coupon[]
 
+  // Settings
+  soundEnabled: boolean
+
   // Hydration flag (set to true by onRehydrateStorage, never persisted)
   _hydrated: boolean
 
@@ -72,6 +75,7 @@ interface GameState {
 
   // Actions
   setScreen: (screen: Screen) => void
+  setSoundEnabled: (enabled: boolean) => void
   setPlayerName: (name: string) => void
   createPlayer: (name: string) => void
   selectPlayer: (id: string) => void
@@ -187,6 +191,9 @@ export const useGameStore = create<GameState>()(
       parentPin: null,
       coupons: [],
 
+      // Settings
+      soundEnabled: true,
+
       // Hydration flag
       _hydrated: false,
 
@@ -196,6 +203,7 @@ export const useGameStore = create<GameState>()(
       debugAllUnlocked: false,
 
       setScreen: (screen) => set({ screen }),
+      setSoundEnabled: (enabled) => set({ soundEnabled: enabled }),
 
       setPlayerName: (name) => {
         // Legacy: treat as createPlayer if no active player
@@ -455,6 +463,7 @@ export const useGameStore = create<GameState>()(
         players: state.players,
         activePlayerId: state.activePlayerId,
         parentPin: state.parentPin,
+        soundEnabled: state.soundEnabled,
         // Keep legacy fields for migration detection
         playerName: state.playerName,
         xp: state.xp,
