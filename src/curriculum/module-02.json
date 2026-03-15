@@ -71,7 +71,9 @@
               "type": "listen-confirm",
               "german": "Eins, zwei, drei!",
               "english": "One, two, three!",
-              "confirmWord": "zwei"
+              "question": "What is the speaker doing?",
+              "options": ["Saying colors", "Counting to three", "Naming animals", "Saying hello"],
+              "correct": 1
             }
           ]
         },
@@ -119,7 +121,9 @@
               "type": "listen-confirm",
               "german": "Vier Tore! Fantastisch!",
               "english": "Four goals! Fantastic!",
-              "confirmWord": "vier"
+              "question": "How many goals were scored?",
+              "options": ["Two", "Three", "Four", "Five"],
+              "correct": 2
             }
           ]
         },
@@ -175,7 +179,9 @@
               "type": "listen-confirm",
               "german": "Eins, zwei, drei, vier, fünf!",
               "english": "One, two, three, four, five!",
-              "confirmWord": "fünf"
+              "question": "What number does the counting end at?",
+              "options": ["Three", "Four", "Five", "Six"],
+              "correct": 2
             },
             {
               "type": "multiple-choice",
@@ -248,10 +254,19 @@
               "correct": 3
             },
             {
+              "type": "letter-scramble",
+              "prompt": "Spell the German word for 'seven'",
+              "answer": "sieben",
+              "hint": "It has 6 letters — zee-ben!",
+              "tts": true
+            },
+            {
               "type": "listen-confirm",
               "german": "Sechs, sieben, acht, neun, zehn!",
               "english": "Six, seven, eight, nine, ten!",
-              "confirmWord": "zehn"
+              "question": "What is the last number mentioned?",
+              "options": ["Eight", "Nine", "Ten", "Eleven"],
+              "correct": 2
             }
           ]
         },
@@ -305,7 +320,9 @@
               "type": "listen-confirm",
               "german": "Zehn Spieler auf dem Feld!",
               "english": "Ten players on the field!",
-              "confirmWord": "zehn"
+              "question": "What is the speaker talking about?",
+              "options": ["Ten animals in a zoo", "Ten players on the field", "Ten books on a shelf", "Ten cookies in a jar"],
+              "correct": 1
             }
           ]
         },
@@ -361,7 +378,9 @@
               "type": "listen-confirm",
               "german": "Eins bis zehn: eins, zwei, drei, vier, fünf, sechs, sieben, acht, neun, zehn!",
               "english": "One to ten: one, two, three, four, five, six, seven, eight, nine, ten!",
-              "confirmWord": "sechs"
+              "question": "What range of numbers was counted?",
+              "options": ["One to five", "One to ten", "One to twenty", "Five to fifteen"],
+              "correct": 1
             },
             {
               "type": "multiple-choice",
@@ -440,10 +459,19 @@
               "correct": 2
             },
             {
+              "type": "syllable-builder",
+              "prompt": "Build: 'thirteen'",
+              "syllables": ["zehn", "drei"],
+              "answer": "dreizehn",
+              "tts": true
+            },
+            {
               "type": "listen-confirm",
               "german": "Elf, zwölf, dreizehn, vierzehn, fünfzehn!",
               "english": "Eleven, twelve, thirteen, fourteen, fifteen!",
-              "confirmWord": "zwölf"
+              "question": "What number comes after elf (eleven)?",
+              "options": ["Zehn", "Dreizehn", "Zwölf", "Vierzehn"],
+              "correct": 2
             }
           ]
         },
@@ -507,7 +535,9 @@
               "type": "listen-confirm",
               "german": "Zwanzig Spieler im Team!",
               "english": "Twenty players in the team!",
-              "confirmWord": "zwanzig"
+              "question": "How many players are in the team?",
+              "options": ["Ten", "Fifteen", "Eighteen", "Twenty"],
+              "correct": 3
             }
           ]
         },
@@ -587,7 +617,9 @@
               "type": "listen-confirm",
               "german": "Elf, zwölf, dreizehn, vierzehn, fünfzehn, sechzehn, siebzehn, achtzehn, neunzehn, zwanzig!",
               "english": "Eleven to twenty!",
-              "confirmWord": "zwanzig"
+              "question": "What is the speaker counting?",
+              "options": ["One to ten", "Eleven to twenty", "Colors", "Days of the week"],
+              "correct": 1
             }
           ]
         }

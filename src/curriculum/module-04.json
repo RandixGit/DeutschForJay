@@ -67,10 +67,19 @@
               "hint": "My ___ plays soccer with me."
             },
             {
+              "type": "letter-scramble",
+              "prompt": "Spell the German word for 'sister'",
+              "answer": "Schwester",
+              "hint": "Say 'shves-ter'!",
+              "tts": true
+            },
+            {
               "type": "listen-confirm",
               "german": "Mama, Papa, Bruder und Schwester — meine Familie!",
               "english": "Mom, Dad, brother and sister — my family!",
-              "confirmWord": "familie"
+              "question": "What is the speaker talking about?",
+              "options": ["Their school", "Their pets", "Their family", "Their house"],
+              "correct": 2
             }
           ]
         },
@@ -133,7 +142,9 @@
               "type": "listen-confirm",
               "german": "Oma und Opa kommen zu Besuch!",
               "english": "Grandma and grandpa are coming to visit!",
-              "confirmWord": "opa"
+              "question": "Who is coming to visit?",
+              "options": ["Friends", "Teachers", "Grandparents", "Cousins"],
+              "correct": 2
             }
           ]
         },
@@ -196,7 +207,9 @@
               "type": "listen-confirm",
               "german": "Ich liebe meine Familie! Mama, Papa, Bruder und Schwester!",
               "english": "I love my family! Mom, Dad, brother and sister!",
-              "confirmWord": "liebe"
+              "question": "How does the speaker feel about their family?",
+              "options": ["They miss them", "They love them", "They are angry at them", "They are scared of them"],
+              "correct": 1
             }
           ]
         }
@@ -265,7 +278,9 @@
               "type": "listen-confirm",
               "german": "Willkommen in meinem Haus!",
               "english": "Welcome to my house!",
-              "confirmWord": "haus"
+              "question": "What is the speaker saying?",
+              "options": ["Goodbye!", "Welcome to my house!", "I am hungry!", "Good night!"],
+              "correct": 1
             }
           ]
         },
@@ -326,10 +341,19 @@
               "hint": "We watch TV in the ___."
             },
             {
+              "type": "syllable-builder",
+              "prompt": "Build: 'bedroom'",
+              "syllables": ["zim", "Schlaf", "mer"],
+              "answer": "Schlafzimmer",
+              "tts": true
+            },
+            {
               "type": "listen-confirm",
               "german": "Mach bitte die Tür zu!",
               "english": "Please close the door!",
-              "confirmWord": "tür"
+              "question": "What is the speaker asking someone to do?",
+              "options": ["Open the window", "Close the door", "Clean the kitchen", "Turn off the light"],
+              "correct": 1
             }
           ]
         },
@@ -391,7 +415,9 @@
               "type": "listen-confirm",
               "german": "In meinem Haus gibt es eine Küche, ein Wohnzimmer und ein Schlafzimmer!",
               "english": "In my house there is a kitchen, a living room and a bedroom!",
-              "confirmWord": "küche"
+              "question": "What is the speaker describing?",
+              "options": ["Rooms in their house", "Foods they like", "Pets they have", "Games they play"],
+              "correct": 0
             }
           ]
         }
@@ -461,7 +487,9 @@
               "type": "listen-confirm",
               "german": "Mama kocht in der Küche und Papa liest im Wohnzimmer.",
               "english": "Mom cooks in the kitchen and Dad reads in the living room.",
-              "confirmWord": "kocht"
+              "question": "What is Mom doing?",
+              "options": ["Reading", "Sleeping", "Cooking", "Playing"],
+              "correct": 2
             }
           ]
         },
@@ -525,7 +553,9 @@
               "type": "listen-confirm",
               "german": "Mein Bruder und deine Schwester spielen im Garten.",
               "english": "My brother and your sister play in the garden.",
-              "confirmWord": "mein"
+              "question": "Where are they playing?",
+              "options": ["In the kitchen", "In the bedroom", "In the garden", "In the bathroom"],
+              "correct": 2
             }
           ]
         },
@@ -599,7 +629,9 @@
               "type": "listen-confirm",
               "german": "Meine Familie wohnt in einem großen Haus mit einem schönen Garten!",
               "english": "My family lives in a big house with a beautiful garden!",
-              "confirmWord": "garten"
+              "question": "What does the speaker say about their house?",
+              "options": ["It is small", "It is old", "It has a beautiful garden", "It has no kitchen"],
+              "correct": 2
             }
           ]
         }

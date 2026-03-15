@@ -2,10 +2,11 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useGameStore, getLevel } from '../../store/gameStore'
 import { ALL_MODULES } from '../../services/curriculum'
+import FragmentProgress from '../rewards/FragmentProgress'
 import type { Module, Chapter, Lesson } from '../../types/curriculum'
 
 export default function ModuleMap() {
-  const { xp, completedLessons, struggledLessons, startLesson, setScreen, playerName, setPlayerName, switchPlayer, players, debugAllUnlocked } = useGameStore()
+  const { xp, completedLessons, collectedCards, struggledLessons, startLesson, setScreen, playerName, setPlayerName, switchPlayer, players, debugAllUnlocked } = useGameStore()
   const { current: lvl } = getLevel(xp)
 
   const [selectedModule, setSelectedModule] = useState<Module | null>(null)
@@ -147,7 +148,16 @@ export default function ModuleMap() {
                 </div>
                 <div className="flex-1">
                   <p className="text-white font-semibold">{chapter.title}</p>
-                  <p className="text-slate-400 text-sm">Progress: {progress} lessons</p>
+                  <div className="flex items-center gap-2 mt-0.5">
+                    <p className="text-slate-400 text-sm">Progress: {progress} lessons</p>
+                  </div>
+                  <div className="mt-1">
+                    <FragmentProgress
+                      total={chapter.lessons.length}
+                      completed={chapter.lessons.filter((l) => isLessonCompleted(l.id)).length}
+                      hasCard={collectedCards.includes(chapter.id)}
+                    />
+                  </div>
                 </div>
                 <span className="text-slate-400">›</span>
               </motion.button>
@@ -225,6 +235,38 @@ export default function ModuleMap() {
           </p>
         </div>
       )}
+
+      {/* Mini-game button — always visible, locked until 5 completed lessons */}
+      {(() => {
+        const done = Object.keys(completedLessons).length
+        const unlocked = done >= 5
+        return (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            whileHover={unlocked ? { scale: 1.02 } : undefined}
+            whileTap={unlocked ? { scale: 0.98 } : undefined}
+            disabled={!unlocked}
+            className={`mx-4 mt-3 p-4 rounded-xl flex items-center gap-3 text-left transition-all border ${
+              unlocked
+                ? 'bg-gradient-to-r from-green-700 to-emerald-800 border-green-500 hover:border-green-400 cursor-pointer'
+                : 'bg-slate-800/60 border-slate-700 cursor-not-allowed opacity-60'
+            }`}
+            onClick={() => unlocked && setScreen('mini-game')}
+          >
+            <span className="text-3xl">{unlocked ? '⚽' : '🔒'}</span>
+            <div>
+              <p className={`font-bold text-sm ${unlocked ? 'text-white' : 'text-slate-400'}`}>Soccer Kick!</p>
+              <p className={`text-xs ${unlocked ? 'text-green-200' : 'text-slate-500'}`}>
+                {unlocked
+                  ? 'Test your vocab — score goals!'
+                  : `Complete ${5 - done} more lesson${5 - done === 1 ? '' : 's'} to unlock!`}
+              </p>
+            </div>
+            {unlocked && <span className="ml-auto text-green-300 text-lg">▶</span>}
+          </motion.button>
+        )
+      })()}
 
       {/* Modules */}
       <div className="flex-1 overflow-y-auto px-4 pb-6 mt-3 space-y-4">

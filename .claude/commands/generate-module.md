@@ -45,9 +45,10 @@ Create a complete module JSON following these rules:
 ### Task distribution per lesson
 Follow this progression within each lesson:
 1. Start with 2-3 **flashcards** to introduce new vocabulary
-2. Then 2-3 **multiple-choice** questions for recognition
-3. Then 1-2 **fill-in-blank** for production
-4. End with 1 **listen-confirm** for listening practice
+2. Then 1-2 **multiple-choice** questions for recognition
+3. Then 1 **fill-in-blank** (missing letters) or 1 **letter-scramble** for spelling practice
+4. Then 1 **syllable-builder** or 1 **word-order** for word/sentence construction
+5. End with 1 **listen-confirm** for listening practice
 
 ### Task type schemas
 
@@ -69,10 +70,33 @@ Follow this progression within each lesson:
 ```
 - Use exactly `___` (three underscores) as the blank placeholder
 
+**word-order:**
+```json
+{ "type": "word-order", "prompt": "Put the words in the right order", "correctOrder": ["Guten", "Morgen!"], "english": "Good morning!", "tts": true }
+```
+- `correctOrder` is the words in correct German order; component shuffles them
+
+**letter-scramble:**
+```json
+{ "type": "letter-scramble", "prompt": "Spell the German word for 'Hello'", "answer": "Hallo", "hint": "Starts with 'H'!", "tts": true }
+```
+- Best for single-word vocabulary reinforcement
+- Letters are scrambled by the component; player taps to spell
+
+**syllable-builder:**
+```json
+{ "type": "syllable-builder", "prompt": "Build: 'Good morning'", "syllables": ["Mor", "Gu", "ten", "gen"], "answer": "Guten Morgen", "tts": true }
+```
+- Best for compound words and multi-syllable vocabulary
+- `syllables` should be the actual syllable breakdown; component shuffles them
+
 **listen-confirm:**
 ```json
-{ "type": "listen-confirm", "german": "full sentence", "english": "translation", "confirmWord": "keyword" }
+{ "type": "listen-confirm", "german": "full sentence", "english": "translation", "question": "What is the speaker talking about?", "options": ["Option A", "Option B", "Option C", "Option D"], "correct": 0 }
 ```
+- `question` is a comprehension question about what was heard
+- Always exactly 4 options, `correct` is 0-based index
+- Questions should test understanding, not just word recognition
 
 ### Struggle-aware content design (when student data is available)
 If student data was loaded, apply these rules. Otherwise, just generate fresh content for the topic.

@@ -4,6 +4,8 @@ import MultipleChoice from './MultipleChoice'
 import FillInBlank from './FillInBlank'
 import ListenConfirm from './ListenConfirm'
 import WordOrder from './WordOrder'
+import LetterScramble from './LetterScramble'
+import SyllableBuilder from './SyllableBuilder'
 
 interface Props {
   task: Task
@@ -22,6 +24,10 @@ export default function ExerciseRouter({ task, onComplete }: Props) {
       return <ListenConfirm task={task} onComplete={onComplete} />
     case 'word-order':
       return <WordOrder task={task} onComplete={onComplete} />
+    case 'letter-scramble':
+      return <LetterScramble task={task} onComplete={onComplete} />
+    case 'syllable-builder':
+      return <SyllableBuilder task={task} onComplete={onComplete} />
     default:
       return <p className="text-red-400">Unknown exercise type</p>
   }

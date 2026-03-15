@@ -67,10 +67,19 @@
               "hint": "It's just like the English word!"
             },
             {
+              "type": "letter-scramble",
+              "prompt": "Spell the German word for 'Goodbye'",
+              "answer": "Tschüss",
+              "hint": "Starts with 'T' — a bubbly sound!",
+              "tts": true
+            },
+            {
               "type": "listen-confirm",
               "german": "Hallo! Wie geht's?",
               "english": "Hello! How are you?",
-              "confirmWord": "hallo"
+              "question": "What is the speaker doing?",
+              "options": ["Greeting someone", "Saying goodbye", "Ordering food", "Counting numbers"],
+              "correct": 0
             }
           ]
         },
@@ -124,7 +133,9 @@
               "type": "listen-confirm",
               "german": "Ja oder Nein?",
               "english": "Yes or no?",
-              "confirmWord": "nein"
+              "question": "What is the speaker asking?",
+              "options": ["What time is it?", "Yes or no?", "What is your name?", "How are you?"],
+              "correct": 1
             }
           ]
         },
@@ -191,10 +202,19 @@
               "hint": "Ask nicely for the cookie!"
             },
             {
+              "type": "syllable-builder",
+              "prompt": "Build: 'You're welcome'",
+              "syllables": ["ge", "Gern", "sche", "hen"],
+              "answer": "Gern geschehen",
+              "tts": true
+            },
+            {
               "type": "listen-confirm",
               "german": "Bitte und Danke!",
               "english": "Please and thank you!",
-              "confirmWord": "danke"
+              "question": "What words is the speaker practicing?",
+              "options": ["Hello and goodbye", "Yes and no", "Please and thank you", "Big and small"],
+              "correct": 2
             }
           ]
         }
@@ -264,7 +284,9 @@
               "type": "listen-confirm",
               "german": "Wie geht's? Prima, danke!",
               "english": "How are you? Great, thanks!",
-              "confirmWord": "prima"
+              "question": "How is the speaker feeling?",
+              "options": ["Bad", "Great", "Tired", "Hungry"],
+              "correct": 1
             }
           ]
         },
@@ -319,7 +341,9 @@
               "type": "listen-confirm",
               "german": "Mir geht's gut. Und dir?",
               "english": "I'm doing well. And you?",
-              "confirmWord": "gut"
+              "question": "What does the speaker say about how they feel?",
+              "options": ["They feel bad", "They are hungry", "They are doing well", "They are tired"],
+              "correct": 2
             }
           ]
         },
@@ -375,7 +399,9 @@
               "type": "listen-confirm",
               "german": "Hallo! Wie geht's? Prima! Tschüss!",
               "english": "Hello! How are you? Great! Bye!",
-              "confirmWord": "tschüss"
+              "question": "What happens at the end?",
+              "options": ["They start eating", "They say goodbye", "They ask a question", "They introduce themselves"],
+              "correct": 1
             },
             {
               "type": "multiple-choice",
@@ -455,7 +481,9 @@
               "type": "listen-confirm",
               "german": "Wie heißt du? Ich heiße Tim.",
               "english": "What's your name? My name is Tim.",
-              "confirmWord": "heiße"
+              "question": "What is the speaker's name?",
+              "options": ["Jay", "Max", "Tim", "Lukas"],
+              "correct": 2
             }
           ]
         },
@@ -510,7 +538,9 @@
               "type": "listen-confirm",
               "german": "Freut mich! Ich heiße Lukas.",
               "english": "Nice to meet you! My name is Lukas.",
-              "confirmWord": "freut"
+              "question": "What is happening in this conversation?",
+              "options": ["Saying goodbye", "Meeting someone new", "Ordering food", "Asking for directions"],
+              "correct": 1
             }
           ]
         },
@@ -578,7 +608,9 @@
               "type": "listen-confirm",
               "german": "Hallo! Wie heißt du? Ich heiße Max. Freut mich! Tschüss!",
               "english": "Hello! What's your name? My name is Max. Nice to meet you! Bye!",
-              "confirmWord": "freut"
+              "question": "What is the speaker's name?",
+              "options": ["Tim", "Jay", "Lukas", "Max"],
+              "correct": 3
             },
             {
               "type": "fill-in-blank",

@@ -11,7 +11,8 @@
       "Bash(source ~/.zprofile)",
       "Bash(source ~/.nvm/nvm.sh)",
       "Bash(export PATH=$PATH:/opt/homebrew/bin:/usr/local/bin)",
-      "Read(//Users/randyhildebrand/**)"
+      "Read(//Users/randyhildebrand/**)",
+      "Bash(git -C /Users/randyhildebrand/GitCode/DeutschForJay add src/components/exercises/WordOrder.tsx src/components/exercises/ExerciseRouter.tsx src/types/curriculum.ts src/curriculum/module-01.json src/curriculum/module-02.json src/curriculum/module-03.json src/curriculum/module-04.json src/curriculum/module-05.json src/curriculum/module-06.json)"
     ]
   }
 }

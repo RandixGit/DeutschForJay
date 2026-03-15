@@ -24,14 +24,12 @@ export default function Flashcard({ task, onComplete }: Props) {
     if (task.tts && next) speak(task.german, 'de-DE')
   }
 
-  function handleResponse(knew: boolean) {
+  function handleResponse() {
     if (answered) return
     setAnswered(true)
-    if (knew) {
-      play('correctDing')
-      burstSmall()
-    }
-    onComplete({ correct: knew, attempts: 1, taskType: 'flashcard', expectedAnswer: task.german })
+    play('correctDing')
+    burstSmall()
+    onComplete({ correct: true, attempts: 1, taskType: 'flashcard', expectedAnswer: task.german })
   }
 
   function handleTTS(e: React.MouseEvent) {
@@ -85,19 +83,13 @@ export default function Flashcard({ task, onComplete }: Props) {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex gap-3 w-full mt-2"
+          className="w-full mt-2"
         >
           <button
-            className="flex-1 bg-green-500 hover:bg-green-600 active:scale-95 text-white font-bold py-3 px-4 rounded-xl transition-all"
-            onClick={() => handleResponse(true)}
+            className="w-full bg-green-500 hover:bg-green-600 active:scale-95 text-white font-bold py-3 px-4 rounded-xl transition-all"
+            onClick={handleResponse}
           >
             ✅ Got it!
-          </button>
-          <button
-            className="flex-1 bg-slate-600 hover:bg-slate-500 active:scale-95 text-white font-bold py-3 px-4 rounded-xl transition-all"
-            onClick={() => handleResponse(false)}
-          >
-            🔄 Still learning
           </button>
         </motion.div>
       )}

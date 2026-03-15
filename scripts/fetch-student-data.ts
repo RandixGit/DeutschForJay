@@ -33,7 +33,7 @@ interface Task {
   german?: string
   english?: string
   answer?: string
-  confirmWord?: string
+  question?: string
   options?: string[]
   correct?: number
 }
@@ -67,7 +67,7 @@ function extractVocabulary(modules: Module[]): string[] {
         for (const task of ls.tasks) {
           if (task.german) words.add(task.german)
           if (task.answer) words.add(task.answer)
-          if (task.confirmWord) words.add(task.confirmWord)
+          if (task.question) words.add(task.question)
         }
       }
     }

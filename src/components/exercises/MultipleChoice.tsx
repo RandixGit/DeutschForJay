@@ -63,6 +63,8 @@ export default function MultipleChoice({ task, onComplete }: Props) {
     return 'bg-slate-700 border border-slate-600 text-slate-400 opacity-60'
   }
 
+  const hasOptionImages = task.optionImages && task.optionImages.length === task.options.length
+
   return (
     <div className="exercise-container relative">
       <AnimatePresence>{showXP && <FloatingXP amount={attempts === 1 ? 10 : 5} onComplete={() => setShowXP(false)} />}</AnimatePresence>
@@ -70,6 +72,16 @@ export default function MultipleChoice({ task, onComplete }: Props) {
 
       {/* Question */}
       <div className="card p-5 w-full text-center">
+        {task.promptImage && (
+          <div className="mb-3 rounded-xl overflow-hidden">
+            <img
+              src={task.promptImage}
+              alt="Question"
+              className="w-full max-h-40 object-cover rounded-xl"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+            />
+          </div>
+        )}
         <p className="text-white text-lg font-semibold leading-snug">{task.prompt}</p>
       </div>
 
@@ -86,11 +98,21 @@ export default function MultipleChoice({ task, onComplete }: Props) {
           <motion.button
             key={idx}
             whileTap={{ scale: 0.96 }}
-            className={`py-4 px-3 rounded-xl font-semibold text-base transition-all duration-200 ${buttonStyle(idx)}`}
+            className={`rounded-xl font-semibold transition-all duration-200 ${buttonStyle(idx)} ${
+              hasOptionImages ? 'py-2 px-2 flex flex-col items-center gap-1' : 'py-4 px-3 text-base'
+            }`}
             onClick={() => handleSelect(idx)}
             disabled={done}
           >
-            {option}
+            {hasOptionImages && task.optionImages![idx] && (
+              <img
+                src={task.optionImages![idx]}
+                alt={option}
+                className="w-full h-20 object-cover rounded-lg"
+                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+              />
+            )}
+            <span className={hasOptionImages ? 'text-sm' : ''}>{option}</span>
           </motion.button>
         ))}
       </div>

@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useGameStore, getLevel, GERMAN_FACTS } from '../../store/gameStore'
+import { useGameStore, getLevel } from '../../store/gameStore'
 import { useSFX } from '../../hooks/useSFX'
 import { useConfetti } from '../../hooks/useConfetti'
+import { getFunContent, getRandomFact, type FunContent } from '../../services/funContent'
 
 export default function ResultsScreen() {
   const {
@@ -17,9 +18,9 @@ export default function ResultsScreen() {
   const { play } = useSFX()
   const { burstBig, burstRainbow } = useConfetti()
 
-  const factRef = useRef(
-    GERMAN_FACTS[Math.floor(Math.random() * GERMAN_FACTS.length)]
-  )
+  // Dynamic fun content from API
+  const [funContent, setFunContent] = useState<FunContent>(() => getRandomFact())
+  const [funImgLoaded, setFunImgLoaded] = useState(false)
 
   const { current: lvl, progress } = getLevel(xp)
 
@@ -41,6 +42,8 @@ export default function ResultsScreen() {
     if (totalLessons > 0 && totalLessons % 5 === 0) {
       addCoupon(`Completed ${totalLessons} lessons! 🎉`)
     }
+    // Fetch dynamic fun content
+    getFunContent().then(setFunContent)
   }, [])
 
   // Celebration sequence on mount
@@ -220,15 +223,31 @@ export default function ResultsScreen() {
         )}
       </AnimatePresence>
 
-      {/* Fun fact */}
+      {/* Dynamic fun content */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
         className="card p-4 w-full max-w-sm bg-blue-900/30 border border-blue-700"
       >
-        <p className="text-blue-200 text-sm text-center">🇩🇪 Fun Fact!</p>
-        <p className="text-slate-300 text-sm text-center mt-1">{factRef.current}</p>
+        <p className="text-blue-200 text-sm text-center">
+          {funContent.type === 'joke' ? '😂 Joke!' : funContent.type === 'image' ? '🐾 Cute!' : '🧠 Fun Fact!'}
+        </p>
+        {funContent.type === 'image' && funContent.imageUrl && (
+          <div className="mt-2 rounded-lg overflow-hidden">
+            {!funImgLoaded && <div className="w-full h-32 bg-slate-700 animate-pulse rounded-lg" />}
+            <img
+              src={funContent.imageUrl}
+              alt="Fun content"
+              className={`w-full max-h-36 object-cover rounded-lg ${funImgLoaded ? '' : 'hidden'}`}
+              onLoad={() => setFunImgLoaded(true)}
+              onError={() => setFunImgLoaded(true)}
+            />
+          </div>
+        )}
+        {funContent.text && (
+          <p className="text-slate-300 text-sm text-center mt-1 whitespace-pre-line">{funContent.text}</p>
+        )}
       </motion.div>
 
       {/* Continue button */}

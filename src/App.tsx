@@ -8,6 +8,7 @@ import LessonView from './components/layout/LessonView'
 import ResultsScreen from './components/layout/ResultsScreen'
 import ParentDashboard from './components/parent/ParentDashboard'
 import CardUnlock from './components/rewards/CardUnlock'
+import SoccerKick from './components/minigames/SoccerKick'
 import WelcomeScreen from './components/layout/WelcomeScreen'
 import PlayerSelectScreen from './components/layout/PlayerSelectScreen'
 import LoginScreen from './components/layout/LoginScreen'
@@ -63,6 +64,7 @@ function ScreenContent() {
         {effectiveScreen === 'lesson' && <LessonView />}
         {effectiveScreen === 'results' && <ResultsScreen />}
         {effectiveScreen === 'card-unlock' && <CardUnlock />}
+        {effectiveScreen === 'mini-game' && <SoccerKick />}
         {effectiveScreen === 'parent' && <ParentDashboard />}
       </motion.div>
     </AnimatePresence>

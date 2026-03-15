@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import { useGameStore } from '../../store/gameStore'
 import { useAuth } from '../../services/AuthContext'
 import XPBar from '../rewards/XPBar'
+import ThemedBackground from './ThemedBackground'
 
 interface Props {
   children: ReactNode
@@ -18,7 +19,8 @@ export default function AppShell({ children }: Props) {
   const isLoggedIn = !!user || isGuest
 
   return (
-    <div className="flex flex-col h-full max-w-lg mx-auto">
+    <div className="flex flex-col h-full max-w-lg mx-auto relative">
+      <ThemedBackground />
       {isLoggedIn && (
         <div className="flex items-center justify-between px-4 pt-2 pb-0">
           <div className="text-xs text-slate-500 truncate">

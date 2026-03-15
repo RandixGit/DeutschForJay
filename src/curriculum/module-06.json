@@ -66,10 +66,19 @@
               "hint": "Monday, ___, Wednesday!"
             },
             {
+              "type": "letter-scramble",
+              "prompt": "Spell the German word for 'Wednesday'",
+              "answer": "Mittwoch",
+              "hint": "'Mitt' = middle + 'Woche' = week!",
+              "tts": true
+            },
+            {
               "type": "listen-confirm",
               "german": "Heute ist Montag. Morgen ist Dienstag!",
               "english": "Today is Monday. Tomorrow is Tuesday!",
-              "confirmWord": "heute"
+              "question": "What day is it today?",
+              "options": ["Tuesday", "Wednesday", "Monday", "Sunday"],
+              "correct": 2
             }
           ]
         },
@@ -133,7 +142,9 @@
               "type": "listen-confirm",
               "german": "Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag, Sonntag!",
               "english": "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday!",
-              "confirmWord": "sonntag"
+              "question": "What is the speaker listing?",
+              "options": ["Months of the year", "Days of the week", "Numbers", "Colors"],
+              "correct": 1
             }
           ]
         },
@@ -195,7 +206,9 @@
               "type": "listen-confirm",
               "german": "Heute ist Freitag! Morgen ist Samstag — Fußballtag!",
               "english": "Today is Friday! Tomorrow is Saturday — soccer day!",
-              "confirmWord": "freitag"
+              "question": "What is special about tomorrow?",
+              "options": ["It is a school day", "It is soccer day", "It is a holiday", "It is someone's birthday"],
+              "correct": 1
             }
           ]
         }
@@ -265,7 +278,9 @@
               "type": "listen-confirm",
               "german": "Die Sonne scheint! Kein Regen heute!",
               "english": "The sun is shining! No rain today!",
-              "confirmWord": "sonne"
+              "question": "What is the weather like?",
+              "options": ["Rainy and cold", "Sunny with no rain", "Snowy and windy", "Cloudy and warm"],
+              "correct": 1
             }
           ]
         },
@@ -329,7 +344,9 @@
               "type": "listen-confirm",
               "german": "Es ist heiß heute! Die Sonne scheint!",
               "english": "It is hot today! The sun is shining!",
-              "confirmWord": "heiß"
+              "question": "What is the temperature like?",
+              "options": ["Cold", "Warm", "Hot", "Freezing"],
+              "correct": 2
             }
           ]
         },
@@ -392,7 +409,9 @@
               "type": "listen-confirm",
               "german": "Wie ist das Wetter? Es ist warm und die Sonne scheint! Perfekt für Fußball!",
               "english": "How is the weather? It is warm and the sun is shining! Perfect for soccer!",
-              "confirmWord": "wetter"
+              "question": "What is the weather perfect for?",
+              "options": ["Swimming", "Sleeping", "Soccer", "Reading"],
+              "correct": 2
             }
           ]
         }
@@ -459,10 +478,19 @@
               "hint": "In the ___ I play with friends."
             },
             {
+              "type": "syllable-builder",
+              "prompt": "Build: 'afternoon'",
+              "syllables": ["mit", "Nach", "tag"],
+              "answer": "Nachmittag",
+              "tts": true
+            },
+            {
               "type": "listen-confirm",
               "german": "Guten Morgen! Guten Tag! Guten Abend! Gute Nacht!",
               "english": "Good morning! Good day! Good evening! Good night!",
-              "confirmWord": "abend"
+              "question": "What greetings are being practiced?",
+              "options": ["Questions about food", "Greetings for different times of day", "Ways to say goodbye", "Names of animals"],
+              "correct": 1
             }
           ]
         },
@@ -526,7 +554,9 @@
               "type": "listen-confirm",
               "german": "Ich stehe auf, gehe zur Schule, mache Hausaufgaben und gehe ins Bett!",
               "english": "I get up, go to school, do homework and go to bed!",
-              "confirmWord": "schule"
+              "question": "What is the speaker describing?",
+              "options": ["Their favorite food", "Their daily routine", "Their family", "The weather"],
+              "correct": 1
             }
           ]
         },
@@ -608,7 +638,9 @@
               "type": "listen-confirm",
               "german": "Guten Morgen! Heute ist Samstag! Die Sonne scheint und es ist warm. Ich spiele Fußball mit meinem Bruder im Garten! Prima!",
               "english": "Good morning! Today is Saturday! The sun is shining and it is warm. I play soccer with my brother in the garden! Great!",
-              "confirmWord": "samstag"
+              "question": "What is Jay doing on this Saturday?",
+              "options": ["Going to school", "Playing soccer with his brother", "Watching TV", "Doing homework"],
+              "correct": 1
             }
           ]
         }

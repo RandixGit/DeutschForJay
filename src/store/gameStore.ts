@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware'
 import type { TaskResult } from '../types/curriculum'
 
 export type { TaskResult }
-export type Screen = 'welcome' | 'player-select' | 'map' | 'lesson' | 'results' | 'card-unlock' | 'parent'
+export type Screen = 'welcome' | 'player-select' | 'map' | 'lesson' | 'results' | 'card-unlock' | 'parent' | 'mini-game'
 
 export interface Coupon {
   id: string

@@ -3,9 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useGameStore } from '../../store/gameStore'
 import { getLessonTasks, getChapterForLesson, isChapterComplete } from '../../services/curriculum'
 import ExerciseRouter from '../exercises/ExerciseRouter'
+import FunBreak from '../rewards/FunBreak'
 import { useSFX } from '../../hooks/useSFX'
 import { useConfetti } from '../../hooks/useConfetti'
+import { prefetchNext } from '../../services/funContent'
 import type { TaskResult } from '../../types/curriculum'
+
+const FUN_BREAK_INTERVAL = 3 // Show fun break every N tasks
 
 export default function LessonView() {
   const {
@@ -21,6 +25,7 @@ export default function LessonView() {
   } = useGameStore()
 
   const [vocabOpen, setVocabOpen] = useState(false)
+  const [showFunBreak, setShowFunBreak] = useState(false)
   const { play } = useSFX()
   const { burstFire, burstRainbow } = useConfetti()
   const prevStreakRef = useRef(0)
@@ -49,8 +54,24 @@ export default function LessonView() {
     }
   }, [activeTaskIndex, totalTasks, activeLessonId])
 
+  // Pre-fetch fun content when lesson starts and periodically
+  useEffect(() => {
+    prefetchNext()
+  }, [activeLessonId])
+
   function handleTaskComplete(result: TaskResult) {
-    recordTaskResult(result)
+    const nextIndex = activeTaskIndex + 1
+    // Show fun break every N tasks (not on last task)
+    if (nextIndex > 0 && nextIndex % FUN_BREAK_INTERVAL === 0 && nextIndex < totalTasks) {
+      recordTaskResult(result)
+      setShowFunBreak(true)
+    } else {
+      recordTaskResult(result)
+    }
+    // Pre-fetch content for next potential break
+    if ((nextIndex + 1) % FUN_BREAK_INTERVAL === 0) {
+      prefetchNext()
+    }
   }
 
   if (!activeLessonId || tasks.length === 0) {
@@ -96,7 +117,18 @@ export default function LessonView() {
       {/* Task area */}
       <div className="flex-1 overflow-y-auto flex items-center justify-center py-4">
         <AnimatePresence mode="wait">
-          {currentTask && (
+          {showFunBreak ? (
+            <motion.div
+              key="fun-break"
+              initial={{ opacity: 0, x: 60 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -60 }}
+              transition={{ duration: 0.25 }}
+              className="w-full"
+            >
+              <FunBreak onDismiss={() => setShowFunBreak(false)} />
+            </motion.div>
+          ) : currentTask ? (
             <motion.div
               key={activeTaskIndex}
               initial={{ opacity: 0, x: 60 }}
@@ -107,7 +139,7 @@ export default function LessonView() {
             >
               <ExerciseRouter task={currentTask} onComplete={handleTaskComplete} />
             </motion.div>
-          )}
+          ) : null}
         </AnimatePresence>
       </div>
 

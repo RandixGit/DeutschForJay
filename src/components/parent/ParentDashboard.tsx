@@ -154,7 +154,7 @@ function PlayerCard({
                       for (const t of ls.tasks) {
                         if ('german' in t && t.german) vocab.add(t.german)
                         if ('answer' in t && t.answer) vocab.add(t.answer)
-                        if ('confirmWord' in t && t.confirmWord) vocab.add(t.confirmWord)
+                        if ('question' in t && t.question) vocab.add(t.question)
                       }
                     }
                   }

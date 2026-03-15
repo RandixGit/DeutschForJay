@@ -70,7 +70,9 @@
               "type": "listen-confirm",
               "german": "Rot, blau, grün, gelb — die Farben!",
               "english": "Red, blue, green, yellow — the colors!",
-              "confirmWord": "farben"
+              "question": "What is the speaker listing?",
+              "options": ["Animals", "Numbers", "Colors", "Days"],
+              "correct": 2
             }
           ]
         },
@@ -130,10 +132,19 @@
               "hint": "The night is ___."
             },
             {
+              "type": "letter-scramble",
+              "prompt": "Spell the German word for 'black'",
+              "answer": "schwarz",
+              "hint": "Like Schwarzenegger!",
+              "tts": true
+            },
+            {
               "type": "listen-confirm",
               "german": "Schwarz und weiß, wie ein Fußball!",
               "english": "Black and white, like a soccer ball!",
-              "confirmWord": "weiß"
+              "question": "What are they comparing the colors to?",
+              "options": ["A rainbow", "A soccer ball", "A cat", "The sky"],
+              "correct": 1
             }
           ]
         },
@@ -195,7 +206,9 @@
               "type": "listen-confirm",
               "german": "Rot, blau, grün, gelb, schwarz, weiß, orange, lila!",
               "english": "Red, blue, green, yellow, black, white, orange, purple!",
-              "confirmWord": "orange"
+              "question": "How many colors were mentioned?",
+              "options": ["Four", "Six", "Eight", "Ten"],
+              "correct": 2
             }
           ]
         }
@@ -264,7 +277,9 @@
               "type": "listen-confirm",
               "german": "Der Hund und die Katze spielen zusammen!",
               "english": "The dog and the cat play together!",
-              "confirmWord": "hund"
+              "question": "What are the animals doing?",
+              "options": ["Sleeping", "Eating", "Playing together", "Running away"],
+              "correct": 2
             }
           ]
         },
@@ -328,7 +343,9 @@
               "type": "listen-confirm",
               "german": "Die Maus ist klein und der Bär ist groß!",
               "english": "The mouse is small and the bear is big!",
-              "confirmWord": "maus"
+              "question": "Which animal is described as small?",
+              "options": ["The bear", "The dog", "The cat", "The mouse"],
+              "correct": 3
             }
           ]
         },
@@ -390,7 +407,9 @@
               "type": "listen-confirm",
               "german": "Hund, Katze, Pferd, Kuh, Vogel, Fisch, Maus, Bär!",
               "english": "Dog, cat, horse, cow, bird, fish, mouse, bear!",
-              "confirmWord": "pferd"
+              "question": "What is the speaker listing?",
+              "options": ["Colors", "Numbers", "Animals", "Foods"],
+              "correct": 2
             }
           ]
         }
@@ -450,7 +469,9 @@
               "type": "listen-confirm",
               "german": "Der braune Hund und die graue Maus!",
               "english": "The brown dog and the grey mouse!",
-              "confirmWord": "braune"
+              "question": "What color is the dog?",
+              "options": ["Grey", "White", "Brown", "Black"],
+              "correct": 2
             }
           ]
         },
@@ -511,10 +532,19 @@
               "hint": "The bear is ___!"
             },
             {
+              "type": "syllable-builder",
+              "prompt": "Build: 'slow'",
+              "syllables": ["sam", "lang"],
+              "answer": "langsam",
+              "tts": true
+            },
+            {
               "type": "listen-confirm",
               "german": "Das Pferd ist groß und schnell!",
               "english": "The horse is big and fast!",
-              "confirmWord": "schnell"
+              "question": "How is the horse described?",
+              "options": ["Small and slow", "Big and fast", "Brown and quiet", "Young and cute"],
+              "correct": 1
             }
           ]
         },
@@ -589,7 +619,9 @@
               "type": "listen-confirm",
               "german": "Der kleine braune Hund ist schnell! Die große graue Katze ist langsam!",
               "english": "The small brown dog is fast! The big grey cat is slow!",
-              "confirmWord": "langsam"
+              "question": "Which animal is slow?",
+              "options": ["The dog", "The horse", "The cat", "The mouse"],
+              "correct": 2
             }
           ]
         }
